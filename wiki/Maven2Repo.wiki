@@ -22,9 +22,13 @@ If you are using Maven 2 you can include generic-dao in your project by adding t
 
 Then you would add this (with the latest release version) to the project pom.xml where you define your DAOs:
 {{{
-<dependency>
+<dependencies>
+...
+  <dependency>
     <groupId>org.sakaiproject</groupId>
     <artifactId>generic-dao</artifactId>
     <version>[0.9.8,1.0.0)</version>
-</dependency>
+  </dependency>
+...
+</dependencies>
 }}}
