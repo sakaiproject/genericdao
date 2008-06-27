@@ -1,0 +1,8 @@
+Using Generic DAO (gendao) is meant to be easy and my hopes are that it is.
+
+Some basics are available here (outline of the basic config steps):
+[http://confluence.sakaiproject.org/confluence/display/BOOT/Generic+DAO+package]
+
+The entire source is located in the jar package which you can get from the [Maven2Repo]. The source includes a large number of unit test cases which also serve as example code and demonstrations of how to use the package. This is the place to start if you want to see what is involved in using the package.
+
+Please feel free to email the project owner(s) if you have questions or suggestions.
