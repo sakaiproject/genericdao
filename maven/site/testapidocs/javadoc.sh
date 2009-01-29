@@ -1,0 +1,1 @@
+/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Home/bin/javadoc @options @packages

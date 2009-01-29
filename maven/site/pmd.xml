@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.2" timestamp="2009-01-29T14:39:52.087">
+<file name="/opt/mytools/gendao/src/main/java/org/sakaiproject/genericdao/springutil/SetOnceClassLoaderBeanNameAutoProxyCreator.java">
+<violation beginline="29" endline="32" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.sakaiproject.genericdao.springutil" class="SetOnceClassLoaderBeanNameAutoProxyCreator" method="setProxyClassLoader" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/opt/mytools/gendao/src/main/java/org/sakaiproject/genericdao/springutil/SetOnceClassLoaderTxProxyFactoryBean.java">
+<violation beginline="29" endline="32" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.sakaiproject.genericdao.springutil" class="SetOnceClassLoaderTxProxyFactoryBean" method="setProxyClassLoader" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/opt/mytools/gendao/src/main/java/org/sakaiproject/genericdao/util/StringUtils.java">
+<violation beginline="47" endline="49" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.sakaiproject.genericdao.util" class="StringUtils" method="makeStringFromInputStream" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="59" endline="61" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.sakaiproject.genericdao.util" class="StringUtils" method="makeInputStreamFromString" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>

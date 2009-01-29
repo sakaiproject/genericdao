@@ -1,0 +1,799 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Coverage Report</title>
+<link title="Style" type="text/css" rel="stylesheet" href="css/main.css"/>
+<script type="text/javascript" src="js/popup.js"></script>
+</head>
+<body>
+<h5>Coverage Report - org.sakaiproject.genericdao.springutil.CurrentClassLoaderBeanNameAutoProxyCreator</h5>
+<div class="separator">&nbsp;</div>
+<table class="report">
+<thead><tr>  <td class="heading">Classes in this File</td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Line Coverage</a></td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Branch Coverage</a></td>  <td class="heading" width="10%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Complexity</a></td></tr></thead>
+  <tr><td class="text"><a href="org.sakaiproject.genericdao.springutil.CurrentClassLoaderBeanNameAutoProxyCreator.html">CurrentClassLoaderBeanNameAutoProxyCreator</a></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>0%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="0"></td><td class="uncovered" width="100"></td></tr></table></td></tr></table></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>0%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="0"></td><td class="uncovered" width="100"></td></tr></table></td></tr></table></td><td class="value"><span class="hidden">0.0;</span>0</td></tr>
+</table>
+<div class="separator">&nbsp;</div>
+<table cellspacing="0" cellpadding="0" class="src">
+<tr>
+  <td class="numLine">&nbsp;1</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;2</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * $Id$</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;3</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * $URL$</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;4</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * CurrentClassLoaderBeanNameAutoProxyCreator.java - genericdao - May 7, 2008 10:24:18 AM - azeckoski</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;5</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> **************************************************************************</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;6</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Copyright (c) 2008 Aaron Zeckoski</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;7</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Licensed under the Apache License, Version 2.0</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;8</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;9</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * A copy of the Apache License has been included in this </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;10</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * distribution and is available at: http://www.apache.org/licenses/LICENSE-2.0.txt</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;11</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;12</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Aaron Zeckoski (azeckoski@gmail.com) (aaronz@vt.edu) (aaron@caret.cam.ac.uk)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;13</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;14</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;15</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">package</span> org.sakaiproject.genericdao.springutil;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;16</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;17</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.ArrayList;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;18</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.Arrays;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;19</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.List;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;20</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;21</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.springframework.aop.Advisor;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;22</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.springframework.aop.TargetSource;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;23</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.springframework.aop.framework.ProxyFactory;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;24</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.springframework.aop.framework.adapter.AdvisorAdapterRegistry;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;25</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.springframework.aop.framework.adapter.GlobalAdvisorAdapterRegistry;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;26</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;27</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.springframework.util.ClassUtils;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;28</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;29</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;30</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * This sets the {@link ClassLoader} for the {@link BeanNameAutoProxyCreator} to the current</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;31</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * one that this class exists in&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;32</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Compatible with Spring 1.2.8+</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;33</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;34</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author Aaron Zeckoski (azeckoski@gmail.com)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;35</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;36</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> CurrentClassLoaderBeanNameAutoProxyCreator <span class="keyword">extends</span> BeanNameAutoProxyCreator {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;37</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = 1L;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;38</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;39</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">protected</span> ClassLoader myClassLoader = CurrentClassLoaderBeanNameAutoProxyCreator.<span class="keyword">class</span>.getClassLoader();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;40</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;41</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">/*** only works with Spring 2.0.x</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;42</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">   @Override</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;43</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">   public void setBeanClassLoader(ClassLoader classLoader) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;44</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">      // this is basically ignoring the input classLoader and setting it to the one</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;45</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">      // which this class is currently part of</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;46</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">      super.setBeanClassLoader(myClassLoader);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;47</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;48</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">         ***/</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;49</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;50</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// below needed to make this work with spring 1.2.8</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;51</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">private</span> <span class="keyword">boolean</span> freezeProxy = <span class="keyword">false</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;52</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        @Override</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;53</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">void</span> setFrozen(<span class="keyword">boolean</span> frozen) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;54</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">this</span>.freezeProxy = frozen;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;55</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;56</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        @Override</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;57</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">boolean</span> isFrozen() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;58</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">return</span> <span class="keyword">this</span>.freezeProxy;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;59</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;60</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;61</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">protected</span> String[] interceptorNames = <span class="keyword">new</span> String[0];</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;62</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        @Override</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;63</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">void</span> setInterceptorNames(String[] interceptorNames) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;64</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">this</span>.interceptorNames = interceptorNames;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;65</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;66</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;67</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">private</span> AdvisorAdapterRegistry advisorAdapterRegistry = GlobalAdvisorAdapterRegistry.getInstance();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;68</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        @Override</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;69</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">void</span> setAdvisorAdapterRegistry(AdvisorAdapterRegistry advisorAdapterRegistry) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;70</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">this</span>.advisorAdapterRegistry = advisorAdapterRegistry;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;71</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;72</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;73</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">private</span> <span class="keyword">boolean</span> applyCommonInterceptorsFirst = <span class="keyword">true</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;74</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        @Override</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;75</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">void</span> setApplyCommonInterceptorsFirst(<span class="keyword">boolean</span> applyCommonInterceptorsFirst) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;76</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">this</span>.applyCommonInterceptorsFirst = applyCommonInterceptorsFirst;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;77</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;78</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;79</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;80</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">protected</span> <span class="keyword">boolean</span> shouldProxyTargetClass(Class beanClass, String beanName) {</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;81</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">// note that we are ignoring the ConfigurableListableBeanFactory check</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;82</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">return</span> isProxyTargetClass();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;83</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;84</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;85</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> Advisor[] resolveInterceptorNames() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;86</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                Advisor[] advisors = <span class="keyword">new</span> Advisor[<span class="keyword">this</span>.interceptorNames.length];</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;87</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; <span class="keyword">this</span>.interceptorNames.length; i++) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;88</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        Object next = getBeanFactory().getBean(<span class="keyword">this</span>.interceptorNames[i]);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;89</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        advisors[i] = <span class="keyword">this</span>.advisorAdapterRegistry.wrap(next);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;90</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;91</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">return</span> advisors;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;92</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;93</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;94</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;95</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">protected</span> Advisor[] buildAdvisors(String beanName, Object[] specificInterceptors) {</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;96</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">// Handle prototypes correctly...</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;97</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                Advisor[] commonInterceptors = resolveInterceptorNames();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;98</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;99</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                List allInterceptors = <span class="keyword">new</span> ArrayList();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;100</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">if</span> (specificInterceptors != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;101</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        allInterceptors.addAll(Arrays.asList(specificInterceptors));</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;102</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        <span class="keyword">if</span> (commonInterceptors != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;103</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                                <span class="keyword">if</span> (<span class="keyword">this</span>.applyCommonInterceptorsFirst) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;104</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                                        allInterceptors.addAll(0, Arrays.asList(commonInterceptors));</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;105</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                                }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;106</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                                <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;107</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                                        allInterceptors.addAll(Arrays.asList(commonInterceptors));</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;108</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                                }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;109</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;110</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;111</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">//      if (logger.isDebugEnabled()) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;112</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                        <span class="comment">//         int nrOfCommonInterceptors = (commonInterceptors != null ? commonInterceptors.length : 0);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;113</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">//         int nrOfSpecificInterceptors = (specificInterceptors != null ? specificInterceptors.length : 0);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;114</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">//         logger.debug("Creating implicit proxy for bean '" + beanName + "' with " + nrOfCommonInterceptors +</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;115</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">//               " common interceptors and " + nrOfSpecificInterceptors + " specific interceptors");</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;116</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">//      }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;117</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;118</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                Advisor[] advisors = <span class="keyword">new</span> Advisor[allInterceptors.size()];</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;119</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; allInterceptors.size(); i++) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;120</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        advisors[i] = <span class="keyword">this</span>.advisorAdapterRegistry.wrap(allInterceptors.get(i));</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;121</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;122</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">return</span> advisors;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;123</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;124</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;125</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;126</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        @Override</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;127</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">protected</span> Object createProxy(</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;128</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                        Class beanClass, String beanName, Object[] specificInterceptors, TargetSource targetSource) {</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;129</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;130</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                ProxyFactory proxyFactory = <span class="keyword">new</span> ProxyFactory();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;131</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">// Copy our properties (proxyTargetClass etc) inherited from ProxyConfig.</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;132</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                proxyFactory.copyFrom(<span class="keyword">this</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;133</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;134</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">if</span> (!shouldProxyTargetClass(beanClass, beanName)) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;135</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                        <span class="comment">// Must allow for introductions; can't just set interfaces to</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;136</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                        <span class="comment">// the target's interfaces only.</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;137</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        Class[] targetInterfaces = ClassUtils.getAllInterfacesForClass(beanClass);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;138</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; targetInterfaces.length; i++) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;139</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                                proxyFactory.addInterface(targetInterfaces[i]);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;140</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;141</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;142</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;143</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                Advisor[] advisors = buildAdvisors(beanName, specificInterceptors);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;144</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; advisors.length; i++) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;145</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        proxyFactory.addAdvisor(advisors[i]);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;146</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;147</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;148</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                proxyFactory.setTargetSource(targetSource);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;149</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                customizeProxyFactory(proxyFactory);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;150</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;151</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                proxyFactory.setFrozen(<span class="keyword">this</span>.freezeProxy);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;152</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">return</span> proxyFactory.getProxy(myClassLoader);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;153</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;154</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;155</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;}</pre></td>
+</tr>
+</table>
+<div class="footer">
+Reports generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a>.
+</div>
+</body>
+</html>

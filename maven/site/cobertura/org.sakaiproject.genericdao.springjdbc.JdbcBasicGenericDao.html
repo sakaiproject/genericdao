@@ -1,0 +1,2024 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Coverage Report</title>
+<link title="Style" type="text/css" rel="stylesheet" href="css/main.css"/>
+<script type="text/javascript" src="js/popup.js"></script>
+</head>
+<body>
+<h5>Coverage Report - org.sakaiproject.genericdao.springjdbc.JdbcBasicGenericDao</h5>
+<div class="separator">&nbsp;</div>
+<table class="report">
+<thead><tr>  <td class="heading">Classes in this File</td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Line Coverage</a></td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Branch Coverage</a></td>  <td class="heading" width="10%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Complexity</a></td></tr></thead>
+  <tr><td class="text"><a href="org.sakaiproject.genericdao.springjdbc.JdbcBasicGenericDao.html">JdbcBasicGenericDao</a></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>83%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="83"></td><td class="uncovered" width="16"></td></tr></table></td></tr></table></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>95%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="94"></td><td class="uncovered" width="5"></td></tr></table></td></tr></table></td><td class="value"><span class="hidden">0.0;</span>0</td></tr>
+</table>
+<div class="separator">&nbsp;</div>
+<table cellspacing="0" cellpadding="0" class="src">
+<tr>
+  <td class="numLine">&nbsp;1</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;2</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * $Id$</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;3</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * $URL$</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;4</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * JdbcBasicGenericDao.java - genericdao - Apr 26, 2008 12:27:46 AM - azeckoski</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;5</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> **************************************************************************</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;6</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Copyright (c) 2008 Aaron Zeckoski</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;7</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Licensed under the Apache License, Version 2</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;8</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;9</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * A copy of the Apache License, Version 2 has been included in this </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;10</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * distribution and is available at: http://www.apache.org/licenses/LICENSE-2.0.txt</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;11</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;12</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Aaron Zeckoski (azeckoski@gmail.com) (aaronz@vt.edu) (aaron@caret.cam.ac.uk)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;13</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;14</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;15</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">package</span> org.sakaiproject.genericdao.springjdbc;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;16</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;17</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.io.Serializable;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;18</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.ArrayList;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;19</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.List;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;20</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.Map;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;21</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;22</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> javax.sql.DataSource;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;23</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;24</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.azeckoski.reflectutils.ArrayUtils;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;25</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.BasicGenericDao;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;26</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.finders.ByPropsFinder;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;27</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.mappers.DataMapper;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;28</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.mappers.NamesRecord;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;29</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.mappers.StatementMapper;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;30</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.search.Order;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;31</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.search.Restriction;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;32</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.search.Search;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;33</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.translators.DatabaseTranslator;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;34</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.springjdbc.translators.BasicTranslator;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;35</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.util.JDBCUtils;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;36</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.util.JDBCUtils.QueryData;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;37</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;38</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;39</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Spring JDBC based implementation of BasicGenericDao which can be extended to add more</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;40</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * specialized DAO methods.</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;41</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;p&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;42</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * See the overview for installation/usage tips.</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;43</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;44</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author Aaron Zeckoski (azeckoski@gmail.com)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;45</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;46</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;@SuppressWarnings(<span class="string">"deprecation"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;47</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> JdbcBasicGenericDao <span class="keyword">extends</span> JdbcGenericDao <span class="keyword">implements</span> BasicGenericDao {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;48</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;49</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;50</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Default constructor - does nothing and leaves the object in an incomplete state,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;51</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * you need to at least set the following:</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;52</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {@link #setDataSource(DataSource)} &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;53</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {@link #setAutoDDL(boolean)} &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;54</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {@link #setAutoCommitDDL(boolean)} &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;55</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {@link #setDatabaseType(String)} &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;56</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {@link #setDataMappers(List)} &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;57</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;58</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * This does not actually start the DAO, run {@link #startup()} to start it &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;59</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Note that this will be started automatically by Spring if this is created as a Spring bean,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;60</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * no actions are necessary and setting an init method is not needed</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;61</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;62</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> JdbcBasicGenericDao() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;63</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">super</span>();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;64</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;65</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;66</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;67</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Complete constructor, sets all required values for running the DAO,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;68</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * does not actually start the DAO, run {@link #startup()} to start it &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;69</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Note that this will be started automatically by Spring if this is created as a Spring bean,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;70</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * no actions are necessary and setting an init method is not needed</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;71</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;72</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param dataSource the DataSource to use with this DAO</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;73</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param threadBoundDataSource if true then the DataSource will be bound to threads and </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;74</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * only unbound and closed when {@link #closeConnection()} is called,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;75</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * otherwise a new DataSource is obtained each time, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;76</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * this has no effect if the DataSource is a Spring DataSource</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;77</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param databaseType the databaseType that this DAO is connecting to (use constants in {@link DatabaseTranslator})</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;78</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param autoDDL if true then DDL is executed on DAO startup (can be run manually if desired)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;79</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param autoCommitDDL if true then commit is executed after each DDL file is executed, if false then you need a TX manager to do this for you</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;80</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param dataMappers the data mappers which map this DAO to the tables</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;81</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;82</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> JdbcBasicGenericDao(DataSource dataSource, <span class="keyword">boolean</span> threadBoundDataSource, </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;83</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            String databaseType, <span class="keyword">boolean</span> autoDDL, <span class="keyword">boolean</span> autoCommitDDL, DataMapper[] dataMappers) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;84</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">super</span>(dataSource, threadBoundDataSource, databaseType, autoDDL, autoCommitDDL, dataMappers);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;85</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;86</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;87</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;88</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">protected</span> QueryData makeQueryFromSearch(Class&lt;?&gt; type, Search search) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;89</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// Checks to see if the required params are set and throws exception if not</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;90</td>
+  <td class="nbHitsCovered">&nbsp;123</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (search == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;91</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"search cannot be null"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;92</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;93</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;94</td>
+  <td class="nbHitsCovered">&nbsp;123</td>
+  <td class="src"><pre class="src">&nbsp;        NamesRecord namesRecord = getNamesRecord(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;95</td>
+  <td class="nbHitsCovered">&nbsp;123</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> JDBCUtils.makeSQLfromSearch(namesRecord, search);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;96</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;97</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;98</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;99</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">// OVERRIDES</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;100</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;101</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">protected</span> &lt;T&gt; <span class="keyword">long</span> baseCountBySearch(Class&lt;T&gt; type, Search search) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;102</td>
+  <td class="nbHitsCovered">&nbsp;28</td>
+  <td class="src"><pre class="src">&nbsp;        QueryData sd = makeQueryFromSearch(type, search);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;103</td>
+  <td class="nbHitsCovered">&nbsp;28</td>
+  <td class="src"><pre class="src">&nbsp;        String sql = makeSQL(getSelectTemplate(type), getTableNameFromClass(type), </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;104</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                StatementMapper.SELECT, <span class="string">"count(*)"</span>, StatementMapper.WHERE, sd.getAfterTableSQL());</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;105</td>
+  <td class="nbHitsCovered">&nbsp;28</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (showSQL) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;106</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            logInfo(<span class="string">"SQL="</span>+sql+<span class="string">":\n Params="</span>+ArrayUtils.arrayToString(sd.getArgs()));</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;107</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;108</td>
+  <td class="nbHitsCovered">&nbsp;28</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">long</span> count = getSpringJdbcTemplate().queryForLong(sql, sd.getArgs());</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;109</td>
+  <td class="nbHitsCovered">&nbsp;28</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> count;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;110</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;111</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;112</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;113</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">protected</span> &lt;T&gt; List&lt;T&gt; baseFindBySearch(Class&lt;T&gt; type, Search search) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;114</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        String tableName = getTableNameFromClass(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;115</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        QueryData sd = makeQueryFromSearch(type, search);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;116</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        String sql = makeSQL(getSelectTemplate(type), tableName, </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;117</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                StatementMapper.SELECT, tableName + <span class="string">".*"</span>, StatementMapper.WHERE, sd.getAfterTableSQL());</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;118</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// handle limit/offset</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;119</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> firstResult = (<span class="keyword">int</span>) search.getStart();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;120</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> maxResults = (<span class="keyword">int</span>) search.getLimit();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;121</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (firstResult &gt; 0 || maxResults &gt; 0) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;122</td>
+  <td class="nbHitsCovered">&nbsp;34</td>
+  <td class="src"><pre class="src">&nbsp;            sql = getDatabaseTranslator().makeLimitQuery(sql, search.getStart(), search.getLimit(), tableName);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;123</td>
+  <td class="nbHitsCovered">&nbsp;34</td>
+  <td class="src"><pre class="src">&nbsp;            getSpringJdbcTemplate().setMaxRows(firstResult + maxResults); <span class="comment">// this limit is always ok to put in</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;124</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;125</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (showSQL) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;126</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            logInfo(<span class="string">"SQL="</span>+sql+<span class="string">":\n Params="</span>+ArrayUtils.arrayToString(sd.getArgs()));</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;127</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;128</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        List&lt;Map&lt;String, Object&gt;&gt; rMap = getSpringJdbcTemplate().queryForList(sql, sd.getArgs());</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;129</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        getSpringJdbcTemplate().setMaxRows(0); <span class="comment">// reset this to no limit</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;130</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        List&lt;T&gt; results = <span class="keyword">new</span> ArrayList&lt;T&gt;();</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;131</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;132</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// put the results into objects</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;133</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> counter = 0;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;134</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// SPECIAL handling for DERBY</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;135</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">boolean</span> derby = BasicTranslator.DBTYPE_DERBY.equals(getDatabaseType());</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;136</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (Map&lt;String, Object&gt; data : rMap) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;137</td>
+  <td class="nbHitsCovered">&nbsp;236</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (derby) {</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;138</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">// derby has to filter results after the fact... lame yes indeed</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;139</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">if</span> (counter &lt; firstResult) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;140</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    counter++;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;141</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    <span class="keyword">continue</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;142</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;143</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">if</span> (maxResults &gt; 0 &amp;&amp; results.size() &gt;= maxResults) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;144</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    <span class="keyword">break</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;145</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;146</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;147</td>
+  <td class="nbHitsCovered">&nbsp;236</td>
+  <td class="src"><pre class="src">&nbsp;            T entity = makeEntityFromMap(type, data);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;148</td>
+  <td class="nbHitsCovered">&nbsp;236</td>
+  <td class="src"><pre class="src">&nbsp;            results.add(entity);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;149</td>
+  <td class="nbHitsCovered">&nbsp;236</td>
+  <td class="src"><pre class="src">&nbsp;            counter++;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;150</td>
+  <td class="nbHitsCovered">&nbsp;236</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;151</td>
+  <td class="nbHitsCovered">&nbsp;95</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> results;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;152</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;153</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;154</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">protected</span> &lt;T&gt; T baseFindOneBySearch(Class&lt;T&gt; type, Search search) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;155</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;        T item = <span class="keyword">null</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;156</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;        search.setLimit(1); <span class="comment">// only return 1 item</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;157</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;        List&lt;T&gt; items = baseFindBySearch(type, search);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;158</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (items.size() &gt; 0) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;159</td>
+  <td class="nbHitsCovered">&nbsp;13</td>
+  <td class="src"><pre class="src">&nbsp;            item = items.get(0);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;160</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;161</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> item;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;162</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;163</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;164</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;165</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">// COMMON CODE</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;166</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;167</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> &lt;T&gt; <span class="keyword">long</span> countBySearch(Class&lt;T&gt; type, Search search) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;168</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;        checkClass(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;169</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (search == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;170</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"search cannot be null"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;171</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;172</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">long</span> count = 0;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;173</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;174</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// check the cache first</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;175</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">boolean</span> usedCache = <span class="keyword">false</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;176</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;        String searchCacheName = getSearchCacheName(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;177</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;        String cacheKey = <span class="string">"countBySearch::"</span> + type.getName() + <span class="string">":"</span> + search.toString();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;178</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (getCacheProvider().exists(searchCacheName, cacheKey)) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;179</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;            Long lCount = (Long) getCacheProvider().get(searchCacheName, cacheKey);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;180</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (lCount != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;181</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;                count = lCount.longValue();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;182</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;                usedCache = <span class="keyword">true</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;183</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;184</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;185</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;186</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (! usedCache) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;187</td>
+  <td class="nbHitsCovered">&nbsp;28</td>
+  <td class="src"><pre class="src">&nbsp;            count = baseCountBySearch(type, search);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;188</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;189</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// cache the id results for the search</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;190</td>
+  <td class="nbHitsCovered">&nbsp;28</td>
+  <td class="src"><pre class="src">&nbsp;            getCacheProvider().put(searchCacheName, cacheKey, Long.valueOf(count));</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;191</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;192</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> count;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;193</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;194</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;195</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;196</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> &lt;T&gt; List&lt;T&gt; findBySearch(Class&lt;T&gt; type, Search search) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;197</td>
+  <td class="nbHitsCovered">&nbsp;85</td>
+  <td class="src"><pre class="src">&nbsp;        checkClass(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;198</td>
+  <td class="nbHitsCovered">&nbsp;85</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (search == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;199</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"search cannot be null"</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;200</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;201</td>
+  <td class="nbHitsCovered">&nbsp;81</td>
+  <td class="src"><pre class="src">&nbsp;        List&lt;T&gt; results = <span class="keyword">new</span> ArrayList&lt;T&gt;();</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;202</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;203</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// check the cache first</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;204</td>
+  <td class="nbHitsCovered">&nbsp;81</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">boolean</span> usedCache = <span class="keyword">false</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;205</td>
+  <td class="nbHitsCovered">&nbsp;81</td>
+  <td class="src"><pre class="src">&nbsp;        String cacheName = getCacheName(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;206</td>
+  <td class="nbHitsCovered">&nbsp;81</td>
+  <td class="src"><pre class="src">&nbsp;        String searchCacheName = getSearchCacheName(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;207</td>
+  <td class="nbHitsCovered">&nbsp;81</td>
+  <td class="src"><pre class="src">&nbsp;        String cacheKey = <span class="string">"findBySearch::"</span> + type.getName() + <span class="string">":"</span> + search.toString();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;208</td>
+  <td class="nbHitsCovered">&nbsp;81</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (getCacheProvider().exists(searchCacheName, cacheKey)) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;209</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;            String[] resultIds = (String[]) getCacheProvider().get(searchCacheName, cacheKey);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;210</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (resultIds != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;211</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; resultIds.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;212</td>
+  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">if</span> (! getCacheProvider().exists(cacheName, resultIds[i])) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;213</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        usedCache = <span class="keyword">false</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;214</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        <span class="keyword">break</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;215</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;216</td>
+  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="src"><pre class="src">&nbsp;                    T entity = (T) getCacheProvider().get(cacheName, resultIds[i]);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;217</td>
+  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="src"><pre class="src">&nbsp;                    results.add(entity);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;218</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;219</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;                usedCache = <span class="keyword">true</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;220</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;221</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;222</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;223</td>
+  <td class="nbHitsCovered">&nbsp;81</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (! usedCache) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;224</td>
+  <td class="nbHitsCovered">&nbsp;75</td>
+  <td class="src"><pre class="src">&nbsp;            String operation = <span class="string">"findBySearch"</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;225</td>
+  <td class="nbHitsCovered">&nbsp;75</td>
+  <td class="src"><pre class="src">&nbsp;            beforeRead(operation, type, <span class="keyword">null</span>, search);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;226</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;227</td>
+  <td class="nbHitsCovered">&nbsp;75</td>
+  <td class="src"><pre class="src">&nbsp;            results = baseFindBySearch(type, search);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;228</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;229</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// run through the returned items for the interceptor and for caching</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;230</td>
+  <td class="nbHitsCovered">&nbsp;75</td>
+  <td class="src"><pre class="src">&nbsp;            List&lt;String&gt; keys = <span class="keyword">new</span> ArrayList&lt;String&gt;();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;231</td>
+  <td class="nbHitsCovered">&nbsp;75</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">for</span> (T entity : results) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;232</td>
+  <td class="nbHitsCovered">&nbsp;223</td>
+  <td class="src"><pre class="src">&nbsp;                Object id = baseGetIdValue(entity);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;233</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">// cache each returned item</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;234</td>
+  <td class="nbHitsCovered">&nbsp;223</td>
+  <td class="src"><pre class="src">&nbsp;                String key = id.toString();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;235</td>
+  <td class="nbHitsCovered">&nbsp;223</td>
+  <td class="src"><pre class="src">&nbsp;                keys.add(key);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;236</td>
+  <td class="nbHitsCovered">&nbsp;223</td>
+  <td class="src"><pre class="src">&nbsp;                getCacheProvider().put(cacheName, key, entity);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;237</td>
+  <td class="nbHitsCovered">&nbsp;223</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;238</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// cache the id results for the search</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;239</td>
+  <td class="nbHitsCovered">&nbsp;75</td>
+  <td class="src"><pre class="src">&nbsp;            String[] ids = keys.toArray(<span class="keyword">new</span> String[keys.size()]);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;240</td>
+  <td class="nbHitsCovered">&nbsp;75</td>
+  <td class="src"><pre class="src">&nbsp;            getCacheProvider().put(searchCacheName, cacheKey, ids);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;241</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// call the after interceptor</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;242</td>
+  <td class="nbHitsCovered">&nbsp;75</td>
+  <td class="src"><pre class="src">&nbsp;            afterRead(operation, type, ids, search, results.toArray(<span class="keyword">new</span> Object[results.size()]));</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;243</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;244</td>
+  <td class="nbHitsCovered">&nbsp;81</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> results;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;245</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;246</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;247</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;248</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> &lt;T&gt; T findOneBySearch(Class&lt;T&gt; type, Search search) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;249</td>
+  <td class="nbHitsCovered">&nbsp;24</td>
+  <td class="src"><pre class="src">&nbsp;        checkClass(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;250</td>
+  <td class="nbHitsCovered">&nbsp;24</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (search == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;251</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"search cannot be null"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;252</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;253</td>
+  <td class="nbHitsCovered">&nbsp;24</td>
+  <td class="src"><pre class="src">&nbsp;        T entity = <span class="keyword">null</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;254</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;255</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// check the cache first</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;256</td>
+  <td class="nbHitsCovered">&nbsp;24</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">boolean</span> usedCache = <span class="keyword">false</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;257</td>
+  <td class="nbHitsCovered">&nbsp;24</td>
+  <td class="src"><pre class="src">&nbsp;        String cacheName = getCacheName(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;258</td>
+  <td class="nbHitsCovered">&nbsp;24</td>
+  <td class="src"><pre class="src">&nbsp;        String searchCacheName = getSearchCacheName(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;259</td>
+  <td class="nbHitsCovered">&nbsp;24</td>
+  <td class="src"><pre class="src">&nbsp;        String cacheKey = <span class="string">"findOneBySearch::"</span> + type.getName() + <span class="string">":"</span> + search.toString();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;260</td>
+  <td class="nbHitsCovered">&nbsp;24</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (getCacheProvider().exists(searchCacheName, cacheKey)) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;261</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;            usedCache = <span class="keyword">true</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;262</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;            String id = (String) getCacheProvider().get(searchCacheName, cacheKey);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;263</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (id != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;264</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span> (getCacheProvider().exists(cacheName, id)) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;265</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;                    entity = (T) getCacheProvider().get(cacheName, id);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;266</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;267</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;268</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;269</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;270</td>
+  <td class="nbHitsCovered">&nbsp;24</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (! usedCache) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;271</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;            String operation = <span class="string">"findOneBySearch"</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;272</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;            beforeRead(operation, type, <span class="keyword">null</span>, search);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;273</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;274</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;            search.setLimit(1); <span class="comment">// only return 1 item</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;275</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;276</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;            entity = baseFindOneBySearch(type, search);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;277</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;278</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;            String key = <span class="keyword">null</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;279</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (entity != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;280</td>
+  <td class="nbHitsCovered">&nbsp;13</td>
+  <td class="src"><pre class="src">&nbsp;                Serializable id = baseGetIdValue(entity);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;281</td>
+  <td class="nbHitsCovered">&nbsp;13</td>
+  <td class="src"><pre class="src">&nbsp;                afterRead(operation, type, <span class="keyword">new</span> Serializable[] {id}, search, <span class="keyword">new</span> Object[] {entity});</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;282</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;283</td>
+  <td class="nbHitsCovered">&nbsp;13</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span> (id != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;284</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    <span class="comment">// cache the entity</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;285</td>
+  <td class="nbHitsCovered">&nbsp;13</td>
+  <td class="src"><pre class="src">&nbsp;                    key = id.toString();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;286</td>
+  <td class="nbHitsCovered">&nbsp;13</td>
+  <td class="src"><pre class="src">&nbsp;                    getCacheProvider().put(cacheName, key, entity);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;287</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;288</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;289</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// cache the search result</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;290</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;            getCacheProvider().put(searchCacheName, cacheKey, key);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;291</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;292</td>
+  <td class="nbHitsCovered">&nbsp;24</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> entity;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;293</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;294</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;295</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;296</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">// DEPRECATED</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;297</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;298</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;299</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @deprecated</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;300</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;301</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;302</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> <span class="keyword">int</span> countByProperties(Class entityClass, String[] objectProperties, Object[] values) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;303</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span>[] comparisons = <span class="keyword">new</span> <span class="keyword">int</span>[objectProperties.length];</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;304</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; comparisons.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;305</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;            comparisons[i] = Restriction.EQUALS;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;306</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;307</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> countByProperties(entityClass, objectProperties, values, comparisons);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;308</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;309</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;310</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;311</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @deprecated</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;312</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;313</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;314</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> <span class="keyword">int</span> countByProperties(Class entityClass, String[] objectProperties, Object[] values,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;315</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span>[] comparisons) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;316</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (objectProperties.length != values.length || values.length != comparisons.length) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;317</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"All input arrays must be the same size"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;318</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;319</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;        Search search = <span class="keyword">new</span> Search();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;320</td>
+  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; values.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;321</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;            search.addRestriction( <span class="keyword">new</span> Restriction(objectProperties[i], values[i], comparisons[i]) );</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;322</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;323</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> (<span class="keyword">int</span>) countBySearch(entityClass, search);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;324</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;325</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;326</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/** </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;327</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @deprecated</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;328</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;329</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;330</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> List findByProperties(Class entityClass, String[] objectProperties, Object[] values) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;331</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span>[] comparisons = <span class="keyword">new</span> <span class="keyword">int</span>[objectProperties.length];</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;332</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; comparisons.length; i++)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;333</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;            comparisons[i] = Restriction.EQUALS;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;334</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;335</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> findByProperties(checkClass(entityClass), objectProperties, values, comparisons, 0, 0);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;336</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;337</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;338</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/** </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;339</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @deprecated</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;340</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;341</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;342</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> List findByProperties(Class entityClass, String[] objectProperties, Object[] values,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;343</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span>[] comparisons) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;344</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> findByProperties(entityClass, objectProperties, values, comparisons, <span class="keyword">null</span>, 0, 0);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;345</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;346</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;347</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/** </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;348</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @deprecated</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;349</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;350</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;351</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> List findByProperties(Class entityClass, String[] objectProperties, Object[] values,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;352</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span>[] comparisons, String[] sortProperties) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;353</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> findByProperties(entityClass, objectProperties, values, comparisons, sortProperties, 0, 0);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;354</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;355</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;356</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/** </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;357</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @deprecated</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;358</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;359</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;360</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> List findByProperties(Class entityClass, String[] objectProperties, Object[] values,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;361</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span>[] comparisons, <span class="keyword">int</span> firstResult, <span class="keyword">int</span> maxResults) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;362</td>
+  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> findByProperties(entityClass, objectProperties, values, comparisons, <span class="keyword">null</span>, firstResult,</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;363</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                maxResults);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;364</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;365</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;366</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;367</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @deprecated</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;368</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;369</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;370</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> List findByProperties(Class entityClass, String[] objectProperties, Object[] values,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;371</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span>[] comparisons, String[] sortProperties, <span class="keyword">int</span> firstResult, <span class="keyword">int</span> maxResults) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;372</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (objectProperties.length != values.length || values.length != comparisons.length) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;373</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"All input arrays must be the same size"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;374</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;375</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;        Search search = <span class="keyword">new</span> Search();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;376</td>
+  <td class="nbHitsCovered">&nbsp;28</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; values.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;377</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;            search.addRestriction( <span class="keyword">new</span> Restriction(objectProperties[i], values[i], comparisons[i]) );</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;378</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;379</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (sortProperties != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;380</td>
+  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; sortProperties.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;381</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">int</span> location = sortProperties[i].indexOf(<span class="string">" "</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;382</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;                String property = sortProperties[i];</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;383</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span> (location &gt; 0) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;384</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;                    property = sortProperties[i].substring(0, location);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;385</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;386</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;                Order order = <span class="keyword">null</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;387</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span> (sortProperties[i].endsWith(ByPropsFinder.DESC)) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;388</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;                    order = <span class="keyword">new</span> Order(property, <span class="keyword">false</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;389</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                } <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;390</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;                    order = <span class="keyword">new</span> Order(property, <span class="keyword">true</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;391</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;392</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;                search.addOrder( order );</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;393</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;394</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;395</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;        search.setStart(firstResult);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;396</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;        search.setLimit(maxResults);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;397</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> findBySearch(entityClass, search);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;398</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;399</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;400</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;}</pre></td>
+</tr>
+</table>
+<div class="footer">
+Reports generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a>.
+</div>
+</body>
+</html>

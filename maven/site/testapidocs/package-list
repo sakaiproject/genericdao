@@ -1,0 +1,5 @@
+org.sakaiproject.genericdao.api.search
+org.sakaiproject.genericdao.hibernate
+org.sakaiproject.genericdao.springjdbc
+org.sakaiproject.genericdao.test
+org.sakaiproject.genericdao.util

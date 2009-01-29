@@ -1,0 +1,28 @@
+-breakiterator
+-classpath
+'/opt/mytools/gendao/target/classes:/Users/azeckoski/.m2/repository/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar:/Users/azeckoski/.m2/repository/net/sf/ehcache/ehcache/1.2.3/ehcache-1.2.3.jar:/Users/azeckoski/.m2/repository/commons-collections/commons-collections/2.1.1/commons-collections-2.1.1.jar:/Users/azeckoski/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar:/Users/azeckoski/.m2/repository/org/springframework/spring/2.0.6/spring-2.0.6.jar:/Users/azeckoski/.m2/repository/asm/asm/1.5.3/asm-1.5.3.jar:/Users/azeckoski/.m2/repository/log4j/log4j/1.2.12/log4j-1.2.12.jar:/Users/azeckoski/.m2/repository/asm/asm-attrs/1.5.3/asm-attrs-1.5.3.jar:/Users/azeckoski/.m2/repository/org/azeckoski/reflectutils/0.9.10/reflectutils-0.9.10.jar:/Users/azeckoski/.m2/repository/cglib/cglib/2.1_3/cglib-2.1_3.jar:/Users/azeckoski/.m2/repository/logkit/logkit/1.0.1/logkit-1.0.1.jar:/Users/azeckoski/.m2/repository/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:/Users/azeckoski/.m2/repository/avalon-framework/avalon-framework/4.1.3/avalon-framework-4.1.3.jar:/Users/azeckoski/.m2/repository/org/hibernate/hibernate/3.2.6.ga/hibernate-3.2.6.ga.jar:/Users/azeckoski/.m2/repository/antlr/antlr/2.7.6/antlr-2.7.6.jar:/Users/azeckoski/.m2/repository/javax/transaction/jta/1.0.1B/jta-1.0.1B.jar'
+-encoding
+'MacRoman'
+-protected
+-sourcepath
+'/opt/mytools/gendao/src/main/java'
+-verbose
+-author
+-bottom
+'Copyright &#169; 2006-2009 <a href="http://www.caret.cam.ac.uk/">CARET, University of Cambridge</a>. All Rights Reserved.'
+-charset
+'UTF-8'
+-d
+'/opt/mytools/gendao/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'generic-dao 0.9.17-SNAPSHOT API'
+-link
+'http://java.sun.com/j2se/1.5.0/docs/api'
+-link
+'http://static.springframework.org/spring/docs/2.5.x/api'
+-use
+-version
+-windowtitle
+'generic-dao 0.9.17-SNAPSHOT API'

@@ -1,0 +1,2074 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Coverage Report</title>
+<link title="Style" type="text/css" rel="stylesheet" href="css/main.css"/>
+<script type="text/javascript" src="js/popup.js"></script>
+</head>
+<body>
+<h5>Coverage Report - org.sakaiproject.genericdao.springjdbc.SimpleDataMapper</h5>
+<div class="separator">&nbsp;</div>
+<table class="report">
+<thead><tr>  <td class="heading">Classes in this File</td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Line Coverage</a></td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Branch Coverage</a></td>  <td class="heading" width="10%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Complexity</a></td></tr></thead>
+  <tr><td class="text"><a href="org.sakaiproject.genericdao.springjdbc.SimpleDataMapper.html">SimpleDataMapper</a></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>56%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="56"></td><td class="uncovered" width="43"></td></tr></table></td></tr></table></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>59%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="59"></td><td class="uncovered" width="40"></td></tr></table></td></tr></table></td><td class="value"><span class="hidden">0.0;</span>0</td></tr>
+</table>
+<div class="separator">&nbsp;</div>
+<table cellspacing="0" cellpadding="0" class="src">
+<tr>
+  <td class="numLine">&nbsp;1</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;2</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * $Id$</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;3</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * $URL$</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;4</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * SimpleDataMapper.java - genericdao - Apr 25, 2008 4:29:45 PM - azeckoski</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;5</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> **************************************************************************</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;6</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Copyright (c) 2008 Aaron Zeckoski</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;7</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Licensed under the Apache License, Version 2</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;8</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;9</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * A copy of the Apache License, Version 2 has been included in this </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;10</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * distribution and is available at: http://www.apache.org/licenses/LICENSE-2.0.txt</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;11</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;12</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Aaron Zeckoski (azeckoski@gmail.com) (aaronz@vt.edu) (aaron@caret.cam.ac.uk)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;13</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;14</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;15</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">package</span> org.sakaiproject.genericdao.springjdbc;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;16</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;17</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.io.File;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;18</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.HashMap;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;19</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.Map;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;20</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.Map.Entry;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;21</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;22</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.azeckoski.reflectutils.ClassLoaderUtils;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;23</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.mappers.DataMapper;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;24</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.mappers.NamesRecord;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;25</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.translators.DatabaseTranslator;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;26</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.springjdbc.translators.BasicTranslator;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;27</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;28</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;29</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;30</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * This class allows us to generate a {@link DataMapper} using Spring or anything else that</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;31</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * can set/inject strings to create an object, most of the functions are assumed to</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;32</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * be handled automatically by generic DAO</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;33</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;34</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author Aaron Zeckoski (azeckoski@gmail.com)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;35</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;36</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> SimpleDataMapper <span class="keyword">implements</span> DataMapper {</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;37</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;38</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;39</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Default constructor which is used by Spring mostly,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;40</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * you will need to at least set the </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;41</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> SimpleDataMapper() {}</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;43</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;44</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;45</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * This is primarily for use when using all gendao conventions and annotations with a class,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;46</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * otherwise this will not include enough information to complete the mapping,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;47</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * the tablename will be the classname if no annotation is used,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;48</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * the id column must be ID if no annotation is used and the property must also be id</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;49</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;50</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param persistentType any class type to map as a persistent type</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;51</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;52</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> SimpleDataMapper(Class&lt;?&gt; persistentType) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;53</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.persistentType = persistentType;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;54</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;55</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;56</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;57</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * This is useful when adhering to some of the gendao conventions</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;58</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * but needing to specify your own id property and tableName</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;59</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;60</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param persistentType any class type to map as a persistent type</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;61</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param idPropertyName this is the property name matching the identifier for the table</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;62</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param tableName this is the name of the table that matches this persistent class</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;63</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;64</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> SimpleDataMapper(Class&lt;?&gt; persistentType, String idPropertyName, String tableName) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;65</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.idPropertyName = idPropertyName;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;66</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.persistentType = persistentType;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;67</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.tableName = tableName;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;68</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;69</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;70</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">boolean</span> usePropertyNamesForColumns = <span class="keyword">false</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;71</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">boolean</span> isUsePropertyNamesForColumns() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;72</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> usePropertyNamesForColumns;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;73</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;74</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;75</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * (OPTIONAL)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;76</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * This will cause the mapper to use the property names as is (case and characters)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;77</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * for the columns names instead of transforming them (e.g. property: myThing =&gt; column: myThing),</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;78</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * default is false (that means property: myThing =&gt; column: MY_THING)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;79</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;80</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">void</span> setUsePropertyNamesForColumns(<span class="keyword">boolean</span> usePropertyNamesForColumns) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;81</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.usePropertyNamesForColumns = usePropertyNamesForColumns;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;82</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;83</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;84</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">protected</span> String idPropertyName = <span class="keyword">null</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;85</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;86</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * (OPTIONAL)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;87</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * This is the name of the property on the persistent object which defines the unique identifier,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;88</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * defaults to null if unset but that will be replaced by the proper id or the default of "id"</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;89</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;90</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">void</span> setIdPropertyName(String idPropertyName) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;91</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">this</span>.idPropertyName = idPropertyName;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;92</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;93</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;94</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see org.sakaiproject.genericdao.api.DataMapper#getIdPropertyName()</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;95</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;96</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getIdPropertyName() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;97</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> idPropertyName;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;98</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;99</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;100</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> Class&lt;?&gt; persistentType;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;101</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;102</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Allows setting the persistent type,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;103</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * this should normally be done in the constructor and cannot be changed</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;104</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * once it has been set</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;105</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param persistentType this is the class that maps to the DB table</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;106</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @throws IllegalArgumentException if the input is null or the value is already set</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;107</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;108</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">void</span> setPersistentType(Class&lt;?&gt; persistentType) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;109</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">if</span> (persistentType == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;110</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"The persistentType cannot be null"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;111</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;112</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">if</span> (<span class="keyword">this</span>.persistentType != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;113</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"The persistentType has already been set and cannot be reset"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;114</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;115</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">this</span>.persistentType = persistentType;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;116</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;117</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;118</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * (REQUIRED)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;119</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * set this to the class name (e.g. org.project.MyClass) </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;120</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * and it will be converted into the class object</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;121</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param persistentClassname this is the fully qualified classname of the persistent type</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;122</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;123</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">void</span> setPersistentClassname(String persistentClassname) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;124</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;        persistentType = ClassLoaderUtils.getClassFromString(persistentClassname);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;125</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (persistentType == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;126</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;127</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    <span class="string">"Invalid class name for persistentClassname, could not create class from string: "</span> + persistentClassname);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;128</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;129</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;130</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;131</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see org.sakaiproject.genericdao.api.DataMapper#getPersistentType()</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;132</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;133</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Class&lt;?&gt; getPersistentType() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;134</td>
+  <td class="nbHitsCovered">&nbsp;17</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> persistentType;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;135</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;136</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;137</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">protected</span> String tableName;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;138</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;139</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * (OPTIONAL)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;140</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * set this to the name of the table,&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;141</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * defaults to a name built from the simple class name of the persistent class</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;142</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;143</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">void</span> setTableName(String tableName) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;144</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.tableName = tableName;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;145</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;146</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;147</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see org.sakaiproject.genericdao.api.DataMapper#getTableName()</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;148</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;149</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getTableName() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;150</td>
+  <td class="nbHitsCovered">&nbsp;834</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (tableName == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;151</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (persistentType != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;152</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;                tableName = BasicTranslator.makeTableNameFromClass(persistentType);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;153</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            } <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;154</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"tablename and persistentType are both null, invalid DataMapper"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;155</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;156</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;157</td>
+  <td class="nbHitsCovered">&nbsp;834</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tableName;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;158</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;159</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;160</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> NamesRecord namesRecord = <span class="keyword">null</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;161</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;162</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * (OPTIONAL)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;163</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Set this to a map of the persistent object properties to database column names,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;164</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * String -&gt; String,&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;165</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * example: "id" -&gt; "ID", "title" -&gt; "ITEM_TITLE"&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;166</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * defaults to autogenerated column names which are uppercased and underscored (as in example above)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;167</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see SimpleDataMapper#setNamesUsed(String[])</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;168</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see SimpleDataMapper#setNamesRecord(NamesRecord)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;169</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;170</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">void</span> setNamesMapping(Map&lt;String, String&gt; namesMapping) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;171</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">if</span> (namesMapping != <span class="keyword">null</span> &amp;&amp; ! namesMapping.isEmpty()) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;172</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            namesRecord = <span class="keyword">new</span> NamesRecord();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;173</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">for</span> (Entry&lt;String, String&gt; entry : namesMapping.entrySet()) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;174</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                String key = entry.getKey();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;175</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                String dbName = entry.getValue();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;176</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">if</span> (dbName != <span class="keyword">null</span> &amp;&amp; ! <span class="string">""</span>.equals(dbName)) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;177</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    namesRecord.setNameMapping(key, dbName);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;178</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;179</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;180</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;181</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;182</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;183</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * (OPTIONAL)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;184</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Set this to an array of the persistent object properties which will be used for this mapping,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;185</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * anything not listed will be ignored when forming queries,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;186</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * this is the least work but depends on the more conventions and allows the least control &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;187</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * NOTE: Be sure to set {@link #setUsePropertyNamesForColumns(boolean)} before calling this method &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;188</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Example: ["id", "title"],&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;189</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * "id" -&gt; "ID", "title" -&gt; "ITEM_TITLE"&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;190</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * defaults to autogenerated column names which are uppercased and underscored (as in example above)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;191</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * depending on the setting for {@link #isUsePropertyNamesForColumns()}</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;192</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see SimpleDataMapper#setNamesMapping(Map)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;193</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see SimpleDataMapper#setNamesRecord(NamesRecord)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;194</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;195</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">void</span> setNamesUsed(String[] namesUsed) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;196</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">if</span> (namesUsed == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;197</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"NamesRecord cannot be null"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;198</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;199</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        namesRecord = <span class="keyword">new</span> NamesRecord();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;200</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; namesUsed.length; i++) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;201</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            String propertyName = namesUsed[i];</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;202</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            String columnName = propertyName;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;203</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">if</span> (! isUsePropertyNamesForColumns()) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;204</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                columnName = BasicTranslator.makeDBNameFromCamelCase(propertyName);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;205</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;206</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            namesRecord.setNameMapping(propertyName, columnName);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;207</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;208</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;209</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;210</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * (OPTIONAL)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;211</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Set the {@link NamesRecord} used for this mapping directly,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;212</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * this controls the mapping of object properties to database columns,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;213</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * this is more work than is probably needed but allows the most control, see the other methods</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;214</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see SimpleDataMapper#setNamesMapping(Map)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;215</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see SimpleDataMapper#setNamesUsed(String[])</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;216</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;217</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">void</span> setNamesRecord(NamesRecord namesRecord) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;218</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (namesRecord == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;219</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"NamesRecord cannot be null"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;220</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;221</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.namesRecord = namesRecord;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;222</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;223</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;224</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;225</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see org.sakaiproject.genericdao.api.mappers.DataMapper#definePropertyToColumnMapping()</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;226</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;227</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> NamesRecord getPropertyToColumnNamesMapping() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;228</td>
+  <td class="nbHitsCovered">&nbsp;17</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> namesRecord;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;229</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;230</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;231</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> Map&lt;String, String&gt; dbTypeToDDL = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;232</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Map&lt;String, String&gt; getDbTypeToDDL() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;233</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">return</span> dbTypeToDDL;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;234</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;235</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;236</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;237</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Convenience method which allows setting the DDL for a database type,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;238</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * this will be appended to existing entries&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;239</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Generally only useful if you only need to set a single DDL&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;240</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;241</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param databaseTypeConstant one of the database type constants from, e.g. {@link #DBTYPE_MYSQL},</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;242</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * this indicates which database your DDL should work for</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;243</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param ddl the ddl to execute to create the table(s) for this persistent object</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;244</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;245</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">void</span> addDBTypeAndDDL(String databaseTypeConstant, String ddl) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;246</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">if</span> (databaseTypeConstant == <span class="keyword">null</span> || ddl == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;247</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"databaseTypeConstant and ddl cannot be null"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;248</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;249</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">if</span> (dbTypeToDDL == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;250</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            dbTypeToDDL = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;251</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;252</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        dbTypeToDDL.put(databaseTypeConstant, ddl);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;253</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;254</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;255</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> Map&lt;String, String&gt; dbTypeToFilename = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;256</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Map&lt;String, String&gt; getDbTypeToFilename() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;257</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> dbTypeToFilename;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;258</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;259</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;260</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;261</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * (REQUIRED/OPTIONAL)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;262</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Sets the map of databaseTypeConstant -&gt; file containing the DDL script,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;263</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * the DDL will be looked up and stored in the class and executed on service init&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;264</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * This must be set if the table does not already exist but if it does then this is optional&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;265</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * The first non-comment ('--') line will be run, and if successful, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;266</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * all other non-comment lines will be run. SQL statements may be on </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;267</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * multiple lines but must have ';' terminators.&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;268</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Can use the {@link #makeDDLTypeMap(String, String[])} method to make this more easily &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;269</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * The following keys will be replaced automatically:&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;270</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {TABLENAME} - the value returned by {@link #getTableName()}&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;271</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {ID} - the column name of the unique identifier&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;272</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {IDSEQNAME} - (Oracle) a sequence name will be generated and inserted</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;273</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * based on the tablename for use in generating IDs,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;274</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * if you want to specify your own sequence name then you will lose</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;275</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * the ability to have the ID inserted into newly created objects&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;276</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * &lt;b&gt;NOTE:&lt;/b&gt; the file must be in your jar/war/package so it can</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;277</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * be located in the classloader,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;278</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * use something like this in your maven pom.xml resources tag:</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;279</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * &lt;xmp&gt;&lt;resource&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;280</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">        &lt;directory&gt;${basedir}/src/sql&lt;/directory&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;281</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">        &lt;includes&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;282</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">          &lt;include&gt;** /*.sql&lt;/include&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;283</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">        &lt;/includes&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;284</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">      &lt;/resource&gt;&lt;/xmp&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;285</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Remove the space between ** and /* from the above sample&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;286</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * For example: src/sql/mysql.sql, src/sql/mysql/myproject.ddl&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;287</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see #setDBTypeToDDL(Map)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;288</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see #makeDDLTypeMap(String, String[])</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;289</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;290</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">void</span> setDBTypeToFile(Map&lt;String, String&gt; dbTypeToFile) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;291</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (dbTypeToFilename == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;292</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            dbTypeToFilename = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;293</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;294</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (dbTypeToFile != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;295</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">for</span> (Entry&lt;String, String&gt; entry : dbTypeToFile.entrySet()) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;296</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;                String dbtype = entry.getKey().toUpperCase();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;297</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;                String value = entry.getValue();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;298</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span> (value != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;299</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">this</span>.dbTypeToFilename.put(dbtype, value);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;300</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;301</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;302</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;303</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;304</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;305</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;306</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * (REQUIRED/OPTIONAL)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;307</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Sets the map of databaseTypeConstant -&gt; DDL,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;308</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * these will be appended to any existing values&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;309</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * This must be set if the table does not already exist but if it does then this is optional&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;310</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * The first non-comment ('--') line will be run, and if successful, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;311</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * all other non-comment lines will be run. SQL statements may be on </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;312</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * multiple lines but must have ';' terminators.&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;313</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * The following keys will be replaced automatically:&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;314</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {TABLENAME} - the value returned by {@link #getTableName()}&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;315</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {ID} - the column name of the unique identifier&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;316</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {IDSEQNAME} - (Oracle) a sequence name will be generated and inserted</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;317</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * based on the tablename for use in generating IDs,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;318</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * if you want to specify your own sequence name then you will lose</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;319</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * the ability to have the ID inserted into newly created objects&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;320</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see #setDBTypeToFile(Map)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;321</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;322</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">void</span> setDBTypeToDDL(Map&lt;String, String&gt; dbTypeToDDL) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;323</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (dbTypeToDDL == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;324</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            dbTypeToDDL = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;325</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;326</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (dbTypeToDDL != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;327</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">for</span> (Entry&lt;String, String&gt; entry : dbTypeToDDL.entrySet()) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;328</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;                String dbtype = entry.getKey().toUpperCase();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;329</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;                String value = entry.getValue();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;330</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span> (value != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;331</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">this</span>.dbTypeToDDL.put(dbtype, value);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;332</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;333</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;334</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;335</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;336</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;337</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;338</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see org.sakaiproject.genericdao.api.DataMapper#generateDDL(java.lang.String)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;339</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;340</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String generateDDL(String databaseTypeConstant) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;341</td>
+  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="src"><pre class="src">&nbsp;        String ddl = <span class="keyword">null</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;342</td>
+  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (dbTypeToDDL != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;343</td>
+  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (dbTypeToDDL.containsKey(databaseTypeConstant)) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;344</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;                ddl = dbTypeToDDL.get(databaseTypeConstant);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;345</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;346</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;347</td>
+  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> ddl;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;348</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">//throw new UnsupportedOperationException("No support for the database type: " + databaseTypeConstant);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;349</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;350</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;351</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;352</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * This is a convenience method which assists in creating the ddl type map,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;353</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * it basically allows you to easily create the map if you have followed the convention</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;354</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * of placing all your ddl files in folders which are equivalent to the name</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;355</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * of the database type they are created for and named them all identically with</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;356</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * a name which is similar to the </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;357</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param fileName the name of the file (e.g. users.sql)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;358</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param types the types to include in the map, use the constants from {@link DatabaseTranslator} (e.g. "derby")</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;359</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return the map which can be given to the {@link #setDBTypeToFile(Map)} method</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;360</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;361</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, String&gt; makeDDLTypeMap(String fileName, String[] types) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;362</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">if</span> (fileName == <span class="keyword">null</span> || <span class="string">""</span>.equals(fileName)) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;363</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"fileName must not be null"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;364</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;365</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">if</span> (types == <span class="keyword">null</span> || types.length == 0) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;366</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Must include at least one type in the types array"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;367</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;368</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        HashMap&lt;String, String&gt; dbTypeToFile = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;369</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">for</span> (String type : types) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;370</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            dbTypeToFile.put(type, type.toLowerCase() + File.separator + fileName);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;371</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;372</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">return</span> dbTypeToFile;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;373</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;374</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;375</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;376</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Convenience method which will take a filename and an array of DBTYPE String constants</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;377</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * (from {@link DatabaseTranslator}, example {@link DatabaseTranslator#DBTYPE_MYSQL})</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;378</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * and produce a map of standard DDL types to file paths &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;379</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Will create a map like so: dbType -&gt; [prefixPath/]dbType/fileName</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;380</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;381</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param fileName the name of the sql file (e.g. myTableDDL.sql)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;382</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param dbTypes an array with 1 or more dbTypes which you have DDL files for</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;383</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param prefixPath (optional) the prefix to append before the dbType and fileName (should not have a leading "/"),</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;384</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * can be null or "" if npt used</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;385</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return the map of dbType to file paths</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;386</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @throws IllegalArgumentException if the filename or dbTYpes are null or empty</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;387</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;388</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, String&gt; makeDDLMap(String fileName, String[] dbTypes, String prefixPath) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;389</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (fileName == <span class="keyword">null</span> || <span class="string">""</span>.equals(fileName)) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;390</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"filename must be set and cannot be null"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;391</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;392</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (dbTypes == <span class="keyword">null</span> || dbTypes.length == 0) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;393</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"at least one dbType must be set and included, cannot be null or empty"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;394</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;395</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        HashMap&lt;String, String&gt; dbTypeToFile = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;396</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (prefixPath == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;397</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            prefixPath = <span class="string">""</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;398</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        } <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;399</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (! prefixPath.endsWith(File.separator)) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;400</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;                prefixPath += File.separator;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;401</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;402</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;403</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; dbTypes.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;404</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;            String type = dbTypes[i];</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;405</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;            dbTypeToFile.put(type, prefixPath + type.toLowerCase() + File.separator + fileName);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;406</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;407</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> dbTypeToFile;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;408</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;409</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;410</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;}</pre></td>
+</tr>
+</table>
+<div class="footer">
+Reports generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a>.
+</div>
+</body>
+</html>

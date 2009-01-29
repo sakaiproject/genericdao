@@ -1,0 +1,2094 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Coverage Report</title>
+<link title="Style" type="text/css" rel="stylesheet" href="css/main.css"/>
+<script type="text/javascript" src="js/popup.js"></script>
+</head>
+<body>
+<h5>Coverage Report - org.sakaiproject.genericdao.base.BaseGenericDao</h5>
+<div class="separator">&nbsp;</div>
+<table class="report">
+<thead><tr>  <td class="heading">Classes in this File</td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Line Coverage</a></td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Branch Coverage</a></td>  <td class="heading" width="10%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Complexity</a></td></tr></thead>
+  <tr><td class="text"><a href="org.sakaiproject.genericdao.base.BaseGenericDao.html">BaseGenericDao</a></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>0%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="0"></td><td class="uncovered" width="100"></td></tr></table></td></tr></table></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>0%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="0"></td><td class="uncovered" width="100"></td></tr></table></td></tr></table></td><td class="value"><span class="hidden">0.0;</span>0</td></tr>
+</table>
+<div class="separator">&nbsp;</div>
+<table cellspacing="0" cellpadding="0" class="src">
+<tr>
+  <td class="numLine">&nbsp;1</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;2</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * $Id$</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;3</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * $URL$</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;4</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * JdbcGenericDao.java - genericdao - Apr 18, 2008 10:07:08 AM - azeckoski</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;5</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> **************************************************************************</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;6</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Copyright (c) 2008 Aaron Zeckoski</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;7</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Licensed under the Apache License, Version 2</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;8</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;9</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * A copy of the Apache License, Version 2 has been included in this </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;10</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * distribution and is available at: http://www.apache.org/licenses/LICENSE-2.0.txt</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;11</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;12</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Aaron Zeckoski (azeckoski@gmail.com) (aaronz@vt.edu) (aaron@caret.cam.ac.uk)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;13</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;14</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;15</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">package</span> org.sakaiproject.genericdao.base;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;16</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;17</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.io.Serializable;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;18</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.ArrayList;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;19</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.Iterator;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;20</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.List;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;21</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.Map;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;22</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.concurrent.ConcurrentHashMap;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;23</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;24</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.azeckoski.reflectutils.ReflectUtils;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;25</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.GenericDao;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;26</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.caching.CacheProvider;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;27</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.interceptors.DaoOperationInterceptor;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;28</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.interceptors.ReadInterceptor;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;29</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.interceptors.WriteInterceptor;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;30</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.search.Search;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;31</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.base.caching.NonCachingCacheProvider;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;32</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;33</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;34</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * This is the simple base implementation which includes shared methods and should be extended,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;35</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * this handles the caching checks and the interceptors on the basic methods</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;36</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;37</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author Aaron Zeckoski (azeckoski@gmail.com)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;38</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;39</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> BaseGenericDao <span class="keyword">implements</span> GenericDao {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;40</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;41</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;42</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * MUST be overridden</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;43</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;44</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> &lt;T&gt; T baseFindById(Class&lt;T&gt; type, Serializable id) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;45</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;       <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="string">"Not Implemented"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;46</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;47</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;48</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;49</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * MUST be overridden</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;50</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;51</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> Serializable baseCreate(Class&lt;?&gt; type, Object object) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;52</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;       <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="string">"Not Implemented"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;53</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;54</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;55</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;56</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * MUST be overridden</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;57</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;58</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> <span class="keyword">void</span> baseUpdate(Class&lt;?&gt; type, Object id, Object object) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;59</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;       <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="string">"Not Implemented"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;60</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;61</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;62</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;63</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * MUST be overridden</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;64</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;65</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> &lt;T&gt; <span class="keyword">boolean</span> baseDelete(Class&lt;T&gt; type, Serializable id) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;66</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;       <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="string">"Not Implemented"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;67</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;68</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;69</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;70</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Get the id value from a persistent object,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;71</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * this expects that the object is persistent so it should already be checked&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;72</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Override this if desired</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;73</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param entity any persistent object</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;74</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return the id value or null if it is unset</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;75</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;76</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">protected</span> Serializable baseGetIdValue(Object entity) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;77</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      Class&lt;?&gt; type = findClass(entity);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;78</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      String idProp = getIdProperty(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;79</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      Object idValue = <span class="keyword">null</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;80</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (idProp == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;81</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Could not find id property for this class type: "</span> + type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;82</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      } <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;83</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         idValue = ReflectUtils.getInstance().getFieldValue(entity, idProp);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;84</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;85</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      Serializable serialId = <span class="keyword">null</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;86</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (idValue != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;87</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">if</span> (! (idValue <span class="keyword">instanceof</span> Serializable)) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;88</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            serialId = idValue.toString();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;89</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;90</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;91</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">return</span> serialId;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;92</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;93</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;94</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;95</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Find the class type of a persistent object,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;96</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * needed in the case that we are working with something that wraps it's objects&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;97</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Override this if desired</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;98</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param entity a persistent entity</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;99</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return the persistent class type OR null if it cannot be found</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;100</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;101</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> Class&lt;?&gt; findClass(Object entity) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;102</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (entity == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;103</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Cannot find class type of null entity object"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;104</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;105</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      Class&lt;?&gt; type = entity.getClass();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;106</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">return</span> type;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;107</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;108</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;109</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">// COMMON CODE</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;110</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;111</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">private</span> List&lt;Class&lt;?&gt;&gt; classes;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;112</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;113</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * This does a nice bit of exception handling for us and verifies that</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;114</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * this class is valid to perform a DAO operation with</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;115</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param type class type of the persistent object to check</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;116</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return A valid entityClass type resolved to be the same as</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;117</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * the ones usable by this DAO</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;118</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;119</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> Class&lt;?&gt; checkClass(Class&lt;?&gt; type) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;120</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (type == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;121</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"type cannot be null"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;122</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;123</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;124</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (classes == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;125</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"persistent classes must be set"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;126</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;127</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;128</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">for</span> (Iterator&lt;Class&lt;?&gt;&gt; i = classes.iterator(); i.hasNext();) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;129</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         Class&lt;?&gt; concrete = (Class&lt;?&gt;) i.next();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;130</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">if</span> (concrete.isAssignableFrom(type)) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;131</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">return</span> concrete;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;132</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;133</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;134</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Could not resolve this class "</span> + </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;135</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            type + <span class="string">" as part of the set of persistent objects: "</span> +</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;136</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            classes.toString());</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;137</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;138</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;139</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">private</span> CacheProvider cacheProvider;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;140</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;141</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return the current cache provider</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;142</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;143</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> CacheProvider getCacheProvider() {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;144</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (cacheProvider == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;145</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         cacheProvider = <span class="keyword">new</span> NonCachingCacheProvider();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;146</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;147</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">return</span> cacheProvider;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;148</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;149</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;150</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Set the cache provider to an implementation of {@link CacheProvider},</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;151</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * this will be set to {@link NonCachingCacheProvider} if this is not set explicitly</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;152</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param cacheProvider</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;153</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;154</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> setCacheProvider(CacheProvider cacheProvider) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;155</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">this</span>.cacheProvider = cacheProvider;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;156</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;157</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;158</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return the cache name used for storing this type of persistent object</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;159</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;160</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> String getCacheName(Class&lt;?&gt; type) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;161</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (type == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;162</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"type cannot be null"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;163</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;164</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">return</span> type.getName();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;165</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;166</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;167</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return the cachename used for storing search results for this type of object</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;168</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;169</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> String getSearchCacheName(Class&lt;?&gt; type) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;170</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (type == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;171</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"type cannot be null"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;172</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;173</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">return</span> <span class="string">"search:"</span> + type.getName();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;174</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;175</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;176</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Creates all the caches for the current set of persistent types,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;177</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * this should be called in the init for the generic dao being used after persistent classes are loaded</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;178</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;179</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> <span class="keyword">void</span> initCaches() {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;180</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">for</span> (Class&lt;?&gt; type : classes) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;181</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         getCacheProvider().createCache(getCacheName(type));</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;182</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         getCacheProvider().createCache(getSearchCacheName(type));</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;183</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;184</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;185</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;186</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">// INTERCEPTOR methods</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;187</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;188</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">private</span> Map&lt;Class&lt;?&gt;, ReadInterceptor&gt; readInterceptors = <span class="keyword">new</span> ConcurrentHashMap&lt;Class&lt;?&gt;, ReadInterceptor&gt;();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;189</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">private</span> Map&lt;Class&lt;?&gt;, WriteInterceptor&gt; writeInterceptors = <span class="keyword">new</span> ConcurrentHashMap&lt;Class&lt;?&gt;, WriteInterceptor&gt;();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;190</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;191</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Adds the provided interceptor to the current set of interceptors</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;192</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param interceptor</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;193</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;194</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> addInterceptor(DaoOperationInterceptor interceptor) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;195</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (interceptor != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;196</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         Class&lt;?&gt; type = interceptor.interceptType();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;197</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">if</span> (type != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;198</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">if</span> (ReadInterceptor.<span class="keyword">class</span>.isAssignableFrom(interceptor.getClass())) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;199</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;               readInterceptors.put(type, (ReadInterceptor) interceptor);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;200</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;201</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">if</span> (WriteInterceptor.<span class="keyword">class</span>.isAssignableFrom(interceptor.getClass())) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;202</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;               writeInterceptors.put(type, (WriteInterceptor) interceptor);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;203</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;204</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;205</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;206</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;207</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;208</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Removes the provided interceptor from the current set of interceptors</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;209</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param interceptor</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;210</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;211</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> removeInterceptor(DaoOperationInterceptor interceptor) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;212</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (interceptor != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;213</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         Class&lt;?&gt; type = interceptor.interceptType();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;214</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">if</span> (type != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;215</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">if</span> (ReadInterceptor.<span class="keyword">class</span>.isAssignableFrom(interceptor.getClass())) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;216</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;               readInterceptors.remove(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;217</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;218</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">if</span> (WriteInterceptor.<span class="keyword">class</span>.isAssignableFrom(interceptor.getClass())) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;219</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;               writeInterceptors.remove(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;220</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;221</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;222</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;223</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;224</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;225</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Makes the given interceptor the only active interceptor,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;226</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * removes all others and adds only this one</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;227</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param interceptor</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;228</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;229</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> setInterceptor(DaoOperationInterceptor interceptor) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;230</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (interceptor != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;231</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         readInterceptors.clear();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;232</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         writeInterceptors.clear();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;233</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         addInterceptor(interceptor);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;234</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;235</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;236</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;237</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> <span class="keyword">void</span> beforeRead(String operation, Class&lt;?&gt; type, Serializable[] ids, Search search) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;238</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (type != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;239</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         ReadInterceptor interceptor = readInterceptors.get(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;240</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">if</span> (interceptor != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;241</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            interceptor.beforeRead(operation, ids, search);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;242</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;243</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;244</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;245</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;246</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> <span class="keyword">void</span> afterRead(String operation, Class&lt;?&gt; type, Serializable[] ids, Search search, Object[] entities) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;247</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (type != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;248</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         ReadInterceptor interceptor = readInterceptors.get(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;249</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">if</span> (interceptor != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;250</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            interceptor.afterRead(operation, ids, search, entities);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;251</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;252</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;253</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;254</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;255</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> <span class="keyword">void</span> beforeWrite(String operation, Class&lt;?&gt; type, Serializable[] ids, Object[] entities) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;256</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (type != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;257</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         WriteInterceptor interceptor = writeInterceptors.get(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;258</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">if</span> (interceptor != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;259</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            interceptor.beforeWrite(operation, ids, entities);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;260</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;261</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;262</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;263</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;264</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">protected</span> <span class="keyword">void</span> afterWrite(String operation, Class&lt;?&gt; type, Serializable[] ids, Object[] entities, <span class="keyword">int</span> changes) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;265</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (type != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;266</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         WriteInterceptor interceptor = writeInterceptors.get(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;267</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">if</span> (interceptor != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;268</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            interceptor.afterWrite(operation, ids, entities, changes);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;269</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;270</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;271</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;272</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;273</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">// ********* PUBLIC methods ****************</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;274</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;275</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;276</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;277</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @see org.sakaiproject.genericdao.api.GenericDao#getPersistentClasses()</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;278</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;279</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">public</span> List&lt;Class&lt;?&gt;&gt; getPersistentClasses() {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;280</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;Class&lt;?&gt;&gt;(classes);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;281</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;282</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;283</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;284</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @see org.sakaiproject.genericdao.api.GenericDao#invokeTransactionalAccess(java.lang.Runnable)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;285</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;286</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> invokeTransactionalAccess(Runnable toinvoke) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;287</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      toinvoke.run();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;288</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;289</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;290</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;291</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @see org.sakaiproject.genericdao.api.GenericDao#findById(java.lang.Class, java.io.Serializable)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;292</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;293</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;294</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">public</span> &lt;T&gt; T findById(Class&lt;T&gt; type, Serializable id) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;295</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      checkClass(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;296</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (id == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;297</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"id must be set to find persistent object"</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;298</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;299</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;300</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      T entity = <span class="keyword">null</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;301</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="comment">// check cache first</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;302</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      String key = id.toString();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;303</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      String cacheName = getCacheName(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;304</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (getCacheProvider().exists(cacheName, key)) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;305</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         entity = (T) getCacheProvider().get(cacheName, key);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;306</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      } <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;307</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="comment">// not in cache so go to the DB</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;308</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;309</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="comment">// before interceptor</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;310</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         String operation = <span class="string">"findById"</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;311</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         beforeRead(operation, type, <span class="keyword">new</span> Serializable[] {id}, <span class="keyword">null</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;312</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   </pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;313</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         entity = baseFindById(type, id);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;314</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;315</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="comment">// now put the item in the cache</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;316</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         getCacheProvider().put(cacheName, key, entity);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;317</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;318</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="comment">// after interceptor</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;319</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         afterRead(operation, type, <span class="keyword">new</span> Serializable[] {id}, <span class="keyword">null</span>, <span class="keyword">new</span> Object[] {entity});</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;320</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;321</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">return</span> entity;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;322</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;323</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;324</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;325</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#create(java.lang.Object)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;326</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;327</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> create(Object object) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;328</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      Class&lt;?&gt; type = findClass(object);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;329</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      checkClass(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;330</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;331</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      String operation = <span class="string">"create"</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;332</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      beforeWrite(operation, type, <span class="keyword">null</span>, <span class="keyword">new</span> Object[] {object});</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;333</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;334</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      Serializable idValue = baseCreate(type, object);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;335</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;336</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="comment">// clear the search caches</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;337</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      getCacheProvider().clear(getSearchCacheName(type));</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;338</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;339</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      afterWrite(operation, type, <span class="keyword">new</span> Serializable[] {idValue}, <span class="keyword">new</span> Object[] {object}, 1);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;340</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;341</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;342</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;343</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#update(java.lang.Object)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;344</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;345</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> update(Object object) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;346</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      Class&lt;?&gt; type = findClass(object);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;347</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      checkClass(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;348</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;349</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      Serializable idValue = baseGetIdValue(object);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;350</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (idValue == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;351</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Could not get an id value from the supplied object, cannot update without an id: "</span> + object);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;352</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;353</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;354</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      String operation = <span class="string">"update"</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;355</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      beforeWrite(operation, type, <span class="keyword">new</span> Serializable[] {idValue}, <span class="keyword">new</span> Object[] {object});</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;356</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;357</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      baseUpdate(type, idValue, object);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;358</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;359</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="comment">// clear the search caches</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;360</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      getCacheProvider().clear(getSearchCacheName(type));</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;361</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="comment">// clear the cache entry since this was updated</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;362</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      String key = idValue.toString();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;363</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      String cacheName = getCacheName(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;364</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      getCacheProvider().remove(cacheName, key);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;365</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;366</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      afterWrite(operation, type, <span class="keyword">new</span> Serializable[] {idValue}, <span class="keyword">new</span> Object[] {object}, 1);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;367</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;368</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;369</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;370</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#save(java.lang.Object)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;371</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;372</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> save(Object object) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;373</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      Serializable id = baseGetIdValue(object);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;374</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (id == <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;375</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         create(object);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;376</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      } <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;377</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         update(object);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;378</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;379</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;380</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;381</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;382</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#delete(java.lang.Object)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;383</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;384</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> delete(Object object) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;385</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      Class&lt;?&gt; type = findClass(object);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;386</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      Serializable id = baseGetIdValue(object);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;387</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      delete(type, id);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;388</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;389</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;390</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;391</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#delete(java.lang.Class, java.io.Serializable)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;392</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;393</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">public</span> &lt;T&gt; <span class="keyword">boolean</span> delete(Class&lt;T&gt; type, Serializable id) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;394</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      checkClass(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;395</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;396</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      String operation = <span class="string">"delete"</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;397</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      beforeWrite(operation, type, <span class="keyword">new</span> Serializable[] {id}, <span class="keyword">null</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;398</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;399</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">boolean</span> removed = baseDelete(type, id);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;400</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;401</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (removed) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;402</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="comment">// clear the search caches</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;403</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         getCacheProvider().clear(getSearchCacheName(type));</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;404</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="comment">// clear this from the cache</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;405</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         String key = id.toString();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;406</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         String cacheName = getCacheName(type);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;407</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         getCacheProvider().remove(cacheName, key);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;408</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         </pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;409</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         afterWrite(operation, type, <span class="keyword">new</span> Serializable[] {id}, <span class="keyword">null</span>, 1);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;410</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;411</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">return</span> removed;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;412</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;413</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;414</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;}</pre></td>
+</tr>
+</table>
+<div class="footer">
+Reports generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a>.
+</div>
+</body>
+</html>

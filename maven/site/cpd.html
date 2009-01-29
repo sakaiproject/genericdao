@@ -1,0 +1,1758 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>generic-dao - CPD Results</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                    <span id="bannerLeft">
+    
+            generic-dao
+    
+            </span>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+    
+            <div class="xleft">
+        Last Published: 2009-01-29
+                      </div>
+            <div class="xright">            <a href="">generic-dao</a>
+            
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+    
+                             <h5>Project Documentation</h5>
+            <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="project-info.html">Project Information</a>
+                </li>
+              
+                
+              
+      
+            
+      
+            
+            
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+                    <a href="project-reports.html">Project Reports</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="changelog.html">changelog</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="cobertura/index.html">Cobertura Test Coverage</a>
+          </li>
+                  
+    <li class="none">
+              <strong>CPD Report</strong>
+        </li>
+                  
+    <li class="none">
+                    <a href="dev-activity.html">dev-activity</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="file-activity.html">file-activity</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="apidocs/index.html">JavaDocs</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="jdepend-report.html">JDepend</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="pmd.html">PMD Report</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="jxr.html">Source Xref</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="taglist.html">Tag List</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="testapidocs/index.html">Test JavaDocs</a>
+          </li>
+              </ul>
+        </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>CPD Results</h2>
+<p>The following document contains the results of PMD's  <a class="externalLink" href="http://pmd.sourceforge.net/cpd.html">CPD</a>
+ 4.2.2.</p>
+</div>
+<div class="section"><h2>Duplications</h2>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org/sakaiproject/genericdao/base/BaseBasicGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/base/BaseBasicGenericDao.html#48">48</a>
+</td>
+</tr>
+<tr class="a"><td>org/sakaiproject/genericdao/springjdbc/JdbcBasicGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/springjdbc/JdbcBasicGenericDao.html#152">152</a>
+</td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>    }
+
+    protected &lt;T&gt; T baseFindOneBySearch(Class&lt;T&gt; type, Search search) {
+        T item = null;
+        search.setLimit(1); // only return 1 item
+        List&lt;T&gt; items = baseFindBySearch(type, search);
+        if (items.size() &gt; 0) {
+            item = items.get(0);
+        }
+        return item;
+    }
+
+
+    // COMMON CODE
+
+    public &lt;T&gt; long countBySearch(Class&lt;T&gt; type, Search search) {
+        checkClass(type);
+        if (search == null) {
+            throw new IllegalArgumentException(&quot;search cannot be null&quot;);
+        }
+        long count = 0;
+
+        // check the cache first
+        boolean usedCache = false;
+        String searchCacheName = getSearchCacheName(type);
+        String cacheKey = &quot;countBySearch::&quot; + type.getName() + &quot;:&quot; + search.toString();
+        if (getCacheProvider().exists(searchCacheName, cacheKey)) {
+            Long lCount = (Long) getCacheProvider().get(searchCacheName, cacheKey);
+            if (lCount != null) {
+                count = lCount.longValue();
+                usedCache = true;
+            }
+        }
+
+        if (! usedCache) {
+            count = baseCountBySearch(type, search);
+
+            // cache the id results for the search
+            getCacheProvider().put(searchCacheName, cacheKey, Long.valueOf(count));
+        }
+        return count;
+    }
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public &lt;T&gt; List&lt;T&gt; findBySearch(Class&lt;T&gt; type, Search search) {
+        checkClass(type);
+        if (search == null) {
+            throw new IllegalArgumentException(&quot;search cannot be null&quot;);
+        }
+        List&lt;T&gt; results = new ArrayList&lt;T&gt;();
+
+        // check the cache first
+        boolean usedCache = false;
+        String cacheName = getCacheName(type);
+        String searchCacheName = getSearchCacheName(type);
+        String cacheKey = &quot;findBySearch::&quot; + type.getName() + &quot;:&quot; + search.toString();
+        if (getCacheProvider().exists(searchCacheName, cacheKey)) {
+            String[] resultIds = (String[]) getCacheProvider().get(searchCacheName, cacheKey);
+            if (resultIds != null) {
+                for (int i = 0; i &lt; resultIds.length; i++) {
+                    if (! getCacheProvider().exists(cacheName, resultIds[i])) {
+                        usedCache = false;
+                        break;
+                    }
+                    T entity = (T) getCacheProvider().get(cacheName, resultIds[i]);
+                    results.add(entity);
+                }
+                usedCache = true;
+            }
+        }
+
+        if (! usedCache) {
+            String operation = &quot;findBySearch&quot;;
+            beforeRead(operation, type, null, search);
+
+            results = baseFindBySearch(type, search);
+
+            // run through the returned items for the interceptor and for caching
+            List&lt;String&gt; keys = new ArrayList&lt;String&gt;();
+            for (T entity : results) {
+                Object id = baseGetIdValue(entity);
+                // cache each returned item
+                String key = id.toString();
+                keys.add(key);
+                getCacheProvider().put(cacheName, key, entity);
+            }
+            // cache the id results for the search
+            String[] ids = keys.toArray(new String[keys.size()]);
+            getCacheProvider().put(searchCacheName, cacheKey, ids);
+            // call the after interceptor
+            afterRead(operation, type, ids, search, results.toArray(new Object[results.size()]));
+        }
+        return results;
+    }
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public &lt;T&gt; T findOneBySearch(Class&lt;T&gt; type, Search search) {
+        checkClass(type);
+        if (search == null) {
+            throw new IllegalArgumentException(&quot;search cannot be null&quot;);
+        }
+        T entity = null;
+
+        // check the cache first
+        boolean usedCache = false;
+        String cacheName = getCacheName(type);
+        String searchCacheName = getSearchCacheName(type);
+        String cacheKey = &quot;findOneBySearch::&quot; + type.getName() + &quot;:&quot; + search.toString();
+        if (getCacheProvider().exists(searchCacheName, cacheKey)) {
+            usedCache = true;
+            String id = (String) getCacheProvider().get(searchCacheName, cacheKey);
+            if (id != null) {
+                if (getCacheProvider().exists(cacheName, id)) {
+                    entity = (T) getCacheProvider().get(cacheName, id);
+                }
+            }
+        }
+
+        if (! usedCache) {
+            String operation = &quot;findOneBySearch&quot;;
+            beforeRead(operation, type, null, search);
+
+            search.setLimit(1); // only return 1 item
+
+            entity = baseFindOneBySearch(type, search);
+
+            String key = null;
+            if (entity != null) {
+                Serializable id = baseGetIdValue(entity);
+                afterRead(operation, type, new Serializable[] {id}, search, new Object[] {entity});
+
+                if (id != null) {
+                    // cache the entity
+                    key = id.toString();
+                    getCacheProvider().put(cacheName, key, entity);
+                }
+            }
+            // cache the search result
+            getCacheProvider().put(searchCacheName, cacheKey, key);
+        }
+        return entity;
+    }
+
+
+    // DEPRECATED
+
+    /**
+     * @deprecated
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public int countByProperties(Class entityClass, String[] objectProperties, Object[] values) {
+        int[] comparisons = new int[objectProperties.length];
+        for (int i = 0; i &lt; comparisons.length; i++) {
+            comparisons[i] = Restriction.EQUALS;
+        }
+        return countByProperties(entityClass, objectProperties, values, comparisons);
+    }
+
+    /**
+     * @deprecated
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public int countByProperties(Class entityClass, String[] objectProperties, Object[] values,
+            int[] comparisons) {
+        if (objectProperties.length != values.length || values.length != comparisons.length) {
+            throw new IllegalArgumentException(&quot;All input arrays must be the same size&quot;);
+        }
+        Search search = new Search();
+        for (int i = 0; i &lt; values.length; i++) {
+            search.addRestriction( new Restriction(objectProperties[i], values[i], comparisons[i]) );
+        }
+        return (int) countBySearch(entityClass, search);
+    }
+
+    /** 
+     * @deprecated
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values) {
+        int[] comparisons = new int[objectProperties.length];
+        for (int i = 0; i &lt; comparisons.length; i++)
+            comparisons[i] = Restriction.EQUALS;
+
+        return findByProperties(checkClass(entityClass), objectProperties, values, comparisons, 0, 0);
+    }
+
+    /** 
+     * @deprecated
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values,
+            int[] comparisons) {
+        return findByProperties(entityClass, objectProperties, values, comparisons, null, 0, 0);
+    }
+
+    /** 
+     * @deprecated
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values,
+            int[] comparisons, String[] sortProperties) {
+        return findByProperties(entityClass, objectProperties, values, comparisons, sortProperties, 0, 0);
+    }
+
+    /** 
+     * @deprecated
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values,
+            int[] comparisons, int firstResult, int maxResults) {
+        return findByProperties(entityClass, objectProperties, values, comparisons, null, firstResult,
+                maxResults);
+    }
+
+    /**
+     * @deprecated
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values,
+            int[] comparisons, String[] sortProperties, int firstResult, int maxResults) {
+        if (objectProperties.length != values.length || values.length != comparisons.length) {
+            throw new IllegalArgumentException(&quot;All input arrays must be the same size&quot;);
+        }
+        Search search = new Search();
+        for (int i = 0; i &lt; values.length; i++) {
+            search.addRestriction( new Restriction(objectProperties[i], values[i], comparisons[i]) );
+        }
+        if (sortProperties != null) {
+            for (int i = 0; i &lt; sortProperties.length; i++) {
+                int location = sortProperties[i].indexOf(&quot; &quot;);
+                String property = sortProperties[i];
+                if (location &gt; 0) {
+                    property = sortProperties[i].substring(0, location);
+                }
+                Order order = null;
+                if (sortProperties[i].endsWith(ByPropsFinder.DESC)) {
+                    order = new Order(property, false);
+                } else {
+                    order = new Order(property, true);
+                }
+                search.addOrder( order );
+            }
+        }
+        search.setStart(firstResult);
+        search.setLimit(maxResults);
+        return findBySearch(entityClass, search);
+    }
+
+}</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org/sakaiproject/genericdao/base/BaseGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/base/BaseGenericDao.html#105">105</a>
+</td>
+</tr>
+<tr class="a"><td>org/sakaiproject/genericdao/hibernate/HibernateGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/hibernate/HibernateGenericDao.html#398">398</a>
+</td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>      Class&lt;?&gt; type = Hibernate.getClass(entity);
+      return type;
+   }
+
+   // COMMON CODE
+
+   private List&lt;Class&lt;?&gt;&gt; classes;
+   /**
+    * This does a nice bit of exception handling for us and verifies that
+    * this class is valid to perform a DAO operation with
+    * @param type class type of the persistent object to check
+    * @return A valid entityClass type resolved to be the same as
+    * the ones usable by this DAO
+    */
+   protected Class&lt;?&gt; checkClass(Class&lt;?&gt; type) {
+      if (type == null) {
+         throw new NullPointerException(&quot;type cannot be null&quot;);
+      }
+
+      if (classes == null) {
+         throw new NullPointerException(&quot;persistent classes must be set&quot;);
+      }
+
+      for (Iterator&lt;Class&lt;?&gt;&gt; i = classes.iterator(); i.hasNext();) {
+         Class&lt;?&gt; concrete = (Class&lt;?&gt;) i.next();
+         if (concrete.isAssignableFrom(type)) {
+            return concrete;
+         }
+      }
+      throw new IllegalArgumentException(&quot;Could not resolve this class &quot; + 
+            type + &quot; as part of the set of persistent objects: &quot; +
+            classes.toString());
+   }
+
+   private CacheProvider cacheProvider;
+   /**
+    * @return the current cache provider
+    */
+   protected CacheProvider getCacheProvider() {
+      if (cacheProvider == null) {
+         cacheProvider = new NonCachingCacheProvider();
+      }
+      return cacheProvider;
+   }
+   /**
+    * Set the cache provider to an implementation of {@link CacheProvider},
+    * this will be set to {@link NonCachingCacheProvider} if this is not set explicitly
+    * @param cacheProvider
+    */
+   public void setCacheProvider(CacheProvider cacheProvider) {
+      this.cacheProvider = cacheProvider;
+   }
+   /**
+    * @return the cache name used for storing this type of persistent object
+    */
+   protected String getCacheName(Class&lt;?&gt; type) {
+      if (type == null) {
+         throw new IllegalArgumentException(&quot;type cannot be null&quot;);
+      }
+      return type.getName();
+   }
+   /**
+    * @return the cachename used for storing search results for this type of object
+    */
+   protected String getSearchCacheName(Class&lt;?&gt; type) {
+      if (type == null) {
+         throw new IllegalArgumentException(&quot;type cannot be null&quot;);
+      }
+      return &quot;search:&quot; + type.getName();
+   }
+   /**
+    * Creates all the caches for the current set of persistent types,
+    * this should be called in the init for the generic dao being used after persistent classes are loaded
+    */
+   protected void initCaches() {
+      for (Class&lt;?&gt; type : classes) {
+         getCacheProvider().createCache(getCacheName(type));
+         getCacheProvider().createCache(getSearchCacheName(type));
+      }
+   }
+
+   // INTERCEPTOR methods
+
+   private Map&lt;Class&lt;?&gt;, ReadInterceptor&gt; readInterceptors = new ConcurrentHashMap&lt;Class&lt;?&gt;, ReadInterceptor&gt;();
+   private Map&lt;Class&lt;?&gt;, WriteInterceptor&gt; writeInterceptors = new ConcurrentHashMap&lt;Class&lt;?&gt;, WriteInterceptor&gt;();
+   /**
+    * Adds the provided interceptor to the current set of interceptors
+    * @param interceptor
+    */
+   public void addInterceptor(DaoOperationInterceptor interceptor) {
+      if (interceptor != null) {
+         Class&lt;?&gt; type = interceptor.interceptType();
+         if (type != null) {
+            if (ReadInterceptor.class.isAssignableFrom(interceptor.getClass())) {
+               readInterceptors.put(type, (ReadInterceptor) interceptor);
+            }
+            if (WriteInterceptor.class.isAssignableFrom(interceptor.getClass())) {
+               writeInterceptors.put(type, (WriteInterceptor) interceptor);
+            }
+         }
+      }
+   }
+   /**
+    * Removes the provided interceptor from the current set of interceptors
+    * @param interceptor
+    */
+   public void removeInterceptor(DaoOperationInterceptor interceptor) {
+      if (interceptor != null) {
+         Class&lt;?&gt; type = interceptor.interceptType();
+         if (type != null) {
+            if (ReadInterceptor.class.isAssignableFrom(interceptor.getClass())) {
+               readInterceptors.remove(type);
+            }
+            if (WriteInterceptor.class.isAssignableFrom(interceptor.getClass())) {
+               writeInterceptors.remove(type);
+            }
+         }
+      }
+   }
+   /**
+    * Makes the given interceptor the only active interceptor,
+    * removes all others and adds only this one
+    * @param interceptor
+    */
+   public void setInterceptor(DaoOperationInterceptor interceptor) {
+      if (interceptor != null) {
+         readInterceptors.clear();
+         writeInterceptors.clear();
+         addInterceptor(interceptor);
+      }
+   }
+
+   protected void beforeRead(String operation, Class&lt;?&gt; type, Serializable[] ids, Search search) {
+      if (type != null) {
+         ReadInterceptor interceptor = readInterceptors.get(type);
+         if (interceptor != null) {
+            interceptor.beforeRead(operation, ids, search);
+         }
+      }
+   }
+
+   protected void afterRead(String operation, Class&lt;?&gt; type, Serializable[] ids, Search search, Object[] entities) {
+      if (type != null) {
+         ReadInterceptor interceptor = readInterceptors.get(type);
+         if (interceptor != null) {
+            interceptor.afterRead(operation, ids, search, entities);
+         }
+      }
+   }
+
+   protected void beforeWrite(String operation, Class&lt;?&gt; type, Serializable[] ids, Object[] entities) {
+      if (type != null) {
+         WriteInterceptor interceptor = writeInterceptors.get(type);
+         if (interceptor != null) {
+            interceptor.beforeWrite(operation, ids, entities);
+         }
+      }
+   }
+
+   protected void afterWrite(String operation, Class&lt;?&gt; type, Serializable[] ids, Object[] entities, int changes) {
+      if (type != null) {
+         WriteInterceptor interceptor = writeInterceptors.get(type);
+         if (interceptor != null) {
+            interceptor.afterWrite(operation, ids, entities, changes);
+         }
+      }
+   }
+
+   // ********* PUBLIC methods ****************
+
+
+   /* (non-Javadoc)
+    * @see org.sakaiproject.genericdao.api.GenericDao#getPersistentClasses()
+    */
+   public List&lt;Class&lt;?&gt;&gt; getPersistentClasses() {
+      return new ArrayList&lt;Class&lt;?&gt;&gt;(classes);
+   }
+
+   /* (non-Javadoc)
+    * @see org.sakaiproject.genericdao.api.GenericDao#invokeTransactionalAccess(java.lang.Runnable)
+    */
+   public void invokeTransactionalAccess(Runnable toinvoke) {
+      toinvoke.run();
+   }
+
+   /* (non-Javadoc)
+    * @see org.sakaiproject.genericdao.api.GenericDao#findById(java.lang.Class, java.io.Serializable)
+    */
+   @SuppressWarnings(&quot;unchecked&quot;)
+   public &lt;T&gt; T findById(Class&lt;T&gt; type, Serializable id) {
+      checkClass(type);
+      if (id == null) {
+         throw new IllegalArgumentException(&quot;id must be set to find persistent object&quot;);
+      }
+
+      T entity = null;
+      // check cache first
+      String key = id.toString();
+      String cacheName = getCacheName(type);
+      if (getCacheProvider().exists(cacheName, key)) {
+         entity = (T) getCacheProvider().get(cacheName, key);
+      } else {
+         // not in cache so go to the DB
+   
+         // before interceptor
+         String operation = &quot;findById&quot;;
+         beforeRead(operation, type, new Serializable[] {id}, null);
+   
+         entity = baseFindById(type, id);
+   
+         // now put the item in the cache
+         getCacheProvider().put(cacheName, key, entity);
+   
+         // after interceptor
+         afterRead(operation, type, new Serializable[] {id}, null, new Object[] {entity});
+      }
+      return entity;
+   }
+
+   /* (non-Javadoc)
+    * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#create(java.lang.Object)
+    */
+   public void create(Object object) {
+      Class&lt;?&gt; type = findClass(object);
+      checkClass(type);
+
+      String operation = &quot;create&quot;;
+      beforeWrite(operation, type, null, new Object[] {object});
+
+      Serializable idValue = baseCreate(type, object);
+
+      // clear the search caches
+      getCacheProvider().clear(getSearchCacheName(type));
+
+      afterWrite(operation, type, new Serializable[] {idValue}, new Object[] {object}, 1);
+   }
+
+   /* (non-Javadoc)
+    * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#update(java.lang.Object)
+    */
+   public void update(Object object) {
+      Class&lt;?&gt; type = findClass(object);
+      checkClass(type);
+
+      Serializable idValue = baseGetIdValue(object);
+      if (idValue == null) {
+         throw new IllegalArgumentException(&quot;Could not get an id value from the supplied object, cannot update without an id: &quot; + object);
+      }
+
+      String operation = &quot;update&quot;;
+      beforeWrite(operation, type, new Serializable[] {idValue}, new Object[] {object});
+
+      baseUpdate(type, idValue, object);
+
+      // clear the search caches
+      getCacheProvider().clear(getSearchCacheName(type));
+      // clear the cache entry since this was updated
+      String key = idValue.toString();
+      String cacheName = getCacheName(type);
+      getCacheProvider().remove(cacheName, key);
+
+      afterWrite(operation, type, new Serializable[] {idValue}, new Object[] {object}, 1);
+   }
+
+   /* (non-Javadoc)
+    * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#save(java.lang.Object)
+    */
+   public void save(Object object) {
+      Serializable id = baseGetIdValue(object);
+      if (id == null) {
+         create(object);
+      } else {
+         update(object);
+      }
+   }
+
+   /* (non-Javadoc)
+    * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#delete(java.lang.Object)
+    */
+   public void delete(Object object) {
+      Class&lt;?&gt; type = findClass(object);
+      Serializable id = baseGetIdValue(object);
+      delete(type, id);
+   }
+
+   /* (non-Javadoc)
+    * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#delete(java.lang.Class, java.io.Serializable)
+    */
+   public &lt;T&gt; boolean delete(Class&lt;T&gt; type, Serializable id) {
+      checkClass(type);
+
+      String operation = &quot;delete&quot;;
+      beforeWrite(operation, type, new Serializable[] {id}, null);
+
+      boolean removed = baseDelete(type, id);
+
+      if (removed) {
+         // clear the search caches
+         getCacheProvider().clear(getSearchCacheName(type));
+         // clear this from the cache
+         String key = id.toString();
+         String cacheName = getCacheName(type);
+         getCacheProvider().remove(cacheName, key);
+         
+         afterWrite(operation, type, new Serializable[] {id}, null, 1);
+      }
+      return removed;
+   }
+
+}</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org/sakaiproject/genericdao/base/BaseGeneralGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/base/BaseGeneralGenericDao.html#52">52</a>
+</td>
+</tr>
+<tr class="a"><td>org/sakaiproject/genericdao/hibernate/HibernateGeneralGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/hibernate/HibernateGeneralGenericDao.html#80">80</a>
+</td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>      return entities.size();
+/** This will not flush the item from the session so it is hopeless -AZ
+      StringBuilder sb = new StringBuilder();
+      for (int i = 0; i &lt; ids.length; i++) {
+         Object id = ids[i];
+         if (id != null) {
+            if (i &gt; 0) { sb.append(','); }
+            sb.append('?');
+         }
+      }
+      String hql = &quot;delete from &quot;+type.getName()+&quot; entity where entity.id in (&quot; + sb + &quot;)&quot;;
+      int deletes = getHibernateTemplate().bulkUpdate(hql, ids);
+      return deletes;
+***/
+   }
+
+   // COMMON CODE
+
+   public &lt;T&gt; List&lt;T&gt; findAll(Class&lt;T&gt; type) {
+      return findAll(type, 0, 0);
+   }
+
+   public &lt;T&gt; int countAll(Class&lt;T&gt; type) {
+      checkClass(type);
+      int count = 0;
+
+      // check the cache first
+      boolean usedCache = false;
+      String searchCacheName = getSearchCacheName(type);
+      String cacheKey = &quot;countAll::&quot; + type.getName();
+      if (getCacheProvider().exists(searchCacheName, cacheKey)) {
+         Integer iCount = (Integer) getCacheProvider().get(searchCacheName, cacheKey);
+         if (iCount != null) {
+            count = iCount.intValue();
+            usedCache = true;
+         }
+      }
+
+      if (! usedCache) {
+         count = baseCountAll(type);
+
+         // cache the id results for the search
+         getCacheProvider().put(searchCacheName, cacheKey, Integer.valueOf(count));
+      }
+      return count;
+   }
+
+   public &lt;T&gt; void deleteSet(Class&lt;T&gt; type, Serializable[] ids) {
+      checkClass(type);
+      if (ids.length &gt; 0) {
+         String operation = &quot;deleteSet&quot;;
+         beforeWrite(operation, type, ids, null);
+   
+         int changes = baseDeleteSet(type, ids);
+   
+         afterWrite(operation, type, ids, null, changes);
+   
+         // clear all removed items from the cache
+         String cacheName = getCacheName(type);
+         for (int i = 0; i &lt; ids.length; i++) {
+            if (ids[i] != null) {
+               String key = ids[i].toString();
+               getCacheProvider().remove(cacheName, key);
+            }
+         }
+         // clear the search caches
+         getCacheProvider().clear(getSearchCacheName(type));
+      }
+   }
+
+   public &lt;T&gt; void saveSet(Set&lt;T&gt; entities) {
+      if (entities == null || entities.isEmpty()) {
+         System.out.println(&quot;WARN: Empty list of entities for saveSet, nothing to do...&quot;);
+      } else {
+         Class&lt;?&gt; type = checkEntitySet(entities);
+   
+         String operation = &quot;saveSet&quot;;
+         beforeWrite(operation, type, null, entities.toArray());
+   
+         int changes = baseSaveSet(type, entities);
+   
+         afterWrite(operation, type, null, entities.toArray(), changes);
+   
+         // clear all saved items from the cache
+         String cacheName = getCacheName(type);
+         for (T t : entities) {
+            Object id = baseGetIdValue(t);
+            if (id != null) {
+               String key = id.toString();
+               getCacheProvider().remove(cacheName, key);
+            }
+         }
+         // clear the search caches
+         getCacheProvider().clear(getSearchCacheName(type));
+      }
+   }
+
+   public &lt;T&gt; void deleteSet(Set&lt;T&gt; entities) {
+      if (entities.size() &gt; 0) {
+         Class&lt;?&gt; type = checkEntitySet(entities);
+         List&lt;Object&gt; ids = new ArrayList&lt;Object&gt;();
+         for (T t : entities) {
+            Object id = baseGetIdValue(t);
+            if (id != null) {
+               ids.add(id);
+            }
+         }
+         deleteSet(type, ids.toArray(new Serializable[ids.size()]));
+      }
+   }
+
+   @SuppressWarnings(&quot;unchecked&quot;)
+   public void saveMixedSet(Set[] entitySets) {
+      for (int i=0; i&lt;entitySets.length; i++) {
+         checkEntitySet(entitySets[i]);
+      }
+      for (int i=0; i&lt;entitySets.length; i++) {
+         saveSet(entitySets[i]);
+      }
+   }
+
+   @SuppressWarnings(&quot;unchecked&quot;)
+   public void deleteMixedSet(Set[] entitySets) {
+      for (int i=0; i&lt;entitySets.length; i++) {
+         checkEntitySet(entitySets[i]);
+      }
+      for (int i=0; i&lt;entitySets.length; i++) {
+         deleteSet(entitySets[i]);
+      }
+   }
+
+   /**
+    * Validates the class type and the list of entities before performing
+    * a batch operation (throws IllegalArgumentException)
+    * 
+    * @param entities a Set of persistent entities, should all be of the same type
+    */
+   protected Class&lt;?&gt; checkEntitySet(Set&lt;?&gt; entities) {
+      Class&lt;?&gt; entityClass = null;
+      Iterator&lt;?&gt; it = entities.iterator();
+      while(it.hasNext()) {
+         Object entity = it.next();
+         if (entityClass == null) {
+            entityClass = (Class&lt;?&gt;) findClass(entity);
+         }
+         if (! checkClass(entityClass).isInstance(entity)) {
+            throw new IllegalArgumentException(&quot;Entity set item &quot; +
+                  entity.toString() + &quot; is not of type: &quot; + entityClass +
+                  &quot;, the type is: &quot; + entity.getClass() +
+            &quot; (All items must be of consistent persistent type)&quot;);
+         }
+      }
+      return entityClass;
+   }
+
+}</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org/sakaiproject/genericdao/base/BaseGeneralGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/base/BaseGeneralGenericDao.html#53">53</a>
+</td>
+</tr>
+<tr class="a"><td>org/sakaiproject/genericdao/springjdbc/JdbcGeneralGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/springjdbc/JdbcGeneralGenericDao.html#269">269</a>
+</td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>    }
+
+    // COMMON CODE
+
+    public &lt;T&gt; List&lt;T&gt; findAll(Class&lt;T&gt; type) {
+        return findAll(type, 0, 0);
+    }
+
+    public &lt;T&gt; int countAll(Class&lt;T&gt; type) {
+        checkClass(type);
+        int count = 0;
+
+        // check the cache first
+        boolean usedCache = false;
+        String searchCacheName = getSearchCacheName(type);
+        String cacheKey = &quot;countAll::&quot; + type.getName();
+        if (getCacheProvider().exists(searchCacheName, cacheKey)) {
+            Integer iCount = (Integer) getCacheProvider().get(searchCacheName, cacheKey);
+            if (iCount != null) {
+                count = iCount.intValue();
+                usedCache = true;
+            }
+        }
+
+        if (! usedCache) {
+            count = baseCountAll(type);
+
+            // cache the id results for the search
+            getCacheProvider().put(searchCacheName, cacheKey, Integer.valueOf(count));
+        }
+        return count;
+    }
+
+    public &lt;T&gt; void deleteSet(Class&lt;T&gt; type, Serializable[] ids) {
+        checkClass(type);
+        if (ids.length &gt; 0) {
+            String operation = &quot;deleteSet&quot;;
+            beforeWrite(operation, type, ids, null);
+
+            int changes = baseDeleteSet(type, ids);
+
+            afterWrite(operation, type, ids, null, changes);
+
+            // clear all removed items from the cache
+            String cacheName = getCacheName(type);
+            for (int i = 0; i &lt; ids.length; i++) {
+                if (ids[i] != null) {
+                    String key = ids[i].toString();
+                    getCacheProvider().remove(cacheName, key);
+                }
+            }
+            // clear the search caches
+            getCacheProvider().clear(getSearchCacheName(type));
+        }
+    }
+
+    public &lt;T&gt; void saveSet(Set&lt;T&gt; entities) {
+        if (entities == null || entities.isEmpty()) {
+            System.out.println(&quot;WARN: Empty list of entities for saveSet, nothing to do...&quot;);
+        } else {
+            Class&lt;?&gt; type = checkEntitySet(entities);
+
+            String operation = &quot;saveSet&quot;;
+            beforeWrite(operation, type, null, entities.toArray());
+
+            int changes = baseSaveSet(type, entities);
+
+            afterWrite(operation, type, null, entities.toArray(), changes);
+
+            // clear all saved items from the cache
+            String cacheName = getCacheName(type);
+            for (T t : entities) {
+                Object id = baseGetIdValue(t);
+                if (id != null) {
+                    String key = id.toString();
+                    getCacheProvider().remove(cacheName, key);
+                }
+            }
+            // clear the search caches
+            getCacheProvider().clear(getSearchCacheName(type));
+        }
+    }
+
+    public &lt;T&gt; void deleteSet(Set&lt;T&gt; entities) {
+        if (entities.size() &gt; 0) {
+            Class&lt;?&gt; type = checkEntitySet(entities);
+            List&lt;Object&gt; ids = new ArrayList&lt;Object&gt;();
+            for (T t : entities) {
+                Object id = baseGetIdValue(t);
+                if (id != null) {
+                    ids.add(id);
+                }
+            }
+            deleteSet(type, ids.toArray(new Serializable[ids.size()]));
+        }
+    }
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public void saveMixedSet(Set[] entitySets) {
+        for (int i=0; i&lt;entitySets.length; i++) {
+            checkEntitySet(entitySets[i]);
+        }
+        for (int i=0; i&lt;entitySets.length; i++) {
+            saveSet(entitySets[i]);
+        }
+    }
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public void deleteMixedSet(Set[] entitySets) {
+        for (int i=0; i&lt;entitySets.length; i++) {
+            checkEntitySet(entitySets[i]);
+        }
+        for (int i=0; i&lt;entitySets.length; i++) {
+            deleteSet(entitySets[i]);
+        }
+    }
+
+    /**
+     * Validates the class type and the list of entities before performing
+     * a batch operation (throws IllegalArgumentException)
+     * 
+     * @param entities a Set of persistent entities, should all be of the same type
+     */
+    protected Class&lt;?&gt; checkEntitySet(Set&lt;?&gt; entities) {
+        Class&lt;?&gt; entityClass = null;
+        Iterator&lt;?&gt; it = entities.iterator();
+        while(it.hasNext()) {
+            Object entity = it.next();
+            if (entityClass == null) {
+                entityClass = (Class&lt;?&gt;) findClass(entity);
+            }
+            if (! checkClass(entityClass).isInstance(entity)) {
+                throw new IllegalArgumentException(&quot;Entity set item &quot; +
+                        entity.toString() + &quot; is not of type: &quot; + entityClass +
+                        &quot;, the type is: &quot; + entity.getClass() +
+                &quot; (All items must be of consistent persistent type)&quot;);
+            }
+        }
+        return entityClass;
+    }
+
+}</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org/sakaiproject/genericdao/base/BaseGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/base/BaseGenericDao.html#87">87</a>
+</td>
+</tr>
+<tr class="a"><td>org/sakaiproject/genericdao/springjdbc/JdbcGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/springjdbc/JdbcGenericDao.html#1457">1457</a>
+</td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>            } else {
+                serialId = idValue.toString();
+            }
+        }
+        return serialId;
+    }
+
+    /**
+     * Find the class type of a persistent object,
+     * needed in the case that we are working with something that wraps it's objects&lt;br/&gt;
+     * Override this if desired
+     * @param entity a persistent entity
+     * @return the persistent class type OR null if it cannot be found
+     */
+    protected Class&lt;?&gt; findClass(Object entity) {
+        if (entity == null) {
+            throw new IllegalArgumentException(&quot;Cannot find class type of null entity object&quot;);
+        }
+        Class&lt;?&gt; type = entity.getClass();
+        return type;
+    }
+
+    // COMMON CODE
+
+    private List&lt;Class&lt;?&gt;&gt; classes;
+    /**
+     * This does a nice bit of exception handling for us and verifies that
+     * this class is valid to perform a DAO operation with
+     * @param type class type of the persistent object to check
+     * @return A valid entityClass type resolved to be the same as
+     * the ones usable by this DAO
+     */
+    protected Class&lt;?&gt; checkClass(Class&lt;?&gt; type) {
+        if (type == null) {
+            throw new NullPointerException(&quot;type cannot be null&quot;);
+        }
+
+        if (classes == null) {
+            throw new NullPointerException(&quot;persistent classes must be set&quot;);
+        }
+
+        for (Iterator&lt;Class&lt;?&gt;&gt; i = classes.iterator(); i.hasNext();) {
+            Class&lt;?&gt; concrete = (Class&lt;?&gt;) i.next();
+            if (concrete.isAssignableFrom(type)) {
+                return concrete;
+            }
+        }
+        throw new IllegalArgumentException(&quot;Could not resolve this class &quot; + 
+                type + &quot; as part of the set of persistent objects: &quot; +
+                classes.toString());
+    }
+
+    private CacheProvider cacheProvider;
+    /**
+     * @return the current cache provider
+     */
+    protected CacheProvider getCacheProvider() {
+        if (cacheProvider == null) {
+            cacheProvider = new NonCachingCacheProvider();
+        }
+        return cacheProvider;
+    }
+    /**
+     * Set the cache provider to an implementation of {@link CacheProvider},
+     * this will be set to {@link NonCachingCacheProvider} if this is not set explicitly
+     * @param cacheProvider
+     */
+    public void setCacheProvider(CacheProvider cacheProvider) {
+        this.cacheProvider = cacheProvider;
+    }
+    /**
+     * @return the cache name used for storing this type of persistent object
+     */
+    protected String getCacheName(Class&lt;?&gt; type) {
+        if (type == null) {
+            throw new IllegalArgumentException(&quot;type cannot be null&quot;);
+        }
+        return type.getName();
+    }
+    /**
+     * @return the cachename used for storing search results for this type of object
+     */
+    protected String getSearchCacheName(Class&lt;?&gt; type) {
+        if (type == null) {
+            throw new IllegalArgumentException(&quot;type cannot be null&quot;);
+        }
+        return &quot;search:&quot; + type.getName();
+    }
+    /**
+     * Creates all the caches for the current set of persistent types,
+     * this should be called in the init for the generic dao being used after persistent classes are loaded
+     */
+    protected void initCaches() {
+        for (Class&lt;?&gt; type : classes) {
+            getCacheProvider().createCache(getCacheName(type));
+            getCacheProvider().createCache(getSearchCacheName(type));
+        }
+    }
+
+    // INTERCEPTOR methods
+
+    private Map&lt;Class&lt;?&gt;, ReadInterceptor&gt; readInterceptors = new ConcurrentHashMap&lt;Class&lt;?&gt;, ReadInterceptor&gt;();
+    private Map&lt;Class&lt;?&gt;, WriteInterceptor&gt; writeInterceptors = new ConcurrentHashMap&lt;Class&lt;?&gt;, WriteInterceptor&gt;();
+    /**
+     * Adds the provided interceptor to the current set of interceptors
+     * @param interceptor
+     */
+    public void addInterceptor(DaoOperationInterceptor interceptor) {
+        if (interceptor != null) {
+            Class&lt;?&gt; type = interceptor.interceptType();
+            if (type != null) {
+                if (ReadInterceptor.class.isAssignableFrom(interceptor.getClass())) {
+                    readInterceptors.put(type, (ReadInterceptor) interceptor);
+                }
+                if (WriteInterceptor.class.isAssignableFrom(interceptor.getClass())) {
+                    writeInterceptors.put(type, (WriteInterceptor) interceptor);
+                }
+            }
+        }
+    }
+    /**
+     * Removes the provided interceptor from the current set of interceptors
+     * @param interceptor
+     */
+    public void removeInterceptor(DaoOperationInterceptor interceptor) {
+        if (interceptor != null) {
+            Class&lt;?&gt; type = interceptor.interceptType();
+            if (type != null) {
+                if (ReadInterceptor.class.isAssignableFrom(interceptor.getClass())) {
+                    readInterceptors.remove(type);
+                }
+                if (WriteInterceptor.class.isAssignableFrom(interceptor.getClass())) {
+                    writeInterceptors.remove(type);
+                }
+            }
+        }
+    }
+    /**
+     * Makes the given interceptor the only active interceptor,
+     * removes all others and adds only this one
+     * @param interceptor
+     */
+    public void setInterceptor(DaoOperationInterceptor interceptor) {
+        if (interceptor != null) {
+            readInterceptors.clear();
+            writeInterceptors.clear();
+            addInterceptor(interceptor);
+        }
+    }
+
+    protected void beforeRead(String operation, Class&lt;?&gt; type, Serializable[] ids, Search search) {
+        if (type != null) {
+            ReadInterceptor interceptor = readInterceptors.get(type);
+            if (interceptor != null) {
+                interceptor.beforeRead(operation, ids, search);
+            }
+        }
+    }
+
+    protected void afterRead(String operation, Class&lt;?&gt; type, Serializable[] ids, Search search, Object[] entities) {
+        if (type != null) {
+            ReadInterceptor interceptor = readInterceptors.get(type);
+            if (interceptor != null) {
+                interceptor.afterRead(operation, ids, search, entities);
+            }
+        }
+    }
+
+    protected void beforeWrite(String operation, Class&lt;?&gt; type, Serializable[] ids, Object[] entities) {
+        // first handle autocommit
+        if (isAutoCommitOperations()) {</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org/sakaiproject/genericdao/hibernate/HibernateGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/hibernate/HibernateGenericDao.html#398">398</a>
+</td>
+</tr>
+<tr class="a"><td>org/sakaiproject/genericdao/springjdbc/JdbcGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/springjdbc/JdbcGenericDao.html#1475">1475</a>
+</td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>        Class&lt;?&gt; type = entity.getClass();
+        return type;
+    }
+
+    // COMMON CODE
+
+    private List&lt;Class&lt;?&gt;&gt; classes;
+    /**
+     * This does a nice bit of exception handling for us and verifies that
+     * this class is valid to perform a DAO operation with
+     * @param type class type of the persistent object to check
+     * @return A valid entityClass type resolved to be the same as
+     * the ones usable by this DAO
+     */
+    protected Class&lt;?&gt; checkClass(Class&lt;?&gt; type) {
+        if (type == null) {
+            throw new NullPointerException(&quot;type cannot be null&quot;);
+        }
+
+        if (classes == null) {
+            throw new NullPointerException(&quot;persistent classes must be set&quot;);
+        }
+
+        for (Iterator&lt;Class&lt;?&gt;&gt; i = classes.iterator(); i.hasNext();) {
+            Class&lt;?&gt; concrete = (Class&lt;?&gt;) i.next();
+            if (concrete.isAssignableFrom(type)) {
+                return concrete;
+            }
+        }
+        throw new IllegalArgumentException(&quot;Could not resolve this class &quot; + 
+                type + &quot; as part of the set of persistent objects: &quot; +
+                classes.toString());
+    }
+
+    private CacheProvider cacheProvider;
+    /**
+     * @return the current cache provider
+     */
+    protected CacheProvider getCacheProvider() {
+        if (cacheProvider == null) {
+            cacheProvider = new NonCachingCacheProvider();
+        }
+        return cacheProvider;
+    }
+    /**
+     * Set the cache provider to an implementation of {@link CacheProvider},
+     * this will be set to {@link NonCachingCacheProvider} if this is not set explicitly
+     * @param cacheProvider
+     */
+    public void setCacheProvider(CacheProvider cacheProvider) {
+        this.cacheProvider = cacheProvider;
+    }
+    /**
+     * @return the cache name used for storing this type of persistent object
+     */
+    protected String getCacheName(Class&lt;?&gt; type) {
+        if (type == null) {
+            throw new IllegalArgumentException(&quot;type cannot be null&quot;);
+        }
+        return type.getName();
+    }
+    /**
+     * @return the cachename used for storing search results for this type of object
+     */
+    protected String getSearchCacheName(Class&lt;?&gt; type) {
+        if (type == null) {
+            throw new IllegalArgumentException(&quot;type cannot be null&quot;);
+        }
+        return &quot;search:&quot; + type.getName();
+    }
+    /**
+     * Creates all the caches for the current set of persistent types,
+     * this should be called in the init for the generic dao being used after persistent classes are loaded
+     */
+    protected void initCaches() {
+        for (Class&lt;?&gt; type : classes) {
+            getCacheProvider().createCache(getCacheName(type));
+            getCacheProvider().createCache(getSearchCacheName(type));
+        }
+    }
+
+    // INTERCEPTOR methods
+
+    private Map&lt;Class&lt;?&gt;, ReadInterceptor&gt; readInterceptors = new ConcurrentHashMap&lt;Class&lt;?&gt;, ReadInterceptor&gt;();
+    private Map&lt;Class&lt;?&gt;, WriteInterceptor&gt; writeInterceptors = new ConcurrentHashMap&lt;Class&lt;?&gt;, WriteInterceptor&gt;();
+    /**
+     * Adds the provided interceptor to the current set of interceptors
+     * @param interceptor
+     */
+    public void addInterceptor(DaoOperationInterceptor interceptor) {
+        if (interceptor != null) {
+            Class&lt;?&gt; type = interceptor.interceptType();
+            if (type != null) {
+                if (ReadInterceptor.class.isAssignableFrom(interceptor.getClass())) {
+                    readInterceptors.put(type, (ReadInterceptor) interceptor);
+                }
+                if (WriteInterceptor.class.isAssignableFrom(interceptor.getClass())) {
+                    writeInterceptors.put(type, (WriteInterceptor) interceptor);
+                }
+            }
+        }
+    }
+    /**
+     * Removes the provided interceptor from the current set of interceptors
+     * @param interceptor
+     */
+    public void removeInterceptor(DaoOperationInterceptor interceptor) {
+        if (interceptor != null) {
+            Class&lt;?&gt; type = interceptor.interceptType();
+            if (type != null) {
+                if (ReadInterceptor.class.isAssignableFrom(interceptor.getClass())) {
+                    readInterceptors.remove(type);
+                }
+                if (WriteInterceptor.class.isAssignableFrom(interceptor.getClass())) {
+                    writeInterceptors.remove(type);
+                }
+            }
+        }
+    }
+    /**
+     * Makes the given interceptor the only active interceptor,
+     * removes all others and adds only this one
+     * @param interceptor
+     */
+    public void setInterceptor(DaoOperationInterceptor interceptor) {
+        if (interceptor != null) {
+            readInterceptors.clear();
+            writeInterceptors.clear();
+            addInterceptor(interceptor);
+        }
+    }
+
+    protected void beforeRead(String operation, Class&lt;?&gt; type, Serializable[] ids, Search search) {
+        if (type != null) {
+            ReadInterceptor interceptor = readInterceptors.get(type);
+            if (interceptor != null) {
+                interceptor.beforeRead(operation, ids, search);
+            }
+        }
+    }
+
+    protected void afterRead(String operation, Class&lt;?&gt; type, Serializable[] ids, Search search, Object[] entities) {
+        if (type != null) {
+            ReadInterceptor interceptor = readInterceptors.get(type);
+            if (interceptor != null) {
+                interceptor.afterRead(operation, ids, search, entities);
+            }
+        }
+    }
+
+    protected void beforeWrite(String operation, Class&lt;?&gt; type, Serializable[] ids, Object[] entities) {
+        // first handle autocommit
+        if (isAutoCommitOperations()) {</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org/sakaiproject/genericdao/base/BaseGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/base/BaseGenericDao.html#270">270</a>
+</td>
+</tr>
+<tr class="a"><td>org/sakaiproject/genericdao/springjdbc/JdbcGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/springjdbc/JdbcGenericDao.html#1648">1648</a>
+</td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>        }
+    }
+
+    // ********* PUBLIC methods ****************
+
+
+    /* (non-Javadoc)
+     * @see org.sakaiproject.genericdao.api.GenericDao#getPersistentClasses()
+     */
+    public List&lt;Class&lt;?&gt;&gt; getPersistentClasses() {
+        return new ArrayList&lt;Class&lt;?&gt;&gt;(classes);
+    }
+
+    /* (non-Javadoc)
+     * @see org.sakaiproject.genericdao.api.GenericDao#invokeTransactionalAccess(java.lang.Runnable)
+     */
+    public void invokeTransactionalAccess(Runnable toinvoke) {
+        toinvoke.run();
+    }
+
+    /* (non-Javadoc)
+     * @see org.sakaiproject.genericdao.api.GenericDao#findById(java.lang.Class, java.io.Serializable)
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public &lt;T&gt; T findById(Class&lt;T&gt; type, Serializable id) {
+        checkClass(type);
+        if (id == null) {
+            throw new IllegalArgumentException(&quot;id must be set to find persistent object&quot;);
+        }
+
+        T entity = null;
+        // check cache first
+        String key = id.toString();
+        String cacheName = getCacheName(type);
+        if (getCacheProvider().exists(cacheName, key)) {
+            entity = (T) getCacheProvider().get(cacheName, key);
+        } else {
+            // not in cache so go to the DB
+
+            // before interceptor
+            String operation = &quot;findById&quot;;
+            beforeRead(operation, type, new Serializable[] {id}, null);
+
+            entity = baseFindById(type, id);
+
+            // now put the item in the cache
+            getCacheProvider().put(cacheName, key, entity);
+
+            // after interceptor
+            afterRead(operation, type, new Serializable[] {id}, null, new Object[] {entity});
+        }
+        return entity;
+    }
+
+    /* (non-Javadoc)
+     * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#create(java.lang.Object)
+     */
+    public void create(Object object) {
+        Class&lt;?&gt; type = findClass(object);
+        checkClass(type);
+
+        String operation = &quot;create&quot;;
+        beforeWrite(operation, type, null, new Object[] {object});
+
+        Serializable idValue = baseCreate(type, object);
+
+        // clear the search caches
+        getCacheProvider().clear(getSearchCacheName(type));
+
+        afterWrite(operation, type, new Serializable[] {idValue}, new Object[] {object}, 1);
+    }
+
+    /* (non-Javadoc)
+     * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#update(java.lang.Object)
+     */
+    public void update(Object object) {
+        Class&lt;?&gt; type = findClass(object);
+        checkClass(type);
+
+        Serializable idValue = baseGetIdValue(object);
+        if (idValue == null) {
+            throw new IllegalArgumentException(&quot;Could not get an id value from the supplied object, cannot update without an id: &quot; + object);
+        }
+
+        String operation = &quot;update&quot;;
+        beforeWrite(operation, type, new Serializable[] {idValue}, new Object[] {object});
+
+        baseUpdate(type, idValue, object);
+
+        // clear the search caches
+        getCacheProvider().clear(getSearchCacheName(type));
+        // clear the cache entry since this was updated
+        String key = idValue.toString();
+        String cacheName = getCacheName(type);
+        getCacheProvider().remove(cacheName, key);
+
+        afterWrite(operation, type, new Serializable[] {idValue}, new Object[] {object}, 1);
+    }
+
+    /* (non-Javadoc)
+     * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#save(java.lang.Object)
+     */
+    public void save(Object object) {
+        Serializable id = baseGetIdValue(object);
+        if (id == null) {
+            create(object);
+        } else {
+            update(object);
+        }
+    }
+
+    /* (non-Javadoc)
+     * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#delete(java.lang.Object)
+     */
+    public void delete(Object object) {
+        Class&lt;?&gt; type = findClass(object);
+        Serializable id = baseGetIdValue(object);
+        delete(type, id);
+    }
+
+    /* (non-Javadoc)
+     * @see org.sakaiproject.genericdao.api.modifiers.BasicModifier#delete(java.lang.Class, java.io.Serializable)
+     */
+    public &lt;T&gt; boolean delete(Class&lt;T&gt; type, Serializable id) {
+        checkClass(type);
+
+        String operation = &quot;delete&quot;;
+        beforeWrite(operation, type, new Serializable[] {id}, null);
+
+        boolean removed = baseDelete(type, id);
+
+        if (removed) {
+            // clear the search caches
+            getCacheProvider().clear(getSearchCacheName(type));
+            // clear this from the cache
+            String key = id.toString();
+            String cacheName = getCacheName(type);
+            getCacheProvider().remove(cacheName, key);
+
+            afterWrite(operation, type, new Serializable[] {id}, null, 1);
+        }
+        return removed;
+    }
+
+}</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org/sakaiproject/genericdao/springjdbc/JdbcBasicGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/springjdbc/JdbcBasicGenericDao.html#128">128</a>
+</td>
+</tr>
+<tr class="a"><td>org/sakaiproject/genericdao/springjdbc/JdbcGeneralGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/springjdbc/JdbcGeneralGenericDao.html#142">142</a>
+</td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>        List&lt;Map&lt;String, Object&gt;&gt; rMap = getSpringJdbcTemplate().queryForList(sql);
+        getSpringJdbcTemplate().setMaxRows(0); // reset this to no limit
+        List&lt;T&gt; results = new ArrayList&lt;T&gt;();
+
+        // put the results into objects
+        int counter = 0;
+        // SPECIAL handling for DERBY
+        boolean derby = BasicTranslator.DBTYPE_DERBY.equals(getDatabaseType());
+        for (Map&lt;String, Object&gt; data : rMap) {
+            if (derby) {
+                // derby has to filter results after the fact... lame yes indeed
+                if (counter &lt; firstResult) {
+                    counter++;
+                    continue;
+                }
+                if (maxResults &gt; 0 &amp;&amp; results.size() &gt;= maxResults) {
+                    break;
+                }
+            }
+            T entity = makeEntityFromMap(type, data);
+            results.add(entity);
+            counter++;
+        }
+        return results;
+    }
+
+    // OVERRIDES
+
+    /**
+     * MUST override this method
+     */
+    protected &lt;T&gt; int baseCountAll(Class&lt;T&gt; type) {</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org/sakaiproject/genericdao/springutil/SmartDataSourceWrapper.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/springutil/SmartDataSourceWrapper.html#82">82</a>
+</td>
+</tr>
+<tr class="a"><td>org/sakaiproject/genericdao/util/ThreadboundConnectionsDataSourceWrapper.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/util/ThreadboundConnectionsDataSourceWrapper.html#189">189</a>
+</td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>    }
+
+    public PrintWriter getLogWriter() throws SQLException {
+        return dataSource.getLogWriter();
+    }
+    public int getLoginTimeout() throws SQLException {
+        return dataSource.getLoginTimeout();
+    }
+    public void setLogWriter(PrintWriter out) throws SQLException {
+        dataSource.setLogWriter(out);
+    }
+    public void setLoginTimeout(int seconds) throws SQLException {
+        dataSource.setLoginTimeout(seconds);
+    }
+    // Java 6 compatible
+    public boolean isWrapperFor(Class&lt;?&gt; iface) throws SQLException {
+        return false;
+    }
+    public &lt;T&gt; T unwrap(Class&lt;T&gt; iface) throws SQLException {
+        throw new SQLException(&quot;Not a Wrapper for &quot; + iface);
+    }
+
+}</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org/sakaiproject/genericdao/base/BaseGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/base/BaseGenericDao.html#256">256</a>
+</td>
+</tr>
+<tr class="a"><td>org/sakaiproject/genericdao/springjdbc/JdbcGenericDao.java</td>
+<td><a href="./xref/org/sakaiproject/genericdao/springjdbc/JdbcGenericDao.html#1630">1630</a>
+</td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>        if (type != null) {
+            WriteInterceptor interceptor = writeInterceptors.get(type);
+            if (interceptor != null) {
+                interceptor.beforeWrite(operation, ids, entities);
+            }
+        }
+    }
+
+    protected void afterWrite(String operation, Class&lt;?&gt; type, Serializable[] ids, Object[] entities, int changes) {
+        if (type != null) {
+            WriteInterceptor interceptor = writeInterceptors.get(type);
+            if (interceptor != null) {
+                interceptor.afterWrite(operation, ids, entities, changes);
+            }
+        }</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2006-2009
+    
+          CARET, University of Cambridge
+          
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

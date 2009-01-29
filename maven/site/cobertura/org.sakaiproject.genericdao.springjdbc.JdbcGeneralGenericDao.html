@@ -1,0 +1,2074 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Coverage Report</title>
+<link title="Style" type="text/css" rel="stylesheet" href="css/main.css"/>
+<script type="text/javascript" src="js/popup.js"></script>
+</head>
+<body>
+<h5>Coverage Report - org.sakaiproject.genericdao.springjdbc.JdbcGeneralGenericDao</h5>
+<div class="separator">&nbsp;</div>
+<table class="report">
+<thead><tr>  <td class="heading">Classes in this File</td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Line Coverage</a></td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Branch Coverage</a></td>  <td class="heading" width="10%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Complexity</a></td></tr></thead>
+  <tr><td class="text"><a href="org.sakaiproject.genericdao.springjdbc.JdbcGeneralGenericDao.html">JdbcGeneralGenericDao</a></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>86%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="86"></td><td class="uncovered" width="13"></td></tr></table></td></tr></table></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>95%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="95"></td><td class="uncovered" width="4"></td></tr></table></td></tr></table></td><td class="value"><span class="hidden">0.0;</span>0</td></tr>
+</table>
+<div class="separator">&nbsp;</div>
+<table cellspacing="0" cellpadding="0" class="src">
+<tr>
+  <td class="numLine">&nbsp;1</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;2</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * $Id$</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;3</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * $URL$</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;4</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * JdbcGeneralGenericDao.java - genericdao - Apr 26, 2008 4:33:33 PM - azeckoski</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;5</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> **************************************************************************</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;6</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Copyright (c) 2008 Aaron Zeckoski</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;7</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Licensed under the Apache License, Version 2</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;8</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;9</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * A copy of the Apache License, Version 2 has been included in this </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;10</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * distribution and is available at: http://www.apache.org/licenses/LICENSE-2.0.txt</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;11</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;12</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Aaron Zeckoski (azeckoski@gmail.com) (aaronz@vt.edu) (aaron@caret.cam.ac.uk)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;13</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;14</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;15</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">package</span> org.sakaiproject.genericdao.springjdbc;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;16</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;17</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.io.Serializable;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;18</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.sql.PreparedStatement;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;19</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.sql.SQLException;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;20</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.ArrayList;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;21</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.Iterator;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;22</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.List;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;23</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.Map;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;24</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.Set;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;25</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;26</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> javax.sql.DataSource;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;27</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;28</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.azeckoski.reflectutils.ArrayUtils;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;29</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.azeckoski.reflectutils.ReflectUtils;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;30</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.GeneralGenericDao;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;31</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.mappers.DataMapper;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;32</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.mappers.NamesRecord;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;33</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.mappers.StatementMapper;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;34</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.api.translators.DatabaseTranslator;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;35</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.springjdbc.translators.BasicTranslator;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;36</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sakaiproject.genericdao.util.JDBCUtils;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;37</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.springframework.jdbc.core.BatchPreparedStatementSetter;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;38</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;39</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;40</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * A spring JDBC based implementation of {@link GeneralGenericDao}</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;41</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * which can be extended to add more specialized DAO methods.</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;42</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * This should meet most DAO needs.</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;43</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;p&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;44</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * See the overview for installation/usage tips.</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;45</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;46</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author Aaron Zeckoski (azeckoski@gmail.com)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;47</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;48</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> JdbcGeneralGenericDao <span class="keyword">extends</span> JdbcBasicGenericDao <span class="keyword">implements</span> GeneralGenericDao {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;49</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;50</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;51</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Default constructor - does nothing and leaves the object in an incomplete state,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;52</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * you need to at least set the following:</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;53</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {@link #setDataSource(DataSource)} &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;54</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {@link #setAutoDDL(boolean)} &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;55</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {@link #setAutoCommitDDL(boolean)} &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;56</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {@link #setDatabaseType(String)} &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;57</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {@link #setDataMappers(List)} &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;58</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;59</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * This does not actually start the DAO, run {@link #startup()} to start it &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;60</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Note that this will be started automatically by Spring if this is created as a Spring bean,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;61</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * no actions are necessary and setting an init method is not needed</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;62</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;63</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> JdbcGeneralGenericDao() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;64</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">super</span>();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;65</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;66</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;67</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;68</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Complete constructor, sets all required values for running the DAO,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;69</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * does not actually start the DAO, run {@link #startup()} to start it &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;70</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Note that this will be started automatically by Spring if this is created as a Spring bean,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;71</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * no actions are necessary and setting an init method is not needed</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;72</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;73</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param dataSource the DataSource to use with this DAO</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;74</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param threadBoundDataSource if true then the DataSource will be bound to threads and </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;75</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * only unbound and closed when {@link #closeConnection()} is called,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;76</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * otherwise a new DataSource is obtained each time, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;77</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * this has no effect if the DataSource is a Spring DataSource</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;78</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param databaseType the databaseType that this DAO is connecting to (use constants in {@link DatabaseTranslator})</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;79</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param autoDDL if true then DDL is executed on DAO startup (can be run manually if desired)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;80</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param autoCommitDDL if true then commit is executed after each DDL file is executed, if false then you need a TX manager to do this for you</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;81</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param dataMappers the data mappers which map this DAO to the tables</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;82</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;83</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> JdbcGeneralGenericDao(DataSource dataSource, <span class="keyword">boolean</span> threadBoundDataSource, </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;84</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            String databaseType, <span class="keyword">boolean</span> autoDDL, <span class="keyword">boolean</span> autoCommitDDL, DataMapper[] dataMappers) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;85</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">super</span>(dataSource, threadBoundDataSource, databaseType, autoDDL, autoCommitDDL, dataMappers);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;86</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;87</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;88</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;89</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">protected</span> <span class="keyword">class</span> MyPSS <span class="keyword">implements</span> BatchPreparedStatementSetter {</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;90</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;91</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> NamesRecord namesRecord;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;92</td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> List&lt;String&gt; dataKeys = <span class="keyword">new</span> ArrayList&lt;String&gt;();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;93</td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> List&lt;Object&gt; entities = <span class="keyword">new</span> ArrayList&lt;Object&gt;();</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;94</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;95</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">public</span> <span class="keyword">int</span> getBatchSize() {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;96</td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> entities.size();</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;97</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;98</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;99</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">public</span> <span class="keyword">void</span> setValues(PreparedStatement ps, <span class="keyword">int</span> index) <span class="keyword">throws</span> SQLException {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;100</td>
+  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="src"><pre class="src">&nbsp;            Object entity = entities.get(index);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;101</td>
+  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="src"><pre class="src">&nbsp;            Map&lt;String, Object&gt; data = makeMapFromEntity(entity);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;102</td>
+  <td class="nbHitsCovered">&nbsp;101</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; dataKeys.size(); i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;103</td>
+  <td class="nbHitsCovered">&nbsp;71</td>
+  <td class="src"><pre class="src">&nbsp;                String column = dataKeys.get(i);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;104</td>
+  <td class="nbHitsCovered">&nbsp;71</td>
+  <td class="src"><pre class="src">&nbsp;                Object value = data.get(column);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;105</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">// convert value if needed</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;106</td>
+  <td class="nbHitsCovered">&nbsp;71</td>
+  <td class="src"><pre class="src">&nbsp;                value = JDBCUtils.convertColumn(namesRecord, column, value);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;107</td>
+  <td class="nbHitsCovered">&nbsp;71</td>
+  <td class="src"><pre class="src">&nbsp;                ps.setObject((i+1), value);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;108</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;109</td>
+  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;110</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;111</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;112</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">         * @param dataKeys the data keys (column names)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;113</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">         * @param entities the objects to batch, each will be converted to a map</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;114</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">         * @param namesRecord the namesRecord for the persistent classes</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;115</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">         */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;116</td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> MyPSS(List&lt;String&gt; dataKeys, List&lt;Object&gt; entities, NamesRecord namesRecord) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;117</td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.dataKeys = dataKeys;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;118</td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.entities = entities;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;119</td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.namesRecord = namesRecord;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;120</td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;121</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;122</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;123</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/* (non-Javadoc)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;124</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @see org.sakaiproject.genericdao.api.finders.AllFinder#findAll(java.lang.Class, int, int)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;125</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;126</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;127</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> &lt;T&gt; List&lt;T&gt; findAll(Class&lt;T&gt; type, <span class="keyword">int</span> firstResult, <span class="keyword">int</span> maxResults) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;128</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
+  <td class="src"><pre class="src">&nbsp;        checkClass(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;129</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
+  <td class="src"><pre class="src">&nbsp;        String tableName = getTableNameFromClass(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;130</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
+  <td class="src"><pre class="src">&nbsp;        String sql = makeSQL(getSelectTemplate(type), tableName, </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;131</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                StatementMapper.SELECT, tableName + <span class="string">".*"</span>, StatementMapper.WHERE, <span class="string">""</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;132</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// handle limit/offset</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;133</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (firstResult &gt; 0 || maxResults &gt; 0) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;134</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;            firstResult = firstResult &lt; 0 ? 0 : firstResult;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;135</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;            maxResults = maxResults &lt; 0 ? 0 : maxResults;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;136</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;            sql = getDatabaseTranslator().makeLimitQuery(sql, firstResult, maxResults, tableName);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;137</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;            getSpringJdbcTemplate().setMaxRows(firstResult + maxResults); <span class="comment">// this limit is always ok to put in</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;138</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;139</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (showSQL) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;140</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            logInfo(<span class="string">"SQL="</span>+sql);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;141</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;142</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
+  <td class="src"><pre class="src">&nbsp;        List&lt;Map&lt;String, Object&gt;&gt; rMap = getSpringJdbcTemplate().queryForList(sql);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;143</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
+  <td class="src"><pre class="src">&nbsp;        getSpringJdbcTemplate().setMaxRows(0); <span class="comment">// reset this to no limit</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;144</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
+  <td class="src"><pre class="src">&nbsp;        List&lt;T&gt; results = <span class="keyword">new</span> ArrayList&lt;T&gt;();</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;145</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;146</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// put the results into objects</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;147</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> counter = 0;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;148</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// SPECIAL handling for DERBY</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;149</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">boolean</span> derby = BasicTranslator.DBTYPE_DERBY.equals(getDatabaseType());</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;150</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (Map&lt;String, Object&gt; data : rMap) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;151</td>
+  <td class="nbHitsCovered">&nbsp;244</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (derby) {</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;152</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">// derby has to filter results after the fact... lame yes indeed</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;153</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">if</span> (counter &lt; firstResult) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;154</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    counter++;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;155</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    <span class="keyword">continue</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;156</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;157</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">if</span> (maxResults &gt; 0 &amp;&amp; results.size() &gt;= maxResults) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;158</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    <span class="keyword">break</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;159</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;160</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;161</td>
+  <td class="nbHitsCovered">&nbsp;244</td>
+  <td class="src"><pre class="src">&nbsp;            T entity = makeEntityFromMap(type, data);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;162</td>
+  <td class="nbHitsCovered">&nbsp;244</td>
+  <td class="src"><pre class="src">&nbsp;            results.add(entity);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;163</td>
+  <td class="nbHitsCovered">&nbsp;244</td>
+  <td class="src"><pre class="src">&nbsp;            counter++;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;164</td>
+  <td class="nbHitsCovered">&nbsp;244</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;165</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> results;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;166</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;167</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;168</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">// OVERRIDES</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;169</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;170</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;171</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * MUST override this method</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;172</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;173</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">protected</span> &lt;T&gt; <span class="keyword">int</span> baseCountAll(Class&lt;T&gt; type) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;174</td>
+  <td class="nbHitsCovered">&nbsp;13</td>
+  <td class="src"><pre class="src">&nbsp;        String sql = makeSQL(getSelectTemplate(type), getTableNameFromClass(type), </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;175</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                StatementMapper.SELECT, <span class="string">"count(*)"</span>, StatementMapper.WHERE, <span class="string">""</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;176</td>
+  <td class="nbHitsCovered">&nbsp;13</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (showSQL) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;177</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            logInfo(<span class="string">"SQL="</span>+sql);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;178</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;179</td>
+  <td class="nbHitsCovered">&nbsp;13</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">long</span> count = getSpringJdbcTemplate().queryForLong(sql);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;180</td>
+  <td class="nbHitsCovered">&nbsp;13</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> (<span class="keyword">int</span>) count;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;181</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;182</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;183</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;184</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * MUST override this method</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;185</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;186</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">protected</span> &lt;T&gt; <span class="keyword">int</span> baseSaveSet(Class&lt;?&gt; type, Set&lt;T&gt; entities) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;187</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        String idProp = getIdProperty(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;188</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        List&lt;String&gt; keys = <span class="keyword">new</span> ArrayList&lt;String&gt;();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;189</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        NamesRecord nr = getNamesRecord(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;190</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;191</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        List&lt;Object&gt; newObjects = <span class="keyword">new</span> ArrayList&lt;Object&gt;();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;192</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        List&lt;Object&gt; existingObjects = <span class="keyword">new</span> ArrayList&lt;Object&gt;();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;193</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (Object object : entities) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;194</td>
+  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="src"><pre class="src">&nbsp;            Object id = ReflectUtils.getInstance().getFieldValue(object, idProp);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;195</td>
+  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (id == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;196</td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;                newObjects.add(object);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;197</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            } <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;198</td>
+  <td class="nbHitsCovered">&nbsp;11</td>
+  <td class="src"><pre class="src">&nbsp;                existingObjects.add(object);            </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;199</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;200</td>
+  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;201</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;202</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        Map&lt;String, Class&lt;?&gt;&gt; types = ReflectUtils.getInstance().getFieldTypes(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;203</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        StringBuilder update = <span class="keyword">new</span> StringBuilder();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;204</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        StringBuilder columns = <span class="keyword">new</span> StringBuilder();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;205</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        StringBuilder values = <span class="keyword">new</span> StringBuilder();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;206</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> counter = 0;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;207</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (String key : types.keySet()) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;208</td>
+  <td class="nbHitsCovered">&nbsp;48</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (idProp.equals(key)) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;209</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">continue</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;210</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;211</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (counter &gt; 0) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;212</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;                update.append(<span class="string">','</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;213</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">// insert</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;214</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;                columns.append(<span class="string">','</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;215</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;                values.append(<span class="string">','</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;216</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;217</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;            String column = nr.getColumnForProperty(key);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;218</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;            update.append(column);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;219</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;            update.append(<span class="string">"=?"</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;220</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;            keys.add(column);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;221</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// insert</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;222</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;            columns.append(column);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;223</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;            values.append(<span class="string">'?'</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;224</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;            counter++;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;225</td>
+  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;226</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// make and do inserts</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;227</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> changes = 0;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;228</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (newObjects.size() &gt; 0) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;229</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;            String sql = makeSQL(getInsertTemplate(type), getTableNameFromClass(type), </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;230</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    StatementMapper.COLUMNS, columns.toString(), StatementMapper.VALUES, values.toString());</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;231</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (showSQL) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;232</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                logInfo(<span class="string">"SQL="</span>+sql+<span class="string">":\n BatchCreate="</span>+keys);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;233</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;234</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;            getSpringJdbcTemplate().batchUpdate(sql, <span class="keyword">new</span> MyPSS(keys, newObjects, nr));</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;235</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;236</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// make and do updates</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;237</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (existingObjects.size() &gt; 0) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;238</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;            keys.add( nr.getColumnForProperty(idProp) );</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;239</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;            String sql = makeSQL(getUpdateTemplate(type), getTableNameFromClass(type), </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;240</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    StatementMapper.UPDATE, update.toString(), StatementMapper.WHERE, <span class="string">"where "</span> + getIdColumn(type) + <span class="string">" = ?"</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;241</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// do the batch update</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;242</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (showSQL) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;243</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                logInfo(<span class="string">"SQL="</span>+sql+<span class="string">":\n BatchUpdate="</span>+keys);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;244</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;245</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;            getSpringJdbcTemplate().batchUpdate(sql, <span class="keyword">new</span> MyPSS(keys, existingObjects, nr));</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;246</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;247</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> changes;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;248</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;249</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;250</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;251</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * MUST override this method</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;252</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;253</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">protected</span> &lt;T&gt; <span class="keyword">int</span> baseDeleteSet(Class&lt;T&gt; type, Serializable[] ids) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;254</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;255</td>
+  <td class="nbHitsCovered">&nbsp;40</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; ids.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;256</td>
+  <td class="nbHitsCovered">&nbsp;26</td>
+  <td class="src"><pre class="src">&nbsp;            Object id = ids[i];</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;257</td>
+  <td class="nbHitsCovered">&nbsp;26</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (id != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;258</td>
+  <td class="nbHitsCovered">&nbsp;26</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span> (i &gt; 0) { sb.append(<span class="string">','</span>); }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;259</td>
+  <td class="nbHitsCovered">&nbsp;26</td>
+  <td class="src"><pre class="src">&nbsp;                sb.append(<span class="string">'?'</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;260</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;261</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;262</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;        String sql = makeSQL(getDeleteTemplate(type), getTableNameFromClass(type), </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;263</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                StatementMapper.WHERE, <span class="string">"where "</span> + getIdColumn(type) + <span class="string">" in ("</span> + sb + <span class="string">")"</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;264</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (showSQL) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;265</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            logInfo(<span class="string">"SQL="</span>+sql+<span class="string">":\n BatchDelete="</span>+ArrayUtils.arrayToString(ids));</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;266</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;267</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> changes = getSpringJdbcTemplate().update(sql, ids);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;268</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> changes;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;269</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;270</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;271</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">// COMMON CODE</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;272</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;273</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> &lt;T&gt; List&lt;T&gt; findAll(Class&lt;T&gt; type) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;274</td>
+  <td class="nbHitsCovered">&nbsp;41</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> findAll(type, 0, 0);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;275</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;276</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;277</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> &lt;T&gt; <span class="keyword">int</span> countAll(Class&lt;T&gt; type) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;278</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;        checkClass(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;279</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> count = 0;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;280</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;281</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// check the cache first</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;282</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">boolean</span> usedCache = <span class="keyword">false</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;283</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;        String searchCacheName = getSearchCacheName(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;284</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;        String cacheKey = <span class="string">"countAll::"</span> + type.getName();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;285</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (getCacheProvider().exists(searchCacheName, cacheKey)) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;286</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;            Integer iCount = (Integer) getCacheProvider().get(searchCacheName, cacheKey);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;287</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (iCount != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;288</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;                count = iCount.intValue();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;289</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;                usedCache = <span class="keyword">true</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;290</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;291</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;292</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;293</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (! usedCache) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;294</td>
+  <td class="nbHitsCovered">&nbsp;13</td>
+  <td class="src"><pre class="src">&nbsp;            count = baseCountAll(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;295</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;296</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// cache the id results for the search</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;297</td>
+  <td class="nbHitsCovered">&nbsp;13</td>
+  <td class="src"><pre class="src">&nbsp;            getCacheProvider().put(searchCacheName, cacheKey, Integer.valueOf(count));</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;298</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;299</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> count;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;300</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;301</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;302</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> &lt;T&gt; <span class="keyword">void</span> deleteSet(Class&lt;T&gt; type, Serializable[] ids) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;303</td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;        checkClass(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;304</td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (ids.length &gt; 0) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;305</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;            String operation = <span class="string">"deleteSet"</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;306</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;            beforeWrite(operation, type, ids, <span class="keyword">null</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;307</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;308</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span> changes = baseDeleteSet(type, ids);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;309</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;310</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;            afterWrite(operation, type, ids, <span class="keyword">null</span>, changes);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;311</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;312</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// clear all removed items from the cache</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;313</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;            String cacheName = getCacheName(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;314</td>
+  <td class="nbHitsCovered">&nbsp;40</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; ids.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;315</td>
+  <td class="nbHitsCovered">&nbsp;26</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span> (ids[i] != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;316</td>
+  <td class="nbHitsCovered">&nbsp;26</td>
+  <td class="src"><pre class="src">&nbsp;                    String key = ids[i].toString();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;317</td>
+  <td class="nbHitsCovered">&nbsp;26</td>
+  <td class="src"><pre class="src">&nbsp;                    getCacheProvider().remove(cacheName, key);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;318</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;319</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;320</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// clear the search caches</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;321</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;            getCacheProvider().clear(getSearchCacheName(type));</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;322</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;323</td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;324</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;325</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> &lt;T&gt; <span class="keyword">void</span> saveSet(Set&lt;T&gt; entities) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;326</td>
+  <td class="nbHitsCovered">&nbsp;23</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (entities == <span class="keyword">null</span> || entities.isEmpty()) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;327</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;            System.out.println(<span class="string">"WARN: Empty list of entities for saveSet, nothing to do..."</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;328</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        } <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;329</td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;            Class&lt;?&gt; type = checkEntitySet(entities);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;330</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;331</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;            String operation = <span class="string">"saveSet"</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;332</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;            beforeWrite(operation, type, <span class="keyword">null</span>, entities.toArray());</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;333</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;334</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span> changes = baseSaveSet(type, entities);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;335</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;336</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;            afterWrite(operation, type, <span class="keyword">null</span>, entities.toArray(), changes);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;337</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;338</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// clear all saved items from the cache</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;339</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;            String cacheName = getCacheName(type);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;340</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">for</span> (T t : entities) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;341</td>
+  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="src"><pre class="src">&nbsp;                Object id = baseGetIdValue(t);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;342</td>
+  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span> (id != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;343</td>
+  <td class="nbHitsCovered">&nbsp;11</td>
+  <td class="src"><pre class="src">&nbsp;                    String key = id.toString();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;344</td>
+  <td class="nbHitsCovered">&nbsp;11</td>
+  <td class="src"><pre class="src">&nbsp;                    getCacheProvider().remove(cacheName, key);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;345</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;346</td>
+  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;347</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// clear the search caches</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;348</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;            getCacheProvider().clear(getSearchCacheName(type));</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;349</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;350</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;351</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;352</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> &lt;T&gt; <span class="keyword">void</span> deleteSet(Set&lt;T&gt; entities) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;353</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (entities.size() &gt; 0) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;354</td>
+  <td class="nbHitsCovered">&nbsp;11</td>
+  <td class="src"><pre class="src">&nbsp;            Class&lt;?&gt; type = checkEntitySet(entities);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;355</td>
+  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="src"><pre class="src">&nbsp;            List&lt;Object&gt; ids = <span class="keyword">new</span> ArrayList&lt;Object&gt;();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;356</td>
+  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">for</span> (T t : entities) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;357</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;                Object id = baseGetIdValue(t);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;358</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span> (id != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;359</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;                    ids.add(id);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;360</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;361</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;362</td>
+  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="src"><pre class="src">&nbsp;            deleteSet(type, ids.toArray(<span class="keyword">new</span> Serializable[ids.size()]));</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;363</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;364</td>
+  <td class="nbHitsCovered">&nbsp;11</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;365</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;366</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;367</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> <span class="keyword">void</span> saveMixedSet(Set[] entitySets) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;368</td>
+  <td class="nbHitsCovered">&nbsp;21</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (<span class="keyword">int</span> i=0; i&lt;entitySets.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;369</td>
+  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="src"><pre class="src">&nbsp;            checkEntitySet(entitySets[i]);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;370</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;371</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (<span class="keyword">int</span> i=0; i&lt;entitySets.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;372</td>
+  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="src"><pre class="src">&nbsp;            saveSet(entitySets[i]);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;373</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;374</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;375</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;376</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;377</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">public</span> <span class="keyword">void</span> deleteMixedSet(Set[] entitySets) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;378</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (<span class="keyword">int</span> i=0; i&lt;entitySets.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;379</td>
+  <td class="nbHitsCovered">&nbsp;11</td>
+  <td class="src"><pre class="src">&nbsp;            checkEntitySet(entitySets[i]);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;380</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;381</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (<span class="keyword">int</span> i=0; i&lt;entitySets.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;382</td>
+  <td class="nbHitsCovered">&nbsp;5</td>
+  <td class="src"><pre class="src">&nbsp;            deleteSet(entitySets[i]);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;383</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;384</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;385</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;386</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;387</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Validates the class type and the list of entities before performing</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;388</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * a batch operation (throws IllegalArgumentException)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;389</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;390</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param entities a Set of persistent entities, should all be of the same type</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;391</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;392</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">protected</span> Class&lt;?&gt; checkEntitySet(Set&lt;?&gt; entities) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;393</td>
+  <td class="nbHitsCovered">&nbsp;55</td>
+  <td class="src"><pre class="src">&nbsp;        Class&lt;?&gt; entityClass = <span class="keyword">null</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;394</td>
+  <td class="nbHitsCovered">&nbsp;55</td>
+  <td class="src"><pre class="src">&nbsp;        Iterator&lt;?&gt; it = entities.iterator();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;395</td>
+  <td class="nbHitsCovered">&nbsp;127</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">while</span>(it.hasNext()) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;396</td>
+  <td class="nbHitsCovered">&nbsp;84</td>
+  <td class="src"><pre class="src">&nbsp;            Object entity = it.next();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;397</td>
+  <td class="nbHitsCovered">&nbsp;84</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (entityClass == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;398</td>
+  <td class="nbHitsCovered">&nbsp;55</td>
+  <td class="src"><pre class="src">&nbsp;                entityClass = (Class&lt;?&gt;) findClass(entity);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;399</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;400</td>
+  <td class="nbHitsCovered">&nbsp;84</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (! checkClass(entityClass).isInstance(entity)) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;401</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Entity set item "</span> +</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;402</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                        entity.toString() + <span class="string">" is not of type: "</span> + entityClass +</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;403</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                        <span class="string">", the type is: "</span> + entity.getClass() +</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;404</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">" (All items must be of consistent persistent type)"</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;405</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;406</td>
+  <td class="nbHitsCovered">&nbsp;72</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;407</td>
+  <td class="nbHitsCovered">&nbsp;43</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> entityClass;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;408</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;409</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;410</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;}</pre></td>
+</tr>
+</table>
+<div class="footer">
+Reports generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a>.
+</div>
+</body>
+</html>

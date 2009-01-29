@@ -1,0 +1,3619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Coverage Report</title>
+<link title="Style" type="text/css" rel="stylesheet" href="css/main.css"/>
+<script type="text/javascript" src="js/popup.js"></script>
+</head>
+<body>
+<h5>Coverage Report - org.sakaiproject.genericdao.api.search.Search</h5>
+<div class="separator">&nbsp;</div>
+<table class="report">
+<thead><tr>  <td class="heading">Classes in this File</td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Line Coverage</a></td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Branch Coverage</a></td>  <td class="heading" width="10%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Complexity</a></td></tr></thead>
+  <tr><td class="text"><a href="org.sakaiproject.genericdao.api.search.Search.html">Search</a></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>79%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="78"></td><td class="uncovered" width="21"></td></tr></table></td></tr></table></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>70%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="70"></td><td class="uncovered" width="29"></td></tr></table></td></tr></table></td><td class="value"><span class="hidden">0.0;</span>0</td></tr>
+</table>
+<div class="separator">&nbsp;</div>
+<table cellspacing="0" cellpadding="0" class="src">
+<tr>
+  <td class="numLine">&nbsp;1</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;2</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * $Id$</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;3</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * $URL$</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;4</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Search.java - gendao - Apr 8, 2008 11:50:18 AM - azeckoski</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;5</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> **************************************************************************</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;6</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Copyright (c) 2008 Aaron Zeckoski</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;7</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Licensed under the Apache License, Version 2</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;8</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;9</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * A copy of the Apache License, Version 2 has been included in this </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;10</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * distribution and is available at: http://www.apache.org/licenses/LICENSE-2.0.txt</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;11</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;12</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Aaron Zeckoski (azeckoski@gmail.com) (aaronz@vt.edu) (aaron@caret.cam.ac.uk)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;13</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;14</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;15</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">package</span> org.sakaiproject.genericdao.api.search;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;16</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;17</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.lang.reflect.Array;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;18</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.ArrayList;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;19</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.Arrays;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;20</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.List;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;21</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;22</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;23</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * This is a simple class which allows the passing of a set of search parameters in a nice way&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;24</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Example usage:&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;25</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;code&gt;Search s1 = new Search("title", curTitle); // search where title equals value of curTitle&lt;/code&gt;&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;26</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;code&gt;Search s2 = new Search("title", curTitle, Restriction.NOT_EQUALS); // search where title not equals value of curTitle&lt;/code&gt;&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;27</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;code&gt;Search s2 = new Search(&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;28</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *    new Restriction("title", curTitle),&lt;br/&gt; </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;29</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *    new Order("title")&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;30</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * ); // search where title equals value of curTitle and order is by title ascending&lt;/code&gt;&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;31</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;32</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Most searches can be modeled this way fairly easily. There are many constructors to make</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;33</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * it easy for a developer to write the search they want inside the search constructor.&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;34</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * There are also some methods to allow easy construction of searches in multiple steps:</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;35</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * {@link #addOrder(Order)} and {@link #addRestriction(Restriction)} allow restrictions and orders</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;36</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * to be added after the search was constructed, they will correctly handle duplicate values as well.&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;37</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Currently searches are completely conjunctive (all ANDs) or disjunction (all ORs)&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;38</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;39</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * There is also an option to pass a search string as well which can contain</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;40</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * formatted text to be interpreted by whatever is using the search object&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;41</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;42</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Finally, there are a few methods to make it easier to unpack and work with the search object:</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;43</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * {@link #isEmpty()} and {@link #getRestrictionByProperty(String)} and {@link #getRestrictionsProperties()}</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;44</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * make it easier to get the restriction information out of the search object</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;45</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;46</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author Aaron Zeckoski (aaronz@caret.cam.ac.uk)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;47</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;48</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> Search {</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;49</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;50</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;51</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * the index of the first persisted result object to be retrieved (numbered from 0)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;52</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;53</td>
+  <td class="nbHitsCovered">&nbsp;480</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">private</span> <span class="keyword">long</span> start = 0;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;54</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> setStart(<span class="keyword">long</span> start) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;55</td>
+  <td class="nbHitsCovered">&nbsp;25</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.start = start &lt; 0 ? 0 : start;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;56</td>
+  <td class="nbHitsCovered">&nbsp;25</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;57</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">long</span> getStart() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;58</td>
+  <td class="nbHitsCovered">&nbsp;178</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">return</span> start;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;59</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;60</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;61</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;62</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * the maximum number of persisted result objects to retrieve (or 0 for no limit)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;63</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;64</td>
+  <td class="nbHitsCovered">&nbsp;480</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">private</span> <span class="keyword">long</span> limit = 0;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;65</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> setLimit(<span class="keyword">long</span> limit) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;66</td>
+  <td class="nbHitsCovered">&nbsp;77</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.limit = limit &lt; 0 ? 0 : limit;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;67</td>
+  <td class="nbHitsCovered">&nbsp;77</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;68</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">long</span> getLimit() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;69</td>
+  <td class="nbHitsCovered">&nbsp;178</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">return</span> limit;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;70</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;71</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;72</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;73</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * if true then all restrictions are run using AND, if false then all restrictions are run using OR &lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;74</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Currently searches are completely conjunctive (all ANDs) or disjunction (all ORs)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;75</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;76</td>
+  <td class="nbHitsCovered">&nbsp;480</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">boolean</span> conjunction = <span class="keyword">true</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;77</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;78</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * if true then all restrictions are run using AND, if false then all restrictions are run using OR</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;79</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Currently searches are completely conjunctive (all ANDs) or disjunction (all ORs)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;80</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;81</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">boolean</span> isConjunction() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;82</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">return</span> conjunction;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;83</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;84</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> setConjunction(<span class="keyword">boolean</span> conjunction) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;85</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.conjunction = conjunction;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;86</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;87</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;88</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;89</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Restrictions define limitations on the results of a search, e.g. propertyA &gt; 100 or property B = 'jump'&lt;br/&gt; You</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;90</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * can add as many restrictions as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;91</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;92</td>
+  <td class="nbHitsCovered">&nbsp;480</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">private</span> Restriction[] restrictions = <span class="keyword">new</span> Restriction[] {};</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;93</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;94</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Restrictions define limitations on the results of a search, e.g. propertyA &gt; 100 or property B = 'jump'&lt;br/&gt; You</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;95</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * can add as many restrictions as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;96</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;97</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Restriction[] getRestrictions() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;98</td>
+  <td class="nbHitsCovered">&nbsp;1258</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">return</span> restrictions;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;99</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;100</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> setRestrictions(Restriction[] restrictions) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;101</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.restrictions = restrictions;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;102</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;103</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;104</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;105</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Orders define the order of the returned results of a search, You can add as many orders as you like and they will</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;106</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;107</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;108</td>
+  <td class="nbHitsCovered">&nbsp;480</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">private</span> Order[] orders = <span class="keyword">new</span> Order[] {};</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;109</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;110</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Orders define the order of the returned results of a search, You can add as many orders as you like and they will</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;111</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;112</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;113</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Order[] getOrders() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;114</td>
+  <td class="nbHitsCovered">&nbsp;521</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">return</span> orders;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;115</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;116</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> setOrders(Order[] orders) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;117</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.orders = orders;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;118</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;119</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;120</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;121</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Defines a search query string which will be interpreted into search params,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;122</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * If not null this indicates that this is a string based "search"&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;123</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * The search string is just text - there is no required structure nor any fieldModifiers. It is a freeform string.&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;124</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Effectively the semantics are that it can be implemented in a relational database using </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;125</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * like clauses for the relevant text fields - or perhaps just submitted to lucene and see which entities match.&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;126</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * If this is being sent to lucene - things like order, and restrictions might actually be added to the </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;127</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * lucene query in addition to the simple search string.</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;128</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;129</td>
+  <td class="nbHitsCovered">&nbsp;480</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">private</span> String queryString = <span class="keyword">null</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;130</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;131</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Defines a search query string which will be interpreted into search params,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;132</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * If not null this indicates that this is a string based "search"&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;133</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * The search string is just text - there is no required structure nor any fieldModifiers. It is a freeform string.&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;134</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Effectively the semantics are that it can be implemented in a relational database using </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;135</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * like clauses for the relevant text fields - or perhaps just submitted to lucene and see which entities match.&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;136</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * If this is being sent to lucene - things like order, and restrictions might actually be added to the </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;137</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * lucene query in addition to the simple search string.</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;138</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;139</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> String getQueryString() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;140</td>
+  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">return</span> queryString;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;141</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;142</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> setQueryString(String queryString) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;143</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.queryString = queryString;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;144</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;145</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;146</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;147</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">// CONSTRUCTORS</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;148</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;149</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;150</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Empty constructor, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;151</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * if nothing is changed then this indicates that the search should return</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;152</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * all items in default order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;153</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;154</td>
+  <td class="nbHitsCovered">&nbsp;82</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search() {}</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;155</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;156</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;157</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Copy constructor&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;158</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Use this create a duplicate of a search object</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;159</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;160</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(Search search) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;161</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      copy(search, <span class="keyword">this</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;162</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;163</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;164</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;165</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Do a search using a query string&lt;br/&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;166</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param queryString a search query string,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;167</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * can be combined with other parts of the search object</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;168</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @see #queryString</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;169</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;170</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(String queryString) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;171</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.queryString = queryString;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;172</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;173</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;174</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;175</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Do a simple search of a single property which must equal a single value</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;176</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;177</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param property</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;178</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    *           the name of the field (property) in the persisted object</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;179</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param value</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;180</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    *           the value of the property (can be an array of items)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;181</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;182</td>
+  <td class="nbHitsCovered">&nbsp;263</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(String property, Object value) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;183</td>
+  <td class="nbHitsCovered">&nbsp;263</td>
+  <td class="src"><pre class="src">&nbsp;      restrictions = <span class="keyword">new</span> Restriction[] { <span class="keyword">new</span> Restriction(property, value) };</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;184</td>
+  <td class="nbHitsCovered">&nbsp;263</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;185</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;186</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;187</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Do a simple search of a single property with a single type of comparison</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;188</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;189</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param property</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;190</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    *           the name of the field (property) in the persisted object</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;191</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param value</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;192</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    *           the value of the property (can be an array of items)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;193</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param comparison the comparison to make between the property and the value,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;194</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * use the defined constants from {@link Restriction}: e.g. EQUALS, LIKE, etc...</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;195</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;196</td>
+  <td class="nbHitsCovered">&nbsp;99</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(String property, Object value, <span class="keyword">int</span> comparison) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;197</td>
+  <td class="nbHitsCovered">&nbsp;99</td>
+  <td class="src"><pre class="src">&nbsp;      restrictions = <span class="keyword">new</span> Restriction[] { <span class="keyword">new</span> Restriction(property, value, comparison) };</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;198</td>
+  <td class="nbHitsCovered">&nbsp;99</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;199</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;200</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;201</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Do a search of multiple properties which must equal corresponding values,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;202</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * all arrays should be the same length</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;203</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param properties the names of the properties of the object </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;204</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param values the values of the properties (can be an array of items)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;205</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;206</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(String[] properties, Object[] values) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;207</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      restrictions = <span class="keyword">new</span> Restriction[properties.length];</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;208</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; properties.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;209</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;         restrictions[i] = <span class="keyword">new</span> Restriction(properties[i], values[i]);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;210</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;211</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;212</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;213</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;214</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Do a search of multiple properties which must equal corresponding values,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;215</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * control whether to do an AND or an OR between restrictions,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;216</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * all arrays should be the same length</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;217</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param properties the names of the properties of the object </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;218</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param values the values of the properties (can be an array of items)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;219</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param conjunction if true then all restrictions are run using AND, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;220</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * if false then all restrictions are run using OR</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;221</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;222</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(String[] properties, Object[] values, <span class="keyword">boolean</span> conjunction) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;223</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      restrictions = <span class="keyword">new</span> Restriction[properties.length];</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;224</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; properties.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;225</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;         restrictions[i] = <span class="keyword">new</span> Restriction(properties[i], values[i]);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;226</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;227</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.conjunction = conjunction;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;228</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;229</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;230</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;231</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Do a search of multiple properties which are compared with corresponding values,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;232</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * all arrays should be the same length</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;233</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param properties the names of the properties of the object </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;234</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param values the values of the properties (can be an array of items)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;235</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param comparisons the comparison to make between the property and the value,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;236</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * use the defined constants from {@link Restriction}: e.g. EQUALS, LIKE, etc...</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;237</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;238</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(String[] properties, Object[] values, <span class="keyword">int</span>[] comparisons) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;239</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      restrictions = <span class="keyword">new</span> Restriction[properties.length];</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;240</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; properties.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;241</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;         restrictions[i] = <span class="keyword">new</span> Restriction(properties[i], values[i], comparisons[i]);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;242</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;243</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;244</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;245</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;246</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Do a search of multiple properties which are compared with corresponding values,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;247</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * all arrays should be the same length</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;248</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param properties the names of the properties of the object </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;249</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param values the values of the properties (can be an array of items)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;250</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param comparisons the comparison to make between the property and the value,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;251</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * use the defined constants from {@link Restriction}: e.g. EQUALS, LIKE, etc...</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;252</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param conjunction if true then all restrictions are run using AND, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;253</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * if false then all restrictions are run using OR</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;254</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;255</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(String[] properties, Object[] values, <span class="keyword">int</span>[] comparisons, <span class="keyword">boolean</span> conjunction) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;256</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      restrictions = <span class="keyword">new</span> Restriction[properties.length];</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;257</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; properties.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;258</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;         restrictions[i] = <span class="keyword">new</span> Restriction(properties[i], values[i], comparisons[i]);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;259</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;260</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.conjunction = conjunction;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;261</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;262</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;263</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;264</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Do a search of multiple properties which are compared with corresponding values,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;265</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * sort the returned results in ascending order defined by specific sortProperties,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;266</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * all arrays should be the same length</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;267</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param properties the names of the properties of the object </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;268</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param values the values of the properties (can be an array of items)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;269</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param comparisons the comparison to make between the property and the value,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;270</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * use the defined constants from {@link Restriction}: e.g. EQUALS, LIKE, etc...</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;271</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param orders orders to sort the returned results by</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;272</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;273</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(String[] properties, Object[] values, <span class="keyword">int</span>[] comparisons, Order[] orders) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;274</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      restrictions = <span class="keyword">new</span> Restriction[properties.length];</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;275</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; properties.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;276</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;         restrictions[i] = <span class="keyword">new</span> Restriction(properties[i], values[i], comparisons[i]);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;277</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;278</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.orders = orders;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;279</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;280</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;281</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;282</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Do a search of multiple properties which are compared with corresponding values,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;283</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * sort the returned results in ascending order defined by specific sortProperties,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;284</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * all arrays should be the same length</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;285</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param properties the names of the properties of the object </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;286</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param values the values of the properties (can be an array of items)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;287</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param comparisons the comparison to make between the property and the value,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;288</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * use the defined constants from {@link Restriction}: e.g. EQUALS, LIKE, etc...</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;289</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param orders orders to sort the returned results by</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;290</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param firstResult the index of the first persisted result object to be retrieved (numbered from 0)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;291</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param maxResults the maximum number of persisted result objects to retrieve (or &lt;=0 for no limit)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;292</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;293</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(String[] properties, Object[] values, <span class="keyword">int</span>[] comparisons, </pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;294</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;         Order[] orders, <span class="keyword">long</span> firstResult, <span class="keyword">long</span> maxResults) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;295</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      restrictions = <span class="keyword">new</span> Restriction[properties.length];</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;296</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; properties.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;297</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;         restrictions[i] = <span class="keyword">new</span> Restriction(properties[i], values[i], comparisons[i]);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;298</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;299</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.orders = orders;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;300</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.start = firstResult;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;301</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.limit = maxResults;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;302</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;303</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;304</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;305</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Defines a search which defines only a single restriction,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;306</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * defaults to AND restriction comparison and returning all results</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;307</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param restriction define the limitations on the results of a search, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;308</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * e.g. propertyA &gt; 100 or property B = 'jump'&lt;br/&gt; </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;309</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * You can add as many restrictions as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;310</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;311</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(Restriction restriction) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;312</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.restrictions = <span class="keyword">new</span> Restriction[] { restriction };</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;313</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;314</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;315</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;316</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Defines a search which defines only restrictions,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;317</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * defaults to AND restriction comparisons and returning all results</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;318</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param restrictions define the limitations on the results of a search, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;319</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * e.g. propertyA &gt; 100 or property B = 'jump'&lt;br/&gt; </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;320</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * You can add as many restrictions as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;321</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;322</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(Restriction[] restrictions) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;323</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.restrictions = restrictions;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;324</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;325</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;326</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;327</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Defines a search which defines only a single restriction and returns all items,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;328</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * defaults to AND restriction comparisons</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;329</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param restriction define the limitations on the results of a search, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;330</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * e.g. propertyA &gt; 100 or property B = 'jump'&lt;br/&gt; </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;331</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * You can add as many restrictions as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;332</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param order define the order of the returned results of a search (only one order)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;333</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;334</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(Restriction restriction, Order order) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;335</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.restrictions = <span class="keyword">new</span> Restriction[] { restriction };</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;336</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.orders = <span class="keyword">new</span> Order[] { order };</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;337</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;338</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;339</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;340</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Defines a search which defines restrictions and return ordering,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;341</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * defaults to AND restriction comparisons and returning all results</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;342</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param restrictions define the limitations on the results of a search, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;343</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * e.g. propertyA &gt; 100 or property B = 'jump'&lt;br/&gt; </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;344</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * You can add as many restrictions as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;345</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param order define the order of the returned results of a search (only one order)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;346</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;347</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(Restriction[] restrictions, Order order) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;348</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.restrictions = restrictions;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;349</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.orders = <span class="keyword">new</span> Order[] { order };</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;350</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;351</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;352</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;353</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Defines a search which defines restrictions and return ordering,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;354</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * defaults to AND restriction comparisons and returning all results</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;355</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param restrictions define the limitations on the results of a search, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;356</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * e.g. propertyA &gt; 100 or property B = 'jump'&lt;br/&gt; </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;357</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * You can add as many restrictions as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;358</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param orders define the order of the returned results of a search, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;359</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * You can add as many orders as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;360</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;361</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(Restriction[] restrictions, Order[] orders) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;362</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.restrictions = restrictions;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;363</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.orders = orders;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;364</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;365</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;366</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;367</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Defines a search which defines only a single restriction and limits the returns,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;368</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * defaults to AND restriction comparisons</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;369</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param restriction define the limitations on the results of a search, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;370</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * e.g. propertyA &gt; 100 or property B = 'jump'&lt;br/&gt; </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;371</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * You can add as many restrictions as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;372</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param order define the order of the returned results of a search (only one order)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;373</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param start the index of the first persisted result object to be retrieved (numbered from 0)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;374</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param limit the maximum number of persisted result objects to retrieve (or &lt;=0 for no limit)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;375</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;376</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(Restriction restriction, Order order, <span class="keyword">long</span> start, <span class="keyword">long</span> limit) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;377</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.restrictions = <span class="keyword">new</span> Restriction[] { restriction };</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;378</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.orders = <span class="keyword">new</span> Order[] { order };</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;379</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.start = start;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;380</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.limit = limit;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;381</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;382</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;383</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;384</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Defines a search which defines restrictions and return ordering and limits the returns,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;385</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * defaults to AND restriction comparisons</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;386</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param restrictions define the limitations on the results of a search, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;387</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * e.g. propertyA &gt; 100 or property B = 'jump'&lt;br/&gt; </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;388</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * You can add as many restrictions as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;389</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param order define the order of the returned results of a search (only one order)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;390</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param start the index of the first persisted result object to be retrieved (numbered from 0)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;391</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param limit the maximum number of persisted result objects to retrieve (or &lt;=0 for no limit)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;392</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;393</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   <span class="keyword">public</span> Search(Restriction[] restrictions, Order order, <span class="keyword">long</span> start, <span class="keyword">long</span> limit) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;394</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">this</span>.restrictions = restrictions;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;395</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">this</span>.orders = <span class="keyword">new</span> Order[] { order };</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;396</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">this</span>.start = start;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;397</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">this</span>.limit = limit;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;398</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;   }</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;399</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;400</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;401</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Defines a search which defines restrictions and return ordering and limits the returns,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;402</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * defaults to AND restriction comparisons</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;403</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param restrictions define the limitations on the results of a search, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;404</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * e.g. propertyA &gt; 100 or property B = 'jump'&lt;br/&gt; </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;405</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * You can add as many restrictions as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;406</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param orders define the order of the returned results of a search, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;407</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * You can add as many orders as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;408</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param start the index of the first persisted result object to be retrieved (numbered from 0)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;409</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param limit the maximum number of persisted result objects to retrieve (or &lt;=0 for no limit)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;410</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;411</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(Restriction[] restrictions, Order[] orders, <span class="keyword">long</span> start, <span class="keyword">long</span> limit) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;412</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.restrictions = restrictions;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;413</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.orders = orders;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;414</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.start = start;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;415</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.limit = limit;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;416</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;417</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;418</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;419</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Defines a search which defines restrictions and return ordering and limits the returns,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;420</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * also specifies the types of restriction comparisons (AND or OR)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;421</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param restrictions define the limitations on the results of a search, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;422</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * e.g. propertyA &gt; 100 or property B = 'jump'&lt;br/&gt; </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;423</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * You can add as many restrictions as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;424</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param order define the order of the returned results of a search (only one order)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;425</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param start the index of the first persisted result object to be retrieved (numbered from 0)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;426</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param limit the maximum number of persisted result objects to retrieve (or &lt;=0 for no limit)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;427</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param conjunction if true then all restrictions are run using AND, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;428</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * if false then all restrictions are run using OR</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;429</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;430</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(Restriction[] restrictions, Order order, <span class="keyword">long</span> start, <span class="keyword">long</span> limit, <span class="keyword">boolean</span> conjunction) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;431</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.restrictions = restrictions;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;432</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.orders = <span class="keyword">new</span> Order[] { order };</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;433</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.start = start;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;434</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.limit = limit;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;435</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.conjunction = conjunction;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;436</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;437</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;438</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;439</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Defines a search which defines restrictions and return ordering and limits the returns,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;440</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * also specifies the types of restriction comparisons (AND or OR)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;441</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param restrictions define the limitations on the results of a search, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;442</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * e.g. propertyA &gt; 100 or property B = 'jump'&lt;br/&gt; </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;443</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * You can add as many restrictions as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;444</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param orders define the order of the returned results of a search, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;445</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * You can add as many orders as you like and they will be applied in the array order</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;446</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param start the index of the first persisted result object to be retrieved (numbered from 0)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;447</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param limit the maximum number of persisted result objects to retrieve (or &lt;=0 for no limit)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;448</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param conjunction if true then all restrictions are run using AND, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;449</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * if false then all restrictions are run using OR</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;450</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;451</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Search(Restriction[] restrictions, Order[] orders, <span class="keyword">long</span> start, <span class="keyword">long</span> limit, <span class="keyword">boolean</span> conjunction) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;452</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.restrictions = restrictions;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;453</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.orders = orders;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;454</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.start = start;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;455</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.limit = limit;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;456</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">this</span>.conjunction = conjunction;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;457</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;458</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;459</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">// HELPER methods</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;460</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;461</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;462</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param restriction add this restriction to the search filter,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;463</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * will replace an existing restriction for a similar property</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;464</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;465</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> addRestriction(Restriction restriction) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;466</td>
+  <td class="nbHitsCovered">&nbsp;27</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">if</span> (restrictions != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;467</td>
+  <td class="nbHitsCovered">&nbsp;27</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="keyword">int</span> location = contains(restrictions, restriction);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;468</td>
+  <td class="nbHitsCovered">&nbsp;27</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="keyword">if</span> (location &gt;= 0 </pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;469</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;               &amp;&amp; location &lt; restrictions.length) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;470</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            restrictions[location] = restriction;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;471</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         } <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;472</td>
+  <td class="nbHitsCovered">&nbsp;27</td>
+  <td class="src"><pre class="src">&nbsp;            restrictions = appendArray(restrictions, restriction);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;473</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;474</td>
+  <td class="nbHitsCovered">&nbsp;27</td>
+  <td class="src"><pre class="src">&nbsp;      } <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;475</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         restrictions = <span class="keyword">new</span> Restriction[] {restriction};</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;476</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;477</td>
+  <td class="nbHitsCovered">&nbsp;27</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;478</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;479</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;480</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param order add this order to the search filter,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;481</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * will replace an existing order for a similar property</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;482</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;483</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> addOrder(Order order) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;484</td>
+  <td class="nbHitsCovered">&nbsp;11</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">if</span> (orders != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;485</td>
+  <td class="nbHitsCovered">&nbsp;11</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="keyword">int</span> location = contains(orders, order);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;486</td>
+  <td class="nbHitsCovered">&nbsp;11</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="keyword">if</span> (location &gt;= 0 </pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;487</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;               &amp;&amp; location &lt; orders.length) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;488</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            orders[location] = order;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;489</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         } <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;490</td>
+  <td class="nbHitsCovered">&nbsp;11</td>
+  <td class="src"><pre class="src">&nbsp;            orders = appendArray(orders, order);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;491</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;492</td>
+  <td class="nbHitsCovered">&nbsp;11</td>
+  <td class="src"><pre class="src">&nbsp;      } <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;493</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         orders = <span class="keyword">new</span> Order[] {order};</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;494</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;495</td>
+  <td class="nbHitsCovered">&nbsp;11</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;496</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;497</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;498</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Convenient method to find restrictions by their property,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;499</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * if there happens to be more than one restriction with a property then</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;500</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * only the first one will be returned (since that is an invalid state)</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;501</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;502</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param property the property to match</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;503</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return the Restriction with this property or null if none found</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;504</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;505</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Restriction getRestrictionByProperty(String property) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;506</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      Restriction r = <span class="keyword">null</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;507</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (restrictions != <span class="keyword">null</span> &amp;&amp; property != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;508</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; restrictions.length; i++) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;509</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">if</span> (property.equals(restrictions[i].property)) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;510</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;               r = restrictions[i];</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;511</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;               <span class="keyword">break</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;512</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;513</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }         </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;514</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;515</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">return</span> r;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;516</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;517</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;518</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;519</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return a list of all the properties on all restrictions in this search filter object</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;520</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;521</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> List&lt;String&gt; getRestrictionsProperties() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;522</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      List&lt;String&gt; l = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;523</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">if</span> (restrictions != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;524</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; restrictions.length; i++) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;525</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            l.add(restrictions[i].property);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;526</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }         </pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;527</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }      </pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;528</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">return</span> l;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;529</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;530</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;531</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;532</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Finds if there are any search restrictions with one of the given properties, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;533</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * if so it returns the first of the found restriction,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;534</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * otherwise returns null</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;535</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;536</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param properties an array of the properties (e.g. 'name','age') to find a value for</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;537</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return the value OR null if none found</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;538</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;539</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Restriction getRestrictionByProperties(String[] properties) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;540</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;       Restriction togo = <span class="keyword">null</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;541</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;       <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; properties.length; i++) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;542</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;           String property = properties[i];</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;543</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;           Restriction r = <span class="keyword">this</span>.getRestrictionByProperty(property);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;544</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;           <span class="keyword">if</span> (r != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;545</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;               togo = r;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;546</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;               <span class="keyword">break</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;547</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;           }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;548</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;       }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;549</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;       <span class="keyword">return</span> togo;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;550</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;551</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;552</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;553</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Finds if there are any search restrictions with one of the given properties, </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;554</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * if so it returns the first non-null value in the found restrictions,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;555</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * otherwise returns null</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;556</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    *</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;557</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param properties an array of the properties (e.g. 'name','age') to find a value for</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;558</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return the value OR null if none found</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;559</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;560</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> Object getRestrictionValueByProperties(String[] properties) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;561</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;       Object value = <span class="keyword">null</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;562</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;       <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; properties.length; i++) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;563</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;           String property = properties[i];</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;564</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;           Restriction r = <span class="keyword">this</span>.getRestrictionByProperty(property);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;565</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;           <span class="keyword">if</span> (r != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;566</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;               <span class="keyword">if</span> (r.getValue() != <span class="keyword">null</span>) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;567</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                   value = r.getValue();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;568</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                   <span class="keyword">break</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;569</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;               }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;570</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;           }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;571</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;       }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;572</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;       <span class="keyword">return</span> value;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;573</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;574</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;575</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;576</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return true if this search has no defined restrictions and no orders</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;577</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * (i.e. this is a default search so return everything in default order),</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;578</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * false if there are any defined restrictions or orders</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;579</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;580</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">boolean</span> isEmpty() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;581</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">boolean</span> empty = <span class="keyword">false</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;582</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">if</span> ((restrictions == <span class="keyword">null</span> || restrictions.length == 0) </pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;583</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;            &amp;&amp; (orders == <span class="keyword">null</span> || orders.length == 0) </pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;584</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;            &amp;&amp; queryString == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;585</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;         empty = <span class="keyword">true</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;586</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;587</td>
+  <td class="nbHitsCovered">&nbsp;16</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">return</span> empty;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;588</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;589</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;590</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;591</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Resets the search object to empty state</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;592</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;593</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">void</span> reset() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;594</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      restrictions = <span class="keyword">new</span> Restriction[] {};</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;595</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      orders = <span class="keyword">new</span> Order[] {};</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;596</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      conjunction = <span class="keyword">false</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;597</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      queryString = <span class="keyword">null</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;598</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      start = 0;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;599</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      limit = 0;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;600</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;601</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;602</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;603</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Checks to see if an array contains a value,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;604</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * will return the position of the value or -1 if not found</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;605</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;606</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param &lt;T&gt;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;607</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param array any array of objects</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;608</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param value the value to check for</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;609</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return array position if found, -1 if not found</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;610</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;611</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="keyword">int</span> contains(T[] array, T value) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;612</td>
+  <td class="nbHitsCovered">&nbsp;38</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">int</span> position = -1;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;613</td>
+  <td class="nbHitsCovered">&nbsp;38</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">if</span> (value != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;614</td>
+  <td class="nbHitsCovered">&nbsp;38</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; array.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;615</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">if</span> (value.equals(array[i])) {</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;616</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;               position = i;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;617</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;               <span class="keyword">break</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;618</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;619</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;620</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;621</td>
+  <td class="nbHitsCovered">&nbsp;38</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">return</span> position;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;622</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;623</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;624</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;625</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Append an item to the end of an array and return the new array</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;626</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * </span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;627</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param array an array of items</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;628</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param value the item to append to the end of the new array</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;629</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return a new array with value in the last spot</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;630</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;631</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   @SuppressWarnings(<span class="string">"unchecked"</span>)</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;632</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T[] appendArray(T[] array, T value) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;633</td>
+  <td class="nbHitsCovered">&nbsp;38</td>
+  <td class="src"><pre class="src">&nbsp;      Class&lt;?&gt; type = array.getClass().getComponentType();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;634</td>
+  <td class="nbHitsCovered">&nbsp;38</td>
+  <td class="src"><pre class="src">&nbsp;      T[] newArray = (T[]) Array.newInstance(type, array.length + 1);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;635</td>
+  <td class="nbHitsCovered">&nbsp;38</td>
+  <td class="src"><pre class="src">&nbsp;      System.arraycopy( array, 0, newArray, 0, array.length );</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;636</td>
+  <td class="nbHitsCovered">&nbsp;38</td>
+  <td class="src"><pre class="src">&nbsp;      newArray[newArray.length-1] = value;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;637</td>
+  <td class="nbHitsCovered">&nbsp;38</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">return</span> newArray;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;638</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;639</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;640</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;641</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Utility method to convert an array to a string</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;642</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param array any array</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;643</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return a string version of the array</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;644</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;645</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">static</span> String arrayToString(Object[] array) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;646</td>
+  <td class="nbHitsCovered">&nbsp;384</td>
+  <td class="src"><pre class="src">&nbsp;      StringBuilder result = <span class="keyword">new</span> StringBuilder();</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;647</td>
+  <td class="nbHitsCovered">&nbsp;384</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">if</span> (array != <span class="keyword">null</span> &amp;&amp; array.length &gt; 0) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;648</td>
+  <td class="nbHitsCovered">&nbsp;457</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; array.length; i++) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;649</td>
+  <td class="nbHitsCovered">&nbsp;236</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (i &gt; 0) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;650</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
+  <td class="src"><pre class="src">&nbsp;               result.append(<span class="string">","</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;651</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;652</td>
+  <td class="nbHitsCovered">&nbsp;236</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (array[i] != <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;653</td>
+  <td class="nbHitsCovered">&nbsp;236</td>
+  <td class="src"><pre class="src">&nbsp;               result.append(array[i].toString());</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;654</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;655</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;         }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;656</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;657</td>
+  <td class="nbHitsCovered">&nbsp;384</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">return</span> result.toString();</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;658</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;659</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;660</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   @Override</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;661</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">protected</span> Object clone() <span class="keyword">throws</span> CloneNotSupportedException {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;662</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;      <span class="keyword">return</span> copy(<span class="keyword">this</span>, <span class="keyword">null</span>);</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;663</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;664</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;665</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="comment">/**</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;666</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * Make a copy of a search object</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;667</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param original the search object to copy</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;668</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @param copy the search object make equivalent to the original,</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;669</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * can be null to generate a new one</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;670</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    * @return the copy of the original</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;671</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">    */</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;672</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">static</span> Search copy(Search original, Search copy) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;673</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">if</span> (copy == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;674</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         copy = <span class="keyword">new</span> Search();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;675</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;676</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      copy.setStart(original.getStart());</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;677</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      copy.setLimit(original.getLimit());</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;678</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      copy.setConjunction(original.isConjunction());</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;679</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      copy.setQueryString(original.getQueryString());</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;680</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="comment">// TODO probably need to copy the arrays here</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;681</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      copy.setRestrictions(original.getRestrictions());</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;682</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      copy.setOrders(original.getOrders());</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;683</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">return</span> copy;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;684</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;685</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;686</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   @Override</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;687</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">boolean</span> equals(Object obj) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;688</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">if</span> (<span class="keyword">null</span> == obj)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;689</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">return</span> <span class="keyword">false</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;690</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> Search))</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;691</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">return</span> <span class="keyword">false</span>;</span></pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;692</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">else</span> {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;693</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;         Search castObj = (Search) obj;</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;694</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="keyword">boolean</span> eq = <span class="keyword">this</span>.start == castObj.start</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;695</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;               &amp;&amp; <span class="keyword">this</span>.limit == castObj.limit</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;696</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;               &amp;&amp; <span class="keyword">this</span>.conjunction == castObj.conjunction</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;697</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;               &amp;&amp; (<span class="keyword">this</span>.queryString == <span class="keyword">null</span> ? castObj.queryString == <span class="keyword">null</span> : <span class="keyword">this</span>.queryString.equals(castObj.queryString))</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;698</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;               &amp;&amp; Arrays.deepEquals(<span class="keyword">this</span>.restrictions, castObj.restrictions)</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;699</td>
+  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="src"><pre class="src">&nbsp;               &amp;&amp; Arrays.deepEquals(<span class="keyword">this</span>.orders, castObj.orders);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;700</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;         <span class="keyword">return</span> eq;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;701</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;      }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;702</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;703</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;704</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   @Override</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;705</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> <span class="keyword">int</span> hashCode() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;706</td>
+  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">if</span> (<span class="keyword">this</span>.isEmpty())</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;707</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;         <span class="keyword">return</span> <span class="keyword">super</span>.hashCode();</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;708</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;      String hashStr = <span class="keyword">this</span>.getClass().getName() + <span class="string">":"</span> + <span class="keyword">this</span>.start + <span class="string">":"</span> + <span class="keyword">this</span>.limit + <span class="string">":"</span> + <span class="keyword">this</span>.conjunction + <span class="string">":"</span></pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;709</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;         + <span class="keyword">this</span>.queryString + <span class="string">":"</span> + arrayToString(restrictions) + <span class="string">":"</span> + arrayToString(orders);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;710</td>
+  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">return</span> hashStr.hashCode();</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;711</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;712</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;713</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   @Override</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;714</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   <span class="keyword">public</span> String toString() {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;715</td>
+  <td class="nbHitsCovered">&nbsp;187</td>
+  <td class="src"><pre class="src">&nbsp;      <span class="keyword">return</span> <span class="string">"search::start:"</span> + start + <span class="string">",limit:"</span> + limit + <span class="string">",conj:"</span> + conjunction + <span class="string">",query:"</span> + queryString </pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;716</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;         + <span class="string">",restricts:"</span> + arrayToString(restrictions) + <span class="string">",orders:"</span> + arrayToString(orders);</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;717</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;   }</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;718</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;719</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;}</pre></td>
+</tr>
+</table>
+<div class="footer">
+Reports generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a>.
+</div>
+</body>
+</html>
