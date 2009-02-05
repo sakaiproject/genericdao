@@ -55,12 +55,13 @@ public class ThreadboundConnectionsDataSourceWrapper implements DataSource {
     public ThreadboundConnectionsDataSourceWrapper(DataSource dataSource, boolean autoCommitConnection) {
         this.dataSource = dataSource;
         this.autoCommitConnection = autoCommitConnection;
-        // add shutdown hook
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            public void run() {
-                clearConnection();
-            }
-        });
+        // removed this because it was causing problems
+//        // add shutdown hook
+//        Runtime.getRuntime().addShutdownHook(new Thread() {
+//            public void run() {
+//                clearConnection();
+//            }
+//        });
     }
 
     private boolean autoCommitConnection = false;
