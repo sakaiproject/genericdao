@@ -366,8 +366,11 @@ public class SimpleDataMapper implements DataMapper {
             throw new IllegalArgumentException("Must include at least one type in the types array");
         }
         HashMap<String, String> dbTypeToFile = new HashMap<String, String>();
+        // As this will be used on the classpath, and may be used to reference packages inside JARs,
+        // we do NOT use File.separator, as that will only work for unpackaged resources.
+        // Always using "/" will work for both packaged and unpackaged content - on any platform
         for (String type : types) {
-            dbTypeToFile.put(type, type.toLowerCase() + File.separator + fileName);
+            dbTypeToFile.put(type, type.toLowerCase() + "/" + fileName);
         }
         return dbTypeToFile;
     }
@@ -396,13 +399,19 @@ public class SimpleDataMapper implements DataMapper {
         if (prefixPath == null) {
             prefixPath = "";
         } else {
-            if (! prefixPath.endsWith(File.separator)) {
-                prefixPath += File.separator;
+            // As this will be used on the classpath, and may be used to reference packages inside JARs,
+            // we do NOT use File.separator, as that will only work for unpackaged resources.
+            // Always using "/" will work for both packaged and unpackaged content - on any platform
+            if (!"/".equals(File.separator) && prefixPath.endsWith(File.separator)) {
+                prefixPath = prefixPath.substring(0, prefixPath.length() - 1);
+            }
+            if (! prefixPath.endsWith("/")) {
+                prefixPath += "/";
             }
         }
         for (int i = 0; i < dbTypes.length; i++) {
             String type = dbTypes[i];
-            dbTypeToFile.put(type, prefixPath + type.toLowerCase() + File.separator + fileName);
+            dbTypeToFile.put(type, prefixPath + type.toLowerCase() + "/" + fileName);
         }
         return dbTypeToFile;
     }
