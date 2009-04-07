@@ -34,122 +34,174 @@ import org.springframework.util.ClassUtils;
  * @author Aaron Zeckoski (azeckoski@gmail.com)
  */
 public class CurrentClassLoaderBeanNameAutoProxyCreator extends BeanNameAutoProxyCreator {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected ClassLoader myClassLoader = CurrentClassLoaderBeanNameAutoProxyCreator.class.getClassLoader();
+    protected ClassLoader myClassLoader = CurrentClassLoaderBeanNameAutoProxyCreator.class.getClassLoader();
 
-	/*** only works with Spring 2.0.x
-   @Override
-   public void setBeanClassLoader(ClassLoader classLoader) {
-      // this is basically ignoring the input classLoader and setting it to the one
-      // which this class is currently part of
-      super.setBeanClassLoader(myClassLoader);
-   }
-	 ***/
+    protected boolean spring12x = false;
+    protected boolean spring20x = false;
 
-	// below needed to make this work with spring 1.2.8
-	private boolean freezeProxy = false;
-	@Override
-	public void setFrozen(boolean frozen) {
-		this.freezeProxy = frozen;
-	}
-	@Override
-	public boolean isFrozen() {
-		return this.freezeProxy;
-	}
+    public CurrentClassLoaderBeanNameAutoProxyCreator() {
+        super();
+        try {
+            // only works with Spring 2.5.x - from Zach Thomas
+            super.setProxyClassLoader(myClassLoader);
+        } catch (Exception e) {
+            System.out.println("Warning: Spring 2.5.x method (setProxyClassLoader) not found, falling back to spring 2.0.x method");
+            // try the spring 2.0.x version now
+            try {
+                setBeanClassLoader(myClassLoader);
+                spring20x = true;
+            } catch (Exception e1) {
+                System.out.println("Warning: Spring 2.0.x method (setBeanClassLoader) not found, falling back to spring 1.2.x method");
+                spring12x = true;
+            }
+        }
+    }
 
-	protected String[] interceptorNames = new String[0];
-	@Override
-	public void setInterceptorNames(String[] interceptorNames) {
-		this.interceptorNames = interceptorNames;
-	}
+    /*** only works with Spring 2.0.x **/
+    @Override
+    public void setBeanClassLoader(ClassLoader classLoader) {
+        if (spring20x) {
+            // this is basically ignoring the input classLoader and setting it to the one
+            // which this class is currently part of
+            super.setBeanClassLoader(myClassLoader);
+        } else {
+            super.setBeanClassLoader(classLoader);
+        }
+    }
 
-	private AdvisorAdapterRegistry advisorAdapterRegistry = GlobalAdvisorAdapterRegistry.getInstance();
-	@Override
-	public void setAdvisorAdapterRegistry(AdvisorAdapterRegistry advisorAdapterRegistry) {
-		this.advisorAdapterRegistry = advisorAdapterRegistry;
-	}
+    // below needed to make this work with spring 1.2.8
+    private boolean freezeProxy = false;
+    @Override
+    public void setFrozen(boolean frozen) {
+        if (spring12x) {
+            this.freezeProxy = frozen;
+        } else {
+            super.setFrozen(frozen);
+        }
+    }
 
-	private boolean applyCommonInterceptorsFirst = true;
-	@Override
-	public void setApplyCommonInterceptorsFirst(boolean applyCommonInterceptorsFirst) {
-		this.applyCommonInterceptorsFirst = applyCommonInterceptorsFirst;
-	}
+    @Override
+    public boolean isFrozen() {
+        if (spring12x) {
+            return this.freezeProxy;
+        } else {
+            return super.isFrozen();
+        }
+    }
 
-	@SuppressWarnings("unchecked")
-	protected boolean shouldProxyTargetClass(Class beanClass, String beanName) {
-		// note that we are ignoring the ConfigurableListableBeanFactory check
-		return isProxyTargetClass();
-	}
+    protected String[] interceptorNames = new String[0];
+    @Override
+    public void setInterceptorNames(String[] interceptorNames) {
+        if (spring12x) {
+            this.interceptorNames = interceptorNames;
+        } else {
+            super.setInterceptorNames(interceptorNames);
+        }
+    }
 
-	private Advisor[] resolveInterceptorNames() {
-		Advisor[] advisors = new Advisor[this.interceptorNames.length];
-		for (int i = 0; i < this.interceptorNames.length; i++) {
-			Object next = getBeanFactory().getBean(this.interceptorNames[i]);
-			advisors[i] = this.advisorAdapterRegistry.wrap(next);
-		}
-		return advisors;
-	}
+    private AdvisorAdapterRegistry advisorAdapterRegistry = GlobalAdvisorAdapterRegistry.getInstance();
+    @Override
+    public void setAdvisorAdapterRegistry(AdvisorAdapterRegistry advisorAdapterRegistry) {
+        if (spring12x) {
+            this.advisorAdapterRegistry = advisorAdapterRegistry;
+        } else {
+            super.setAdvisorAdapterRegistry(advisorAdapterRegistry);
+        }
+    }
 
-	@SuppressWarnings("unchecked")
-	protected Advisor[] buildAdvisors(String beanName, Object[] specificInterceptors) {
-		// Handle prototypes correctly...
-		Advisor[] commonInterceptors = resolveInterceptorNames();
+    private boolean applyCommonInterceptorsFirst = true;
+    @Override
+    public void setApplyCommonInterceptorsFirst(boolean applyCommonInterceptorsFirst) {
+        if (spring12x) {
+            this.applyCommonInterceptorsFirst = applyCommonInterceptorsFirst;
+        } else {
+            super.setApplyCommonInterceptorsFirst(applyCommonInterceptorsFirst);
+        }
+    }
 
-		List allInterceptors = new ArrayList();
-		if (specificInterceptors != null) {
-			allInterceptors.addAll(Arrays.asList(specificInterceptors));
-			if (commonInterceptors != null) {
-				if (this.applyCommonInterceptorsFirst) {
-					allInterceptors.addAll(0, Arrays.asList(commonInterceptors));
-				}
-				else {
-					allInterceptors.addAll(Arrays.asList(commonInterceptors));
-				}
-			}
-		}
-		//      if (logger.isDebugEnabled()) {
-			//         int nrOfCommonInterceptors = (commonInterceptors != null ? commonInterceptors.length : 0);
-		//         int nrOfSpecificInterceptors = (specificInterceptors != null ? specificInterceptors.length : 0);
-		//         logger.debug("Creating implicit proxy for bean '" + beanName + "' with " + nrOfCommonInterceptors +
-		//               " common interceptors and " + nrOfSpecificInterceptors + " specific interceptors");
-		//      }
+    @SuppressWarnings("unchecked")
+    @Override
+    protected boolean shouldProxyTargetClass(Class beanClass, String beanName) {
+        if (spring12x) {
+            // note that we are ignoring the ConfigurableListableBeanFactory check
+            return isProxyTargetClass();
+        } else {
+            return super.shouldProxyTargetClass(beanClass, beanName);
+        }
+    }
 
-		Advisor[] advisors = new Advisor[allInterceptors.size()];
-		for (int i = 0; i < allInterceptors.size(); i++) {
-			advisors[i] = this.advisorAdapterRegistry.wrap(allInterceptors.get(i));
-		}
-		return advisors;
-	}
+    private Advisor[] resolveInterceptorNames() {
+        Advisor[] advisors = new Advisor[this.interceptorNames.length];
+        for (int i = 0; i < this.interceptorNames.length; i++) {
+            Object next = getBeanFactory().getBean(this.interceptorNames[i]);
+            advisors[i] = this.advisorAdapterRegistry.wrap(next);
+        }
+        return advisors;
+    }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	protected Object createProxy(
-			Class beanClass, String beanName, Object[] specificInterceptors, TargetSource targetSource) {
+    @SuppressWarnings("unchecked")
+    @Override
+    protected Advisor[] buildAdvisors(String beanName, Object[] specificInterceptors) {
+        if (spring12x) {
+            // Handle prototypes correctly...
+            Advisor[] commonInterceptors = resolveInterceptorNames();
 
-		ProxyFactory proxyFactory = new ProxyFactory();
-		// Copy our properties (proxyTargetClass etc) inherited from ProxyConfig.
-		proxyFactory.copyFrom(this);
+            List allInterceptors = new ArrayList();
+            if (specificInterceptors != null) {
+                allInterceptors.addAll(Arrays.asList(specificInterceptors));
+                if (commonInterceptors != null) {
+                    if (this.applyCommonInterceptorsFirst) {
+                        allInterceptors.addAll(0, Arrays.asList(commonInterceptors));
+                    }
+                    else {
+                        allInterceptors.addAll(Arrays.asList(commonInterceptors));
+                    }
+                }
+            }
 
-		if (!shouldProxyTargetClass(beanClass, beanName)) {
-			// Must allow for introductions; can't just set interfaces to
-			// the target's interfaces only.
-			Class[] targetInterfaces = ClassUtils.getAllInterfacesForClass(beanClass);
-			for (int i = 0; i < targetInterfaces.length; i++) {
-				proxyFactory.addInterface(targetInterfaces[i]);
-			}
-		}
+            Advisor[] advisors = new Advisor[allInterceptors.size()];
+            for (int i = 0; i < allInterceptors.size(); i++) {
+                advisors[i] = this.advisorAdapterRegistry.wrap(allInterceptors.get(i));
+            }
+            return advisors;
+        } else {
+            return super.buildAdvisors(beanName, specificInterceptors);
+        }
+    }
 
-		Advisor[] advisors = buildAdvisors(beanName, specificInterceptors);
-		for (int i = 0; i < advisors.length; i++) {
-			proxyFactory.addAdvisor(advisors[i]);
-		}
+    @SuppressWarnings("unchecked")
+    @Override
+    protected Object createProxy(
+            Class beanClass, String beanName, Object[] specificInterceptors, TargetSource targetSource) {
+        if (spring12x) {
+            ProxyFactory proxyFactory = new ProxyFactory();
+            // Copy our properties (proxyTargetClass etc) inherited from ProxyConfig.
+            proxyFactory.copyFrom(this);
 
-		proxyFactory.setTargetSource(targetSource);
-		customizeProxyFactory(proxyFactory);
+            if (!shouldProxyTargetClass(beanClass, beanName)) {
+                // Must allow for introductions; can't just set interfaces to
+                // the target's interfaces only.
+                Class[] targetInterfaces = ClassUtils.getAllInterfacesForClass(beanClass);
+                for (int i = 0; i < targetInterfaces.length; i++) {
+                    proxyFactory.addInterface(targetInterfaces[i]);
+                }
+            }
 
-		proxyFactory.setFrozen(this.freezeProxy);
-		return proxyFactory.getProxy(myClassLoader);
-	}
+            Advisor[] advisors = buildAdvisors(beanName, specificInterceptors);
+            for (int i = 0; i < advisors.length; i++) {
+                proxyFactory.addAdvisor(advisors[i]);
+            }
+
+            proxyFactory.setTargetSource(targetSource);
+            customizeProxyFactory(proxyFactory);
+
+            proxyFactory.setFrozen(this.freezeProxy);
+            return proxyFactory.getProxy(myClassLoader);
+        } else {
+            return super.createProxy(beanClass, beanName, specificInterceptors, targetSource);
+        }
+    }
 
 }
