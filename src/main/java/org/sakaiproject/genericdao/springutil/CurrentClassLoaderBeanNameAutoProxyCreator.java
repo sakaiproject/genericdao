@@ -43,7 +43,6 @@ public class CurrentClassLoaderBeanNameAutoProxyCreator extends BeanNameAutoProx
     protected boolean spring20x = false;
 
     public CurrentClassLoaderBeanNameAutoProxyCreator() {
-        super();
         try {
             // only works with Spring 2.5.x - from Zach Thomas
             super.setProxyClassLoader(myClassLoader);
