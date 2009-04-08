@@ -33,7 +33,6 @@ public class CurrentClassLoaderTxProxyFactoryBean extends TransactionProxyFactor
     protected boolean spring20x = false;
 
 	public CurrentClassLoaderTxProxyFactoryBean() {
-	    super();
 	    try {
 	        // only works with Spring 2.5.x - from Zach Thomas
 	        super.setProxyClassLoader(myClassLoader);
