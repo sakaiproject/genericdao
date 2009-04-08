@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import org.azeckoski.reflectutils.ArrayUtils;
 import org.sakaiproject.genericdao.api.interceptors.ReadInterceptor;
 import org.sakaiproject.genericdao.api.interceptors.WriteInterceptor;
 import org.sakaiproject.genericdao.api.search.Search;
@@ -95,7 +96,7 @@ public class BasicDataInterceptor implements ReadInterceptor, WriteInterceptor {
       setLasts("beforeWrite", operation, ids, null, entities, 0);
    }
 
-   public class Intercept {
+   public static class Intercept {
       public String intercept;
       public String operation;
       public Serializable[] ids;
@@ -106,14 +107,15 @@ public class BasicDataInterceptor implements ReadInterceptor, WriteInterceptor {
             Object[] entities, int changes) {
          this.intercept = intercept;
          this.operation = operation;
-         this.ids = ids;
+         this.ids = ids != null ? ArrayUtils.copy(ids) : null;
          this.search = search;
-         this.entities = entities;
+         this.entities = entities != null ? ArrayUtils.copy(entities) : null;
          this.changes = changes;
       }
       @Override
       public String toString() {
-         return "intercept=" + intercept + ",operation=" + operation + ",ids=" + ids + ",search=" + search + ",changes=" + changes;
+         return "intercept=" + intercept + ",operation=" + operation + ",ids=" 
+             + ArrayUtils.arrayToString(ids) + ",search=" + search + ",changes=" + changes;
       }
    }
 

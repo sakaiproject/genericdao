@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.azeckoski.reflectutils.ArrayUtils;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.TargetSource;
 import org.springframework.aop.framework.ProxyFactory;
@@ -36,7 +37,7 @@ import org.springframework.util.ClassUtils;
 public class CurrentClassLoaderBeanNameAutoProxyCreator extends BeanNameAutoProxyCreator {
     private static final long serialVersionUID = 1L;
 
-    protected ClassLoader myClassLoader = CurrentClassLoaderBeanNameAutoProxyCreator.class.getClassLoader();
+    protected transient ClassLoader myClassLoader = CurrentClassLoaderBeanNameAutoProxyCreator.class.getClassLoader();
 
     protected boolean spring12x = false;
     protected boolean spring20x = false;
@@ -95,7 +96,7 @@ public class CurrentClassLoaderBeanNameAutoProxyCreator extends BeanNameAutoProx
     @Override
     public void setInterceptorNames(String[] interceptorNames) {
         if (spring12x) {
-            this.interceptorNames = interceptorNames;
+            this.interceptorNames = ArrayUtils.copy(interceptorNames);
         } else {
             super.setInterceptorNames(interceptorNames);
         }

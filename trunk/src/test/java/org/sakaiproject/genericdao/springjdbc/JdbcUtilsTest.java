@@ -92,27 +92,27 @@ public class JdbcUtilsTest extends TestCase {
     */
    public void testMakeEntityFromMap() {
       Map<String, Object> data = new HashMap<String, Object>();
-      data.put("GTO_ID", new Long(10));
+      data.put("GTO_ID", Long.valueOf(10));
       data.put("GTO_TITLE", "TEST");
       data.put("GTO_HIDDEN", false);
 
       GenericTestObject gto = dao.makeEntityFromMap(GenericTestObject.class, data);
       assertNotNull(gto);
-      assertEquals(new Long(10), gto.getId());
+      assertEquals(Long.valueOf(10), gto.getId());
       assertEquals("TEST", gto.getTitle());
       assertEquals(Boolean.FALSE, gto.getHiddenItem());
 
       data = new HashMap<String, Object>();
-      data.put("UID", new Long(50));
+      data.put("UID", Long.valueOf(50));
       data.put("TITLE", "TESTING");
-      data.put("GTO", new Long(100));
+      data.put("GTO", Long.valueOf(100));
 
       GenericTestParentObject gtpo = dao.makeEntityFromMap(GenericTestParentObject.class, data);
       assertNotNull(gtpo);
-      assertEquals(new Long(50), gtpo.getUid());
+      assertEquals(Long.valueOf(50), gtpo.getUid());
       assertEquals("TESTING", gtpo.getTitle());
       assertNotNull(gtpo.getGto());
-      assertEquals(new Long(100), gtpo.getGto().getId());
+      assertEquals(Long.valueOf(100), gtpo.getGto().getId());
 
    }
 
@@ -121,23 +121,23 @@ public class JdbcUtilsTest extends TestCase {
     */
    public void testMakeMapFromEntity() {
       GenericTestObject gto = new GenericTestObject("TEST", false);
-      gto.setId( new Long(10) );
+      gto.setId( Long.valueOf(10) );
 
       Map<String, Object> data = dao.makeMapFromEntity(gto);
       assertNotNull(data);
-      assertEquals(new Long(10), data.get("GTO_ID"));
+      assertEquals(Long.valueOf(10), data.get("GTO_ID"));
       assertEquals("TEST", data.get("GTO_TITLE"));
       assertEquals(false, data.get("GTO_HIDDEN"));
 
       GenericTestParentObject gtpo = new GenericTestParentObject("TESTING", gto);
-      gtpo.setUid( new Long(100) );
+      gtpo.setUid( Long.valueOf(100) );
 
       data = dao.makeMapFromEntity(gtpo);
       assertNotNull(data);
-      assertEquals(new Long(100), data.get("UID"));
+      assertEquals(Long.valueOf(100), data.get("UID"));
       assertEquals("TESTING", data.get("TITLE"));
       assertNotNull(data.get("GTO"));
-      assertEquals(new Long(10), data.get("GTO") );
+      assertEquals(Long.valueOf(10), data.get("GTO") );
    }
 
    /**
@@ -145,16 +145,16 @@ public class JdbcUtilsTest extends TestCase {
     */
    public void testGetIdValue() {
       GenericTestObject gto = new GenericTestObject();
-      gto.setId( new Long(100) );
+      gto.setId( Long.valueOf(100) );
       Object value = dao.getIdValue(gto);
       assertNotNull(value);
-      assertEquals(new Long(100), value);
+      assertEquals(Long.valueOf(100), value);
 
       GenericTestParentObject gtpo = new GenericTestParentObject();
-      gtpo.setUid( new Long(555) );
+      gtpo.setUid( Long.valueOf(555) );
       value = dao.getIdValue(gtpo);
       assertNotNull(value);
-      assertEquals(new Long(555), value);
+      assertEquals(Long.valueOf(555), value);
    }
 
    /**

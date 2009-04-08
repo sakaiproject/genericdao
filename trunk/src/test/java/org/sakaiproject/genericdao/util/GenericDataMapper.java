@@ -25,19 +25,20 @@ import org.sakaiproject.genericdao.util.TypeReference;
  * will fail to work, if you are not defining any constructors you do not have to do anything,
  * if you decide to define some constructors then you must call super() in your constructor
  * 
+ * CURRENTLY NOT WORKING - failed experiment
+ * 
  * @author Aaron Zeckoski (azeckoski @ gmail.com)
  */
 public abstract class GenericDataMapper<T> implements DataMapper {
 
     private GenericType genTypeRef = new GenericType();
-    private TypeReference<T> typeRef = new TypeReference<T>() {};
+    //private TypeReference<T> typeRef = new TypeReference<T>() {};
 
     /* (non-Javadoc)
      * @see org.sakaiproject.genericdao.api.mappers.DataMapper#getPersistentType()
      */
     public Class<?> getPersistentType() {
-        @SuppressWarnings("unused")
-        Type t1 = typeRef.getType();
+        //Type t1 = typeRef.getType();
         Type t = genTypeRef.getType();
         return (Class<?>) t;
     }

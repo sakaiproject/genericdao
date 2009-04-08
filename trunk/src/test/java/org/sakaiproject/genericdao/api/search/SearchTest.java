@@ -177,18 +177,18 @@ public class SearchTest extends TestCase {
     * Test method for {@link org.sakaiproject.genericdao.api.search.Search#Search(java.lang.String, java.lang.Object)}.
     */
    public void testSearchStringObject() {
-      Search s = new Search("aaron", new Long(3));
+      Search s = new Search("aaron", Long.valueOf(3));
       assertNotNull(s);
-      assertEquals(s.getRestrictions()[0], new Restriction("aaron", new Long(3)));
+      assertEquals(s.getRestrictions()[0], new Restriction("aaron", Long.valueOf(3)));
    }
 
    /**
     * Test method for {@link org.sakaiproject.genericdao.api.search.Search#Search(java.lang.String, java.lang.Object, int)}.
     */
    public void testSearchStringObjectInt() {
-      Search s = new Search("aaron", new Long(3), Restriction.NOT_EQUALS);
+      Search s = new Search("aaron", Long.valueOf(3), Restriction.NOT_EQUALS);
       assertNotNull(s);
-      assertEquals(s.getRestrictions()[0], new Restriction("aaron", new Long(3), Restriction.NOT_EQUALS));
+      assertEquals(s.getRestrictions()[0], new Restriction("aaron", Long.valueOf(3), Restriction.NOT_EQUALS));
    }
 
    /**

@@ -23,7 +23,8 @@ import org.sakaiproject.genericdao.api.mappers.DataMapper;
  */
 public class OracleTranslator extends BasicTranslator {
 
-   public static String ORACLE_SEQ_PREFIX = "seq_ID_";
+   public final static String ORACLE_SEQ_PREFIX = "seq_ID_";
+
    public static String getOracleSeqName(String tableName) {
       return chopString(ORACLE_SEQ_PREFIX + tableName, 30);
    }

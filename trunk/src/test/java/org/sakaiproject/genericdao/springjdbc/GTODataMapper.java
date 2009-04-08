@@ -16,6 +16,7 @@ package org.sakaiproject.genericdao.springjdbc;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.sakaiproject.genericdao.api.mappers.DataMapper;
 import org.sakaiproject.genericdao.api.mappers.EntityColumnMapper;
@@ -51,8 +52,9 @@ public class GTODataMapper implements DataMapper, EntityColumnMapper {
 
    public Object mapColumnsToObject(Map<String, Object> columnsData) {
       GenericTestObject gto = new GenericTestObject();
-      for (String key : columnsData.keySet()) {
-         Object value = columnsData.get(key);
+      for (Entry<String, Object> entry : columnsData.entrySet()) {
+         String key = entry.getKey();
+         Object value = entry.getValue();
          if ("GTO_ID".equals(key)) {
             gto.setId((Long)value);
          } else if ("GTO_TITLE".equals(key)) {

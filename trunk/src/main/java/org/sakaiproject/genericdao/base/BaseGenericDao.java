@@ -109,6 +109,10 @@ public abstract class BaseGenericDao implements GenericDao {
    // COMMON CODE
 
    private List<Class<?>> classes;
+   protected void setClasses(List<Class<?>> classes) {
+      this.classes = classes;
+   }
+
    /**
     * This does a nice bit of exception handling for us and verifies that
     * this class is valid to perform a DAO operation with
