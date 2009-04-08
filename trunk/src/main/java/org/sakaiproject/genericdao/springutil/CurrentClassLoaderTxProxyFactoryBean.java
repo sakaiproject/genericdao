@@ -40,8 +40,8 @@ public class CurrentClassLoaderTxProxyFactoryBean extends TransactionProxyFactor
             System.out.println("Warning: Spring 2.5.x method (setProxyClassLoader) not found, falling back to spring 2.0.x method");
 	        // try the spring 2.0.x version now
 	        try {
+                spring20x = true;
 	            setBeanClassLoader(myClassLoader);
-	            spring20x = true;
 	        } catch (NoSuchMethodError e1) {
 	            System.out.println("Warning: Spring 2.0.x method (setBeanClassLoader) not found, falling back to spring 1.2.x method");
 	            spring12x = true;
