@@ -16,6 +16,7 @@ package org.sakaiproject.genericdao.springjdbc;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.sakaiproject.genericdao.api.mappers.DataMapper;
 import org.sakaiproject.genericdao.api.mappers.EntityColumnMapper;
@@ -74,8 +75,9 @@ public class GTPDataMapper implements DataMapper, EntityColumnMapper {
 
    public Object mapColumnsToObject(Map<String, Object> columnsData) {
       GenericTestParentObject gtpo = new GenericTestParentObject();
-      for (String key : columnsData.keySet()) {
-         Object value = columnsData.get(key);
+      for (Entry<String, Object> entry : columnsData.entrySet()) {
+         String key = entry.getKey();
+         Object value = entry.getValue();
          if ("GTP_ID".equals(key)) {
             gtpo.setUid((Long)value);
          } else if ("GTP_TITLE".equals(key)) {

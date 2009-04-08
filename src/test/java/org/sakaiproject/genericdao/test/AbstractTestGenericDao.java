@@ -69,7 +69,7 @@ public abstract class AbstractTestGenericDao extends AbstractTestBaseDao {
       assertNotNull(gto);
       assertEquals(gto, gto1);
 
-      gto = (GenericTestObject) genericDao.findById(GenericTestObject.class, new Long(9999999));
+      gto = (GenericTestObject) genericDao.findById(GenericTestObject.class, Long.valueOf(9999999));
       assertNull(gto);
 
       Long gtpoId = gtpo1.getUid();
@@ -102,7 +102,7 @@ public abstract class AbstractTestGenericDao extends AbstractTestBaseDao {
       assertEquals(gtoId, dataInterceptor.getLastIntercept().ids[0]);
 
       dataInterceptor.reset();
-      Long invalidId = new Long(9999999);
+      Long invalidId = Long.valueOf(9999999);
       gto = (GenericTestObject) genericDao.findById(GenericTestObject.class, invalidId);
       assertNull(gto);
       assertEquals(2, dataInterceptor.getIntercepts().size());
@@ -308,7 +308,7 @@ public abstract class AbstractTestGenericDao extends AbstractTestBaseDao {
       GenericTestObject gto = (GenericTestObject) genericDao.findById(GenericTestObject.class, gtoId);
       assertNull(gto);
 
-      b = genericDao.delete(GenericTestObject.class, new Long(-100));
+      b = genericDao.delete(GenericTestObject.class, Long.valueOf(-100));
       assertEquals(b, false);
    }
 

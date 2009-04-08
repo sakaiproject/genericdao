@@ -65,7 +65,7 @@ public class BasicMapCacheProvider implements CacheProvider {
       if (cacheName == null) {
          throw new IllegalArgumentException("cacheName cannot be null");
       }
-      if (! cache.containsKey(cache)) {
+      if (! cache.containsKey(cacheName)) {
          Map<String, Object> iCache = new HashMap<String, Object>();
          cache.put(cacheName, iCache);
          actionRecord.add("create:" + cacheName + ":new");

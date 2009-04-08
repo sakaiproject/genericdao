@@ -66,7 +66,7 @@ public abstract class AbstractTestBasicGenericDao extends AbstractTestBaseDao {
       assertEquals(1, count);
 
       count = genericDao.countBySearch(GenericTestParentObject.class, 
-            new Search( "gto.id", new Long(999999) ) );
+            new Search( "gto.id", Long.valueOf(999999) ) );
       assertEquals(0, count);
 
       count = genericDao.countBySearch(GenericTestParentObject.class, 
@@ -221,7 +221,7 @@ public abstract class AbstractTestBasicGenericDao extends AbstractTestBaseDao {
       assertTrue(pl.contains(gtpo2));
 
       pl = genericDao.findBySearch(GenericTestParentObject.class, 
-            new Search( "gto.id", new Long(10000000) ) );
+            new Search( "gto.id", Long.valueOf(10000000) ) );
       assertEquals(0, pl.size());
    }
 
@@ -287,7 +287,7 @@ public abstract class AbstractTestBasicGenericDao extends AbstractTestBaseDao {
       // now test the ability to deal with no results
       dataInterceptor.reset();
       l = genericDao.findBySearch(GenericTestObject.class, 
-            new Search( "id", new Long(9999999)) );
+            new Search( "id", Long.valueOf(9999999)) );
       assertEquals(0, l.size());
 
       assertEquals(2, dataInterceptor.getIntercepts().size());

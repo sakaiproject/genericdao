@@ -52,8 +52,8 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  */
 public class HibernateGenericDao extends HibernateDaoSupport implements GenericDao {
 
-   protected static String COUNTALL_QUERY = "select count(*) ";
-   protected static String START_QUERY = "from";
+   protected final static String COUNTALL_QUERY = "select count(*) ";
+   protected final static String START_QUERY = "from";
 
    /**
     * Set the list of persistent classes that this DAO will handle<br/>

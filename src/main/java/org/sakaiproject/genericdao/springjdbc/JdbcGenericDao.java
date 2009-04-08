@@ -361,7 +361,9 @@ public class JdbcGenericDao extends JdbcDaoSupport implements GenericDao {
             // create a names mapping using reflection
             nr = new NamesRecord();
             Map<String, Class<?>> types = reflectUtils.getFieldTypes(type, FieldsFilter.COMPLETE);
-            for (String property : types.keySet()) {
+            for (Entry<String, Class<?>> entry : types.entrySet()) {
+                String property = entry.getKey();
+                Class<?> pType = entry.getValue();
                 String column = property;
                 // check for transient annotation
                 try {
@@ -387,7 +389,6 @@ public class JdbcGenericDao extends JdbcDaoSupport implements GenericDao {
                 }
                 nr.setNameMapping(property, column);
                 // special handling for foreign keys identified by persistent types inside this object
-                Class<?> pType = types.get(property);
                 if (getPersistentClasses().contains(pType)) {
                     // this is another persistent object so this must be a foreign key
                     String pId = findIdProperty(pType);

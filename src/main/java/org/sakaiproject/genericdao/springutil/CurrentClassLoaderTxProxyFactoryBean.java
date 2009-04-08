@@ -27,7 +27,7 @@ import org.springframework.transaction.interceptor.TransactionProxyFactoryBean;
 public class CurrentClassLoaderTxProxyFactoryBean extends TransactionProxyFactoryBean {
 	private static final long serialVersionUID = 1L;
 
-	protected ClassLoader myClassLoader = CurrentClassLoaderTxProxyFactoryBean.class.getClassLoader();
+	protected transient ClassLoader myClassLoader = CurrentClassLoaderTxProxyFactoryBean.class.getClassLoader();
 
 	protected boolean spring12x = false;
     protected boolean spring20x = false;

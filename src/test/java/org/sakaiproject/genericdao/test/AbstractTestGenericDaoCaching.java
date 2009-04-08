@@ -53,14 +53,14 @@ public abstract class AbstractTestGenericDaoCaching extends AbstractTestBaseDao 
       gto = (GenericTestObject) genericDao.findById(GenericTestObject.class, gtoId);
       assertTrue( cacheProvider.getLastAction().startsWith("get:") );
 
-      gto = (GenericTestObject) genericDao.findById(GenericTestObject.class, new Long(9999999));
+      gto = (GenericTestObject) genericDao.findById(GenericTestObject.class, Long.valueOf(999999));
       assertNull(gto);
 
       assertTrue( cacheProvider.getLastAction().startsWith("put:") );
       assertEquals(2, cacheProvider.size(GenericTestObject.class.getName()));
-      gto = (GenericTestObject) genericDao.findById(GenericTestObject.class, new Long(9999999));
+      gto = (GenericTestObject) genericDao.findById(GenericTestObject.class, Long.valueOf(999999));
       assertTrue( cacheProvider.getLastAction().startsWith("get:") );
-      gto = (GenericTestObject) genericDao.findById(GenericTestObject.class, new Long(9999999));
+      gto = (GenericTestObject) genericDao.findById(GenericTestObject.class, Long.valueOf(999999));
       assertTrue( cacheProvider.getLastAction().startsWith("get:") );
 
       Long gtpoId = gtpo1.getUid();
@@ -72,8 +72,10 @@ public abstract class AbstractTestGenericDaoCaching extends AbstractTestBaseDao 
       assertTrue( cacheProvider.getLastAction().startsWith("put:") );
       assertEquals(1, cacheProvider.size(GenericTestParentObject.class.getName()));
       gtpo = (GenericTestParentObject) genericDao.findById(GenericTestParentObject.class, gtpoId);
+      assertNotNull(gtpo);
       assertTrue( cacheProvider.getLastAction().startsWith("get:") );
       gtpo = (GenericTestParentObject) genericDao.findById(GenericTestParentObject.class, gtpoId);
+      assertNotNull(gtpo);
       assertTrue( cacheProvider.getLastAction().startsWith("get:") );
    }
 
@@ -167,7 +169,7 @@ public abstract class AbstractTestGenericDaoCaching extends AbstractTestBaseDao 
       assertEquals(0, cacheProvider.size(GenericTestObject.class.getName()));
       assertEquals(2, cacheProvider.getActionRecord().size());
 
-      b = genericDao.delete(GenericTestObject.class, new Long(-100));
+      b = genericDao.delete(GenericTestObject.class, Long.valueOf(-100));
       assertEquals(b, false);
 
       // no cache action

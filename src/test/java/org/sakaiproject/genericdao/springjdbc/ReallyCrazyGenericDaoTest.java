@@ -32,8 +32,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  */
 public class ReallyCrazyGenericDaoTest extends AbstractTestCrazyGenericDao {
 
-    protected static JdbcGeneralGenericDao jdbcGenericDao; 
+    private static JdbcGeneralGenericDao jdbcGenericDao; 
 
+    @SuppressWarnings("deprecation")
     @BeforeClass
     public static void initDAO() {
         // create and startup embedded HSQLDB
