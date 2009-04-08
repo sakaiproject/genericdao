@@ -1,0 +1,21 @@
+<!-- For filtering out findbugs rules and classes which should not be checked -->
+<FindBugsFilter>
+     <!-- filter out test classes with medium (2) or low (3) warnings -->
+     <Match>
+       <Or>
+           <Class name="~.*\.AbstractTest.+" />
+           <Class name="~.*Test" />
+       </Or>
+       <Bug category="PERFORMANCE,MALICIOUS_CODE,STYLE,SECURITY" />
+     </Match>
+
+    <!-- findbugs is confused by the way the extension system works -->
+    <Match>
+        <Bug pattern="DMI_UNSUPPORTED_METHOD" />
+    </Match>
+
+     <!-- Filter out certain categories of bugs -->
+     <Match>
+       <Bug category="STYLE" />
+     </Match>
+</FindBugsFilter>
