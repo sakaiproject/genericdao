@@ -15,10 +15,7 @@
     </Match>
 
      <!-- Filter out certain categories of bugs -->
-     <!-- 
      <Match>
-       <Bug category="MALICIOUS_CODE,STYLE" />
+       <Bug category="STYLE" />
      </Match>
-      -->
-     <!-- <Bug code="DE,UrF,SIC" /> --><!-- filter specific types of bugs out -->
 </FindBugsFilter>
