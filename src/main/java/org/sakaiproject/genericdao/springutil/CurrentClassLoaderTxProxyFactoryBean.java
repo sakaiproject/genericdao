@@ -37,13 +37,13 @@ public class CurrentClassLoaderTxProxyFactoryBean extends TransactionProxyFactor
 	    try {
 	        // only works with Spring 2.5.x - from Zach Thomas
 	        super.setProxyClassLoader(myClassLoader);
-	    } catch (Exception e) {
+	    } catch (NoSuchMethodError e) {
             System.out.println("Warning: Spring 2.5.x method (setProxyClassLoader) not found, falling back to spring 2.0.x method");
 	        // try the spring 2.0.x version now
 	        try {
 	            setBeanClassLoader(myClassLoader);
 	            spring20x = true;
-	        } catch (Exception e1) {
+	        } catch (NoSuchMethodError e1) {
 	            System.out.println("Warning: Spring 2.0.x method (setBeanClassLoader) not found, falling back to spring 1.2.x method");
 	            spring12x = true;
 	        }
