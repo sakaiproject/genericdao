@@ -3,7 +3,7 @@
     <name>generic-dao</name>
     <groupId>org.sakaiproject</groupId>
     <artifactId>generic-dao</artifactId>
-    <version>0.9.18</version>
+    <version>0.9.18-SNAPSHOT</version>
     <properties>
         <app.version>1.0</app.version>
         <hibernate.version>3.2.6.ga</hibernate.version>
@@ -76,9 +76,9 @@
 
 	<!-- define source code repository location -->
     <scm>
-        <connection>scm:svn:http://genericdao.googlecode.com/svn/tags/generic-dao-0.9.18</connection>
-        <developerConnection>scm:svn:https://genericdao.googlecode.com/svn/tags/generic-dao-0.9.18</developerConnection>
-        <url>http://code.google.com/p/genericdao/source/browse/tags/generic-dao-0.9.18</url>
+        <connection>scm:svn:http://genericdao.googlecode.com/svn/trunk</connection>
+        <developerConnection>scm:svn:https://genericdao.googlecode.com/svn/trunk</developerConnection>
+        <url>http://code.google.com/p/genericdao/source/browse</url>
     </scm>
     <dependencies>
         <!--
