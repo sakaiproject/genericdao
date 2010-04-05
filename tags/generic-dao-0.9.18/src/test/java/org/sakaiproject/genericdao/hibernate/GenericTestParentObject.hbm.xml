@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- put your value object in the class name, the table name is optional
+		but it is a good idea to specify it -->
+	<class name="org.sakaiproject.genericdao.test.GenericTestParentObject"
+			table="GENERICDAO_TESTPARENT">
+
+		<!-- create the primary key id, using native is typically the best way
+			to do this -->
+		<id name="uid" type="long" column="TEST_ID">
+	    	<generator class="native">
+                <param name="sequence">GTO_PARENT_TEST_ID_SEQ</param>
+	    	</generator>
+		</id>
+		<property name="title" column="TEST_TITLE" type="string" length="255" not-null="true" />
+        <many-to-one name="gto" class="org.sakaiproject.genericdao.test.GenericTestObject" foreign-key="TEST_GTO_FKC">
+            <column name="TEST_GTO" />
+        </many-to-one>
+	</class>
+	
+</hibernate-mapping>
