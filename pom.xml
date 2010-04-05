@@ -3,7 +3,7 @@
     <name>generic-dao</name>
     <groupId>org.sakaiproject</groupId>
     <artifactId>generic-dao</artifactId>
-    <version>0.9.19-SNAPSHOT</version>
+    <version>0.9.18-SNAPSHOT</version>
     <properties>
         <app.version>1.0</app.version>
         <hibernate.version>3.2.6.ga</hibernate.version>
