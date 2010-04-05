@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- Create a transaction manager -->
+	<bean id="testTransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="testDataSource" />
+	</bean>
+
+	<!-- The above beans are needed for ANY spring JDBC using app,
+        (along with the stuff in spring-common.xml)
+		The beans below are for the DAO and maybe other beans -->
+
+	<!-- Example 1: Using multiple beans to create the DAO -->
+
+	<!-- data mapper -->
+	<bean id="gtoDataMapper"
+		class="org.sakaiproject.genericdao.springjdbc.GTODataMapper" />
+    <bean id="gtpDataMapper"
+        class="org.sakaiproject.genericdao.springjdbc.GTPDataMapper" />
+
+	<!-- create the DAO itself but as a target -->
+	<bean id="org.sakaiproject.genericdao.test.GenericDaoTarget"
+		class="org.sakaiproject.genericdao.springjdbc.JdbcGenericDao">
+		<property name="dataSource" ref="testDataSource" />
+		<property name="autoDDL" value="true" />
+		<property name="databaseType" value="HSQLDB" />
+		<property name="dataMappers">
+			<list>
+				<ref bean="gtoDataMapper" />
+                <ref bean="gtpDataMapper" />
+			</list>
+		</property>
+        <property name="interceptor" ref="org.sakaiproject.genericdao.interceptors.TestInterceptor" />
+	</bean>
+
+	<!-- put the DAO in a transaction proxy -->
+	<bean id="org.sakaiproject.genericdao.dao.GenericDao"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="testTransactionManager" />
+		<property name="target"
+			ref="org.sakaiproject.genericdao.test.GenericDaoTarget" />
+		<property name="transactionAttributes">
+			<props>
+				<!-- +java.lang.RuntimeException tells spring to exempt RuntimeExceptions 
+					from rolling back the transaction -->
+				<prop key="*">
+					PROPAGATION_REQUIRED,+java.lang.RuntimeException
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Example 2: Using 2 beans to create the DAO -->
+
+    <!-- EXAMPLE simple data mapper -->
+    <bean id="simpleFileDDLDataMapper"
+        class="org.sakaiproject.genericdao.springjdbc.SimpleDataMapper">
+        <property name="persistentClassname"
+            value="org.sakaiproject.genericdao.test.GenericTestObject" />
+        <property name="tableName" value="SIMPLE_FILE_TABLE" />
+        <property name="DBTypeToFile">
+            <map>
+                <entry key="HSQLDB" value="sql/hsqldb/gto.sql" />
+            </map>
+        </property>
+    </bean>
+    <bean id="simpleParentDDLDataMapper"
+        class="org.sakaiproject.genericdao.springjdbc.SimpleDataMapper">
+        <property name="persistentClassname"
+            value="org.sakaiproject.genericdao.test.GenericTestParentObject" />
+        <property name="tableName" value="SIMPLE_FILE_PARENT" />
+        <property name="DBTypeToFile">
+            <map>
+                <entry key="HSQLDB" value="sql/hsqldb/gtp.sql" />
+            </map>
+        </property>
+    </bean>
+
+	<!-- create the DAO itself but as a target with the mapper inside it,
+		leave out the default values for autoDDL and databaseType -->
+	<bean id="org.sakaiproject.genericdao.test.BasicGenericDaoTarget"
+		class="org.sakaiproject.genericdao.springjdbc.JdbcBasicGenericDao">
+		<property name="dataSource" ref="testDataSource" />
+		<property name="dataMappers">
+			<list>
+				<ref bean="simpleFileDDLDataMapper" />
+                <ref bean="simpleParentDDLDataMapper" />
+			</list>
+		</property>
+        <property name="interceptor" ref="org.sakaiproject.genericdao.interceptors.TestInterceptor" />
+	</bean>
+
+	<!-- put the DAO in a transaction proxy -->
+	<bean id="org.sakaiproject.genericdao.dao.BasicGenericDao"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager"
+			ref="testTransactionManager" />
+		<property name="target"
+			ref="org.sakaiproject.genericdao.test.BasicGenericDaoTarget" />
+		<property name="transactionAttributes">
+			<props>
+				<!-- +java.lang.RuntimeException tells spring to exempt RuntimeExceptions 
+					from rolling back the transaction -->
+				<prop key="*">
+					PROPAGATION_REQUIRED,+java.lang.RuntimeException
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+    <!-- extra check which uses the explicit data mappers with searches -->
+    <bean id="org.sakaiproject.genericdao.dao.MappedBasicGenericDao"
+        class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="testTransactionManager" />
+        <property name="transactionAttributes">
+            <props>
+                <!-- +java.lang.RuntimeException tells spring to exempt RuntimeExceptions 
+                    from rolling back the transaction -->
+                <prop key="*">
+                    PROPAGATION_REQUIRED,+java.lang.RuntimeException
+                </prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="org.sakaiproject.genericdao.springjdbc.JdbcBasicGenericDao">
+                <property name="dataSource" ref="testDataSource" />
+                <property name="dataMappers">
+                    <list>
+                        <bean class="org.sakaiproject.genericdao.springjdbc.GTODataMapper" />
+                        <bean class="org.sakaiproject.genericdao.springjdbc.GTPDataMapper" />
+                    </list>
+                </property>
+                <property name="interceptor" ref="org.sakaiproject.genericdao.interceptors.TestInterceptor" />
+            </bean>
+        </property>
+    </bean>
+
+	<!-- Example 3: All in one bean to create the DAO and protect it transactionally
+		and define the mappings -->
+	<bean id="org.sakaiproject.genericdao.dao.GeneralGenericDao"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="testTransactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<!-- +java.lang.RuntimeException tells spring to exempt RuntimeExceptions 
+					from rolling back the transaction -->
+				<prop key="*">
+					PROPAGATION_REQUIRED,+java.lang.RuntimeException
+				</prop>
+			</props>
+		</property>
+		<property name="target">
+			<bean class="org.sakaiproject.genericdao.springjdbc.JdbcGeneralGenericDao">
+				<property name="dataSource" ref="testDataSource" />
+				<property name="dataMappers">
+					<list>
+						<bean class="org.sakaiproject.genericdao.springjdbc.GTODataMapper" />
+                        <bean class="org.sakaiproject.genericdao.springjdbc.GTPDataMapper" />
+					</list>
+				</property>
+                <property name="interceptor" ref="org.sakaiproject.genericdao.interceptors.TestInterceptor" />
+			</bean>
+		</property>
+	</bean>
+
+    <!-- EXTRA testing for reflection -->
+
+    <!-- EXAMPLE simple data mapper -->
+    <bean id="simpleGTODataMapper"
+        class="org.sakaiproject.genericdao.springjdbc.SimpleDataMapper">
+        <property name="persistentClassname"
+            value="org.sakaiproject.genericdao.test.GenericTestObject" />
+        <property name="tableName" value="SIMPLE_GTO_TABLE" />
+        <property name="usePropertyNamesForColumns" value="true" />
+        <property name="DBTypeToDDL">
+            <map>
+                <entry key="HSQLDB">
+                    <value>
+                        CREATE TABLE {TABLENAME} ( 
+                        {ID} BIGINT NOT NULL IDENTITY PRIMARY KEY, 
+                        title VARCHAR(255) NOT NULL,
+                        hiddenItem BOOLEAN);
+                    </value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="simpleGTPDataMapper"
+        class="org.sakaiproject.genericdao.springjdbc.SimpleDataMapper">
+        <property name="persistentClassname"
+            value="org.sakaiproject.genericdao.test.GenericTestParentObject" />
+        <property name="tableName" value="SIMPLE_GTP_TABLE" />
+        <property name="usePropertyNamesForColumns" value="true" />
+        <property name="DBTypeToDDL">
+            <map>
+                <entry key="HSQLDB">
+                    <value>
+                        CREATE TABLE {TABLENAME} (
+                        {ID}       BIGINT NOT NULL IDENTITY PRIMARY KEY,
+                        title      VARCHAR(255) NOT NULL,
+                        gto        BIGINT,
+                        FOREIGN KEY (gto) REFERENCES {TABLENAME:GenericTestObject}({ID:GenericTestObject}) );
+                    </value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="org.sakaiproject.genericdao.dao.ReflectiveGenericDao"
+        class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="testTransactionManager" />
+        <property name="transactionAttributes">
+            <props>
+                <!-- +java.lang.RuntimeException tells spring to exempt RuntimeExceptions 
+                    from rolling back the transaction -->
+                <prop key="*">
+                    PROPAGATION_REQUIRED,+java.lang.RuntimeException
+                </prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="org.sakaiproject.genericdao.springjdbc.JdbcGenericDao">
+                <property name="dataSource" ref="testDataSource" />
+                <property name="dataMappers">
+                    <list>
+                        <ref bean="simpleGTODataMapper" />
+                        <ref bean="simpleGTPDataMapper" />
+                    </list>
+                </property>
+                <property name="interceptor" ref="org.sakaiproject.genericdao.interceptors.TestInterceptor" />
+            </bean>
+        </property>
+    </bean>
+
+    <!-- TEST caching -->
+    <bean id="org.sakaiproject.genericdao.dao.GenericDao.caching"
+        class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="testTransactionManager" />
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED,+java.lang.RuntimeException</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="org.sakaiproject.genericdao.springjdbc.JdbcGenericDao">
+                <property name="dataSource" ref="testDataSource" />
+                <property name="dataMappers">
+                    <list>
+                        <bean class="org.sakaiproject.genericdao.springjdbc.GTODataMapper" />
+                        <bean class="org.sakaiproject.genericdao.springjdbc.GTPDataMapper" />
+                    </list>
+                </property>
+                <property name="cacheProvider" ref="org.sakaiproject.genericdao.caching.CacheProvider" />
+                <property name="interceptor" ref="org.sakaiproject.genericdao.interceptors.TestInterceptor" />
+            </bean>
+        </property>
+    </bean>    
+
+    <bean id="org.sakaiproject.genericdao.dao.BasicGenericDao.caching"
+        class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="testTransactionManager" />
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED,+java.lang.RuntimeException</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="org.sakaiproject.genericdao.springjdbc.JdbcBasicGenericDao">
+                <property name="dataSource" ref="testDataSource" />
+                <property name="dataMappers">
+                    <list>
+                        <ref bean="gtoDataMapper" />
+                        <ref bean="gtpDataMapper" />
+                    </list>
+                </property>
+                <property name="cacheProvider" ref="org.sakaiproject.genericdao.caching.CacheProvider" />
+            </bean>
+        </property>
+    </bean>    
+
+    <bean id="org.sakaiproject.genericdao.dao.GeneralGenericDao.caching"
+        class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="testTransactionManager" />
+        <property name="transactionAttributes">
+            <props>
+                <!-- +java.lang.RuntimeException tells spring to exempt RuntimeExceptions 
+                    from rolling back the transaction -->
+                <prop key="*">
+                    PROPAGATION_REQUIRED,+java.lang.RuntimeException
+                </prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="org.sakaiproject.genericdao.springjdbc.JdbcGeneralGenericDao">
+                <property name="dataSource" ref="testDataSource" />
+                <property name="dataMappers">
+                    <list>
+                        <ref bean="simpleGTODataMapper" />
+                        <ref bean="simpleGTPDataMapper" />
+                    </list>
+                </property>
+                <property name="cacheProvider" ref="org.sakaiproject.genericdao.caching.CacheProvider" />
+            </bean>
+        </property>
+    </bean>
+
+    <!-- TESTING auto commits (could really be handled by interceptors) -->
+
+    <!-- make new mappers so we have new tables -->
+    <bean id="autoCommitGTODataMapper" parent="simpleGTODataMapper"
+        class="org.sakaiproject.genericdao.springjdbc.SimpleDataMapper">
+        <property name="tableName" value="AUTOC_GTO_TABLE" />
+    </bean>
+    <bean id="autoCommitGTPDataMapper" parent="simpleGTPDataMapper"
+        class="org.sakaiproject.genericdao.springjdbc.SimpleDataMapper">
+        <property name="tableName" value="AUTOC_GTP_TABLE" />
+    </bean>
+
+    <!-- test AutoCommits without the assistance of spring transaction manager -->
+    <bean id="org.sakaiproject.genericdao.dao.AutoCommitGenericDao"
+        class="org.sakaiproject.genericdao.springjdbc.JdbcGenericDao">
+        <property name="dataSource" ref="testDataSource" />
+        <property name="autoDDL" value="true" />
+        <property name="autoCommitDDL" value="true" />
+        <property name="autoCommitOperations" value="true" />
+        <property name="databaseType" value="HSQLDB" />
+        <property name="dataMappers">
+            <list>
+                <ref bean="autoCommitGTODataMapper" />
+                <ref bean="autoCommitGTPDataMapper" />
+            </list>
+        </property>
+        <property name="interceptor" ref="org.sakaiproject.genericdao.interceptors.TestInterceptor" />
+    </bean>
+
+    <!-- TESTING the crazy class conversion -->
+    <bean id="crazyGTODataMapper" parent="simpleGTODataMapper"
+        class="org.sakaiproject.genericdao.springjdbc.SimpleDataMapper">
+        <property name="persistentClassname"
+            value="org.sakaiproject.genericdao.test.CrazyTestObject" />
+        <property name="tableName" value="GTCRAZY_TABLE" />
+    </bean>
+
+    <bean id="org.sakaiproject.genericdao.dao.CrazyGenericDao"
+        class="org.sakaiproject.genericdao.springjdbc.JdbcGeneralGenericDao">
+        <property name="dataSource" ref="testDataSource" />
+        <property name="autoDDL" value="true" />
+        <property name="autoCommitDDL" value="true" />
+        <property name="autoCommitOperations" value="false" />
+        <property name="databaseType" value="HSQLDB" />
+        <property name="dataMappers">
+            <list>
+                <ref bean="crazyGTODataMapper" />
+            </list>
+        </property>
+    </bean>
+
+</beans>

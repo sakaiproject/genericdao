@@ -1,0 +1,5 @@
+-- testing the ability to read from files
+CREATE TABLE {TABLENAME} ( 
+    {ID} BIGINT NOT NULL IDENTITY PRIMARY KEY, 
+    TITLE VARCHAR(255) NOT NULL,
+    HIDDEN_ITEM BOOLEAN);
