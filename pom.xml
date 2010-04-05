@@ -60,11 +60,12 @@
             </snapshots>
         </repository>
     </repositories>
+
     <distributionManagement>
         <repository>
             <id>Sakai-Maven2</id>
             <name>Sakaiproject Maven 2 repository</name>
-            <url>dav:http://repository.opencastproject.org/nexus/content/repositories/opencast</url>
+            <url>dav:https://source.sakaiproject.org/maven2</url>
         </repository>
         <site>
             <id>local</id>
