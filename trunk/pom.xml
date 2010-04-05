@@ -64,7 +64,7 @@
         <repository>
             <id>Sakai-Maven2</id>
             <name>Sakaiproject Maven 2 repository</name>
-            <url>dav:https://source.sakaiproject.org/maven2</url>
+            <url>dav:http://repository.opencastproject.org/nexus/content/repositories/opencast</url>
         </repository>
         <site>
             <id>local</id>
@@ -103,7 +103,7 @@
         <dependency>
             <groupId>org.azeckoski</groupId>
             <artifactId>reflectutils</artifactId>
-            <version>0.9.10</version>
+            <version>0.9.14</version>
         </dependency>
 
 		<!-- testing dependencies -->
