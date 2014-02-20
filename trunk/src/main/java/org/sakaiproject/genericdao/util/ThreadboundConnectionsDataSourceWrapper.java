@@ -17,6 +17,8 @@ package org.sakaiproject.genericdao.util;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
+import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
@@ -117,8 +119,8 @@ public class ThreadboundConnectionsDataSourceWrapper implements DataSource {
 
     /**
      * Creates the new connection, wraps it, and binds it to the current thread
-     * @param username
-     * @param password
+     * @param username DB username
+     * @param password DB pass
      * @throws SQLException
      */
     private Connection createBindWrapConnection(String username, String password) throws SQLException {
@@ -137,13 +139,13 @@ public class ThreadboundConnectionsDataSourceWrapper implements DataSource {
     /**
      * Initialize a connection correctly depending on whether a username/password is provided
      * 
-     * @param username
-     * @param password
+     * @param username DB username
+     * @param password DB pass
      * @return a new connection
      * @throws SQLException if connection cannot be obtained
      */
     private Connection getNewConnection(String username, String password) throws SQLException {
-        Connection conn = null;
+        Connection conn;
         if (username == null && password == null) {
             conn = dataSource.getConnection();
         } else {
@@ -166,7 +168,7 @@ public class ThreadboundConnectionsDataSourceWrapper implements DataSource {
         if (threaded == null) {
             conn = createBindWrapConnection(username, password);
         } else {
-            boolean closed = false;
+            boolean closed;
             try {
                 closed = threaded.isClosed();
             } catch (SQLException e) {
@@ -203,10 +205,14 @@ public class ThreadboundConnectionsDataSourceWrapper implements DataSource {
     }
     // Java 6 compatible
     public boolean isWrapperFor(Class<?> iface) throws SQLException {
-        return false;
+        return dataSource.isWrapperFor(iface);
     }
     public <T> T unwrap(Class<T> iface) throws SQLException {
-        throw new SQLException("Not a Wrapper for " + iface);
+        return dataSource.unwrap(iface);
+    }
+    // Java 7 compatible
+    public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+        return null;
     }
 
 }

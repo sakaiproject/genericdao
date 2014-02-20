@@ -31,6 +31,7 @@ import java.sql.Statement;
 import java.sql.Struct;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.Executor;
 
 
 /**
@@ -273,6 +274,23 @@ public class CloseHookConnectionWrapper implements Connection {
 
     public <T> T unwrap(Class<T> iface) throws SQLException {
         return wrappedConnection.unwrap(iface);
+    }
+
+    // Java 7 compatibility
+    public void setSchema(String schema) throws SQLException {
+        // not implemented
+    }
+    public String getSchema() throws SQLException {
+        return null;        // not implemented
+    }
+    public void abort(Executor executor) throws SQLException {
+        // not implemented
+    }
+    public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
+        // not implemented
+    }
+    public int getNetworkTimeout() throws SQLException {
+        return 0;        // not implemented
     }
 
 }
