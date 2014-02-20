@@ -277,20 +277,22 @@ public class CloseHookConnectionWrapper implements Connection {
     }
 
     // Java 7 compatibility
+    int timeout;
+    String schema;
     public void setSchema(String schema) throws SQLException {
-        // not implemented
+        this.schema = schema;
     }
     public String getSchema() throws SQLException {
-        return null;        // not implemented
+        return this.schema;
     }
     public void abort(Executor executor) throws SQLException {
         // not implemented
     }
     public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
-        // not implemented
+        this.timeout = milliseconds; // not implemented right
     }
     public int getNetworkTimeout() throws SQLException {
-        return 0;        // not implemented
+        return this.timeout;
     }
 
 }

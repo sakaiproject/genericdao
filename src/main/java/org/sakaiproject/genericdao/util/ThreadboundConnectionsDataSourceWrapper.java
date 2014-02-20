@@ -212,7 +212,7 @@ public class ThreadboundConnectionsDataSourceWrapper implements DataSource {
     }
     // Java 7 compatible
     public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-        return null;
+        return Logger.getAnonymousLogger();
     }
 
 }

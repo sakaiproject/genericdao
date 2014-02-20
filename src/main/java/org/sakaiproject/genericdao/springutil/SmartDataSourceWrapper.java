@@ -103,7 +103,7 @@ public class SmartDataSourceWrapper implements DataSource, SmartDataSource {
     }
     // Java 7 compatible
     public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-        return null;
+        return Logger.getAnonymousLogger();
     }
 
 }
