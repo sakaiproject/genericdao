@@ -17,6 +17,8 @@ package org.sakaiproject.genericdao.springutil;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
+import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
@@ -94,10 +96,14 @@ public class SmartDataSourceWrapper implements DataSource, SmartDataSource {
     }
     // Java 6 compatible
     public boolean isWrapperFor(Class<?> iface) throws SQLException {
-        return false;
+        return dataSource.isWrapperFor(iface);
     }
     public <T> T unwrap(Class<T> iface) throws SQLException {
-        throw new SQLException("Not a Wrapper for " + iface);
+        return dataSource.unwrap(iface);
+    }
+    // Java 7 compatible
+    public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+        return null;
     }
 
 }
