@@ -14,21 +14,18 @@
 
 package org.sakaiproject.genericdao.springjdbc;
 
+import org.junit.Ignore;
 import org.sakaiproject.genericdao.test.AbstractTestGenericDaoCaching;
+import org.springframework.test.context.ContextConfiguration;
 
 /**
  * Testing the {@link org.sakaiproject.genericdao.api.GenericDao}
  * 
  * @author Aaron Zeckoski (aaronz@vt.edu)
  */
+@Ignore
+@ContextConfiguration(locations={"/spring-common.xml","/spring-jdbc.xml"})
 public class GenericDaoCachingTest extends AbstractTestGenericDaoCaching {
-
-	@Override
-	protected String[] getConfigLocations() {
-		// point to the spring-*.xml file, must be on the classpath
-		// (add component/src/webapp/WEB-INF to the build path in Eclipse)
-		return new String[] {"spring-common.xml","spring-jdbc.xml"};
-	}
 
 	// TODO test the jdbc specific stuff
 

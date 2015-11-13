@@ -14,6 +14,8 @@
 
 package org.sakaiproject.genericdao.springjdbc;
 
+import org.junit.Before;
+import org.junit.Ignore;
 import org.sakaiproject.genericdao.api.GenericDao;
 
 /**
@@ -21,14 +23,16 @@ import org.sakaiproject.genericdao.api.GenericDao;
  * 
  * @author Aaron Zeckoski (azeckoski@gmail.com)
  */
+@Ignore
 public class ReflectiveGenericDaoTest extends GenericDaoTest {
 
+   @Before
    @Override
-   protected void onSetUpInTransaction() {
+   public void onSetUp() {
       // get the GenericDaoFinder from the spring context (you should inject this)
       genericDao = (GenericDao) applicationContext.getBean("org.sakaiproject.genericdao.dao.ReflectiveGenericDao");
       if (genericDao == null) {
-         throw new RuntimeException("onSetUpInTransaction: GenericDao could not be retrieved from spring context");
+         throw new RuntimeException("onSetUp: GenericDao could not be retrieved from spring context");
       }
 
       commonStartup(genericDao);

@@ -14,6 +14,8 @@
 
 package org.sakaiproject.genericdao.util;
 
+import org.junit.Test;
+
 import junit.framework.TestCase;
 
 
@@ -27,6 +29,7 @@ public class GenericDataMapperTest extends TestCase {
    /**
     * Test method for {@link org.sakaiproject.genericdao.util.GenericDataMapper#getPersistentType()}.
     */
+   @Test
    public void testGetPersistentType() {
       // this is hopeless but here to record the attempt
 //      GTOGenericDataMapper gtogdm = new GTOGenericDataMapper();

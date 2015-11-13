@@ -14,8 +14,15 @@
 
 package org.sakaiproject.genericdao.test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import java.util.List;
 
+import org.junit.Before;
 import org.sakaiproject.genericdao.api.GenericDao;
 import org.sakaiproject.genericdao.test.BasicDataInterceptor.Intercept;
 
@@ -29,11 +36,12 @@ public abstract class AbstractTestGenericDao extends AbstractTestBaseDao {
    protected GenericDao genericDao; 
 
    // run this before each test starts and as part of the transaction
-   protected void onSetUpInTransaction() {
+   @Before
+   public void onSetUp() {
       // get the GenericDaoFinder from the spring context (you should inject this)
       genericDao = (GenericDao) applicationContext.getBean("org.sakaiproject.genericdao.dao.GenericDao");
       if (genericDao == null) {
-         throw new RuntimeException("onSetUpInTransaction: GenericDao could not be retrieved from spring context");
+         throw new RuntimeException("onSetUp: GenericDao could not be retrieved from spring context");
       }
 
       commonStartup(genericDao);

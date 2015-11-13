@@ -14,7 +14,9 @@
 
 package org.sakaiproject.genericdao.hibernate;
 
+import org.junit.Ignore;
 import org.sakaiproject.genericdao.test.AbstractTestGeneralGenericDao;
+import org.springframework.test.context.ContextConfiguration;
 
 
 /**
@@ -22,12 +24,8 @@ import org.sakaiproject.genericdao.test.AbstractTestGeneralGenericDao;
  * 
  * @author Aaron Zeckoski (azeckoski@gmail.com)
  */
+@Ignore
+@ContextConfiguration(locations={"/spring-common.xml","/spring-hibernate.xml"})
 public class GeneralGenericDaoTest extends AbstractTestGeneralGenericDao {
-
-   protected String[] getConfigLocations() {
-      // point to the spring-hibernate.xml file, must be on the classpath
-      // (add component/src/webapp/WEB-INF to the build path in Eclipse)
-      return new String[] {"spring-common.xml","spring-hibernate.xml"};
-   }
 
 }

@@ -141,7 +141,7 @@ public class HibernateBasicGenericDao extends HibernateGenericDao implements Bas
    protected <T> long baseCountBySearch(Class<T> type, Search search) {
       DetachedCriteria criteria = buildCriteria(type, search);
       criteria.setProjection(Projections.rowCount());
-      List<Number> l = getHibernateTemplate().findByCriteria(criteria);
+      List<Number> l = (List<Number>) getHibernateTemplate().findByCriteria(criteria);
       return l.get(0).longValue();
    }
 
@@ -151,7 +151,7 @@ public class HibernateBasicGenericDao extends HibernateGenericDao implements Bas
    @SuppressWarnings("unchecked")
    protected <T> List<T> baseFindBySearch(Class<T> type, Search search) {
       DetachedCriteria criteria = buildCriteria(type, search);
-      List<T> items = getHibernateTemplate().findByCriteria(criteria, 
+      List<T> items = (List<T>) getHibernateTemplate().findByCriteria(criteria, 
             Long.valueOf(search.getStart()).intValue(), 
             Long.valueOf(search.getLimit()).intValue());
       // TODO need to figure out how to force persistent objects to be transitive

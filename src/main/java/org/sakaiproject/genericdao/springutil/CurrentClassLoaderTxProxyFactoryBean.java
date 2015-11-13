@@ -14,7 +14,6 @@
 
 package org.sakaiproject.genericdao.springutil;
 
-import org.springframework.aop.framework.AopProxy;
 import org.springframework.transaction.interceptor.TransactionProxyFactoryBean;
 
 /**
@@ -62,13 +61,13 @@ public class CurrentClassLoaderTxProxyFactoryBean extends TransactionProxyFactor
 	}
 
 	// needed to make this work with spring 1.2.8
-	@Override
-	protected Object getProxy(AopProxy aopProxy) {
-	    if (spring12x) {
-	        return aopProxy.getProxy(myClassLoader);
-	    } else {
-	        return super.getProxy(aopProxy);
-	    }
-	}
+//	@Override
+//	protected Object getProxy(AopProxy aopProxy) {
+//	    if (spring12x) {
+//	        return aopProxy.getProxy(myClassLoader);
+//	    } else {
+//	        return super.getProxy(aopProxy);
+//	    }
+//	}
 
 }
