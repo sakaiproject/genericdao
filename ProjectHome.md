@@ -1,0 +1,14 @@
+Generic DAO (a.k.a generic-dao OR gendao) is a Java package which allows a developer to skip writing DAOs for their persistence objects when they are using [Spring](http://www.springframework.org/) and JDBC or [Hibernate](http://www.hibernate.org/). It is a lightweight ORM package without the loss of control or increase in complexity which is experienced with some of the heavier weight ORM packages.
+
+It is designed to make it easier and faster for developers to write their DAOs without having to rewrite the same old boring save/delete/etc functions over and over for each persistent type but also not having to have implementation dependencies in their DAO interfaces. It also allows for good control over which persistent objects are usable within the DAO and is easy to extend so you can add your own DAO methods. Configuration is easily handled via spring configuration but can also be handled programmatically, however, since the package depends on the spring framework you are best off using it with spring.
+
+Generic DAO allows a developer to write their persistent objects as POJOs with no dependencies. It supports an approach between the anemic domain model (or service/manager model) methodology and the use of a rich domain model (or heavy DDD). The use of simple POJOs as persistent objects makes it easy to swap around storage mechanisms while allowing the developer to use their model objects throughout their application and even expose them for use by other applications.
+
+The package includes functionality for all the basic ORM CRUD type methods along with search methods and batch methods. The JDBC part of the package includes support for caching all the DAO methods (which could also be used with the hibernate part but hibernate has its own caching so you should probably use that). It also includes interceptor points for before and after all read and write methods. For simpler use cases, you can write your POJOs, make them persistent, create your DDL and not have to write a single line of DAO code.
+The package is built on and depends on the spring framework.
+
+Maven 2 is used to build and manage releases. We recommend you use maven 2 with your own projects as well so you can more easily manage the dependencies. [More info here](Maven2Repo.md). Take a look at the [getting started page](GettingStarted.md) for examples and basic getting off the ground information.
+
+This is used in large scale systems like [Sakai Collaborative Learning Environment](http://sakaiproject.org/) and [DSpace 2 Repository](http://www.dspace.org).
+
+If you would like to contribute to this project, please email the project owner(s).

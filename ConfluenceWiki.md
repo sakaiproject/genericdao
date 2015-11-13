@@ -1,0 +1,1 @@
+Confluence Wiki: http://confluence.sakaiproject.org/confluence/display/BOOT/Generic+DAO+package
