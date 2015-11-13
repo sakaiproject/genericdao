@@ -13,9 +13,14 @@
  */
 
 package org.sakaiproject.genericdao.test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.sakaiproject.genericdao.api.BasicGenericDao;
 import org.sakaiproject.genericdao.api.search.Search;
 
@@ -29,11 +34,12 @@ public abstract class AbstractTestBasicGenericDaoCaching extends AbstractTestBas
    protected BasicGenericDao genericDao;
 
    // run this before each test starts and as part of the transaction
-   protected void onSetUpInTransaction() {
+   @Before
+   public void onSetUp() {
       // get the GenericDaoFinder from the spring context (you should inject this)
       genericDao = (BasicGenericDao) applicationContext.getBean("org.sakaiproject.genericdao.dao.BasicGenericDao.caching");
       if (genericDao == null) {
-         throw new RuntimeException("onSetUpInTransaction: BasicGenericDao could not be retrieved from spring context");
+         throw new RuntimeException("onSetUp: BasicGenericDao could not be retrieved from spring context");
       }
 
       commonCaching();

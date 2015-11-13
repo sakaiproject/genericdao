@@ -13,31 +13,26 @@
  */
 
 package org.sakaiproject.genericdao.hibernate;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
+import org.junit.Test;
 import org.sakaiproject.genericdao.test.AbstractTestGenericDao;
+import org.springframework.test.context.ContextConfiguration;
 
 /**
  * Testing the {@link org.sakaiproject.genericdao.api.GenericDao}
  * 
  * @author Aaron Zeckoski (aaronz@vt.edu)
  */
+@ContextConfiguration(locations={"/spring-common.xml","/spring-hibernate.xml"})
 public class GenericDaoTest extends AbstractTestGenericDao {
-
-   @Override
-	protected String[] getConfigLocations() {
-		// point to the spring-hibernate.xml file, must be on the classpath
-		// (add component/src/webapp/WEB-INF to the build path in Eclipse)
-		return new String[] {"spring-common.xml","spring-hibernate.xml"};
-	}
 
 	/**
 	 * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateGenericDao#setPersistentClasses(java.util.List)}.
 	 */
+	@Test
 	public void testSetPersistentClasses() {
 	   HibernateGenericDao genericDao = new HibernateGenericDao();
 

@@ -14,32 +14,36 @@
 
 package org.sakaiproject.genericdao.springjdbc;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.Before;
+import org.junit.Test;
 import org.sakaiproject.genericdao.api.GeneralGenericDao;
 import org.sakaiproject.genericdao.api.GenericDao;
 import org.sakaiproject.genericdao.api.search.Order;
 import org.sakaiproject.genericdao.api.search.Restriction;
 import org.sakaiproject.genericdao.api.search.Search;
 import org.sakaiproject.genericdao.test.CrazyTestObject;
-import org.springframework.test.AbstractTransactionalSpringContextTests;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+import org.springframework.test.context.transaction.BeforeTransaction;
 
 /**
  * Testing the {@link org.sakaiproject.genericdao.api.GenericDao}
  * 
  * @author Aaron Zeckoski (aaronz@vt.edu)
  */
-public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests {
-
-    @Override
-    protected String[] getConfigLocations() {
-        // point to the spring-*.xml file, must be on the classpath
-        // (add component/src/webapp/WEB-INF to the build path in Eclipse)
-        return new String[] {"spring-common.xml","spring-jdbc.xml"};
-    }
+@ContextConfiguration(locations={"/spring-common.xml","/spring-jdbc.xml"})
+public class CrazyGenericDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     protected GeneralGenericDao genericDao; 
 
@@ -54,14 +58,23 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
     public final static String TEST_TITLE = "aaronz test object";
 
     // run this before each test starts
-    @Override
-    protected void onSetUpBeforeTransaction() throws Exception {
+    @Before
+    public void onSetUp() throws Exception {
+    	// get the GenericDaoFinder from the spring context (you should inject this)
+    	genericDao = (GeneralGenericDao) applicationContext.getBean("org.sakaiproject.genericdao.dao.CrazyGenericDao");
+    	if (genericDao == null) {
+    		throw new RuntimeException("onSetUp: GenericDao could not be retrieved from spring context");
+    	}
+    	
         gto1 = new CrazyTestObject(TEST_TITLE, Boolean.FALSE);
         gto2 = new CrazyTestObject(TEST_TITLE + "2", Boolean.FALSE);
         gto3 = new CrazyTestObject(TEST_TITLE + "3", Boolean.FALSE);
         gto4 = new CrazyTestObject(TEST_TITLE + "4", Boolean.TRUE);
         gto5 = new CrazyTestObject(TEST_TITLE + "5", Boolean.TRUE);
         gto6 = new CrazyTestObject("number six", Boolean.FALSE);
+
+        // preload data if desired
+        preloadGTOs(genericDao);
     }
 
     public void preloadGTOs(GenericDao dao) {
@@ -74,19 +87,7 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
         dao.create(gto6);
     }
 
-    // run this before each test starts and as part of the transaction
-    @Override
-    protected void onSetUpInTransaction() {
-        // get the GenericDaoFinder from the spring context (you should inject this)
-        genericDao = (GeneralGenericDao) applicationContext.getBean("org.sakaiproject.genericdao.dao.CrazyGenericDao");
-        if (genericDao == null) {
-            throw new RuntimeException("onSetUpInTransaction: GenericDao could not be retrieved from spring context");
-        }
-
-        // preload data if desired
-        preloadGTOs(genericDao);
-    }
-
+    @Test
     public void testGetPersistentClasses() {
         List<Class<?>> l = genericDao.getPersistentClasses();
         assertNotNull(l);
@@ -94,6 +95,7 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
         assertTrue(l.contains(CrazyTestObject.class));
     }
 
+    @Test
     public void testGetIdProperty() {
         String s = null;
 
@@ -105,6 +107,7 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
         assertNull(s);
     }
 
+    @Test
     public void testFindById() {
         String gtoId = gto1.getId();
         assertNotNull(gtoId);
@@ -116,6 +119,7 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
         assertNull(gto);
     }
 
+    @Test
     public void testCreate() {
         // test to see if creates work
         CrazyTestObject gto = new CrazyTestObject(TEST_TITLE, Boolean.FALSE);
@@ -134,6 +138,7 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
         } // other exceptions should cause a test failure
     }
 
+    @Test
     public void testUpdate() {
         gto1.setTitle("New title");
         genericDao.update(gto1);
@@ -152,6 +157,7 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
         } // other exceptions should cause a test failure
     }
 
+    @Test
     public void testSave() {
         // test to see if creates work
         CrazyTestObject gto = new CrazyTestObject(TEST_TITLE, Boolean.FALSE);
@@ -178,6 +184,7 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
         } // other exceptions should cause a test failure
     }
 
+    @Test
     public void testDeleteClassSerializable() {
         String gtoId = gto1.getId();
         boolean b = genericDao.delete(CrazyTestObject.class, gtoId);
@@ -190,6 +197,7 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
         assertEquals(b, false);
     }
 
+    @Test
     public void testDelete() {
         String gtoId = gto1.getId();
         genericDao.delete(gto1);
@@ -207,6 +215,7 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
         } // other exceptions should cause a test failure
     }
 
+    @Test
     public void testCountBySearch() {
         long count = genericDao.countBySearch(CrazyTestObject.class, 
               new Search("hiddenItem", Boolean.FALSE) );
@@ -221,134 +230,126 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
         assertEquals(0, count);
      }
 
-     public void testFindBySearch() {
-        List<CrazyTestObject> l = genericDao.findBySearch(CrazyTestObject.class, 
-              new Search("hiddenItem", Boolean.FALSE) );
-        assertNotNull(l);
-        assertEquals(4, l.size());
-        assertTrue(l.contains(gto1));
-        assertTrue(l.contains(gto2));
-        assertTrue(l.contains(gto3));
-        assertTrue(l.contains(gto6));
+	@Test
+	public void testFindBySearch() {
+		List<CrazyTestObject> l = genericDao.findBySearch(CrazyTestObject.class,
+				new Search("hiddenItem", Boolean.FALSE));
+		assertNotNull(l);
+		assertEquals(4, l.size());
+		assertTrue(l.contains(gto1));
+		assertTrue(l.contains(gto2));
+		assertTrue(l.contains(gto3));
+		assertTrue(l.contains(gto6));
 
-        // now do a couple tests on the array handling ability of the system
-        String[] titles = new String[] {gto1.getTitle(), gto3.getTitle(), gto5.getTitle()};
-        l = genericDao.findBySearch(CrazyTestObject.class, 
-              new Search("title", titles) );
-        assertNotNull(l);
-        assertEquals(3, l.size());
-        assertTrue(l.contains(gto1));
-        assertTrue(l.contains(gto3));
-        assertTrue(l.contains(gto5));
+		// now do a couple tests on the array handling ability of the system
+		String[] titles = new String[] { gto1.getTitle(), gto3.getTitle(), gto5.getTitle() };
+		l = genericDao.findBySearch(CrazyTestObject.class, new Search("title", titles));
+		assertNotNull(l);
+		assertEquals(3, l.size());
+		assertTrue(l.contains(gto1));
+		assertTrue(l.contains(gto3));
+		assertTrue(l.contains(gto5));
 
-        l = genericDao.findBySearch(CrazyTestObject.class, 
-              new Search("title", titles, Restriction.NOT_EQUALS) );
-        assertNotNull(l);
-        assertEquals(3, l.size());
-        assertTrue(l.contains(gto2));
-        assertTrue(l.contains(gto4));
-        assertTrue(l.contains(gto6));
+		l = genericDao.findBySearch(CrazyTestObject.class, new Search("title", titles, Restriction.NOT_EQUALS));
+		assertNotNull(l);
+		assertEquals(3, l.size());
+		assertTrue(l.contains(gto2));
+		assertTrue(l.contains(gto4));
+		assertTrue(l.contains(gto6));
 
-        String[] onetitle = new String[] {gto3.getTitle()};
-        l = genericDao.findBySearch(CrazyTestObject.class, 
-              new Search("title", onetitle) );
-        assertNotNull(l);
-        assertEquals(1, l.size());
-        assertTrue(l.contains(gto3));
+		String[] onetitle = new String[] { gto3.getTitle() };
+		l = genericDao.findBySearch(CrazyTestObject.class, new Search("title", onetitle));
+		assertNotNull(l);
+		assertEquals(1, l.size());
+		assertTrue(l.contains(gto3));
 
-        // test the various searches and filters
-        l = genericDao.findBySearch(CrazyTestObject.class, 
-              new Search( new Restriction("title", TEST_TITLE+"%", Restriction.LIKE) ) );
-        assertNotNull(l);
-        assertEquals(5, l.size());
+		// test the various searches and filters
+		l = genericDao.findBySearch(CrazyTestObject.class,
+				new Search(new Restriction("title", TEST_TITLE + "%", Restriction.LIKE)));
+		assertNotNull(l);
+		assertEquals(5, l.size());
 
-        l = genericDao.findBySearch(CrazyTestObject.class, 
-              new Search( new Restriction("title", TEST_TITLE+"%", Restriction.LIKE), new Order("title"), 2, 2) );
-        assertEquals(2, l.size());
-        assertTrue(l.contains(gto3));
-        assertTrue(l.contains(gto4));
+		l = genericDao.findBySearch(CrazyTestObject.class,
+				new Search(new Restriction("title", TEST_TITLE + "%", Restriction.LIKE), new Order("title"), 2, 2));
+		assertEquals(2, l.size());
+		assertTrue(l.contains(gto3));
+		assertTrue(l.contains(gto4));
 
-        l = genericDao.findBySearch(CrazyTestObject.class, 
-              new Search( new Restriction[] { 
-                    new Restriction("hiddenItem", Boolean.FALSE, Restriction.EQUALS),
-                    new Restriction("title", titles)
-              }, new Order("title")) );
-        assertEquals(2, l.size());
-        assertTrue(l.contains(gto1));
-        assertTrue(l.contains(gto3));
+		l = genericDao.findBySearch(CrazyTestObject.class,
+				new Search(new Restriction[] { new Restriction("hiddenItem", Boolean.FALSE, Restriction.EQUALS),
+						new Restriction("title", titles) }, new Order("title")));
+		assertEquals(2, l.size());
+		assertTrue(l.contains(gto1));
+		assertTrue(l.contains(gto3));
 
-        l = genericDao.findBySearch(CrazyTestObject.class, 
-              new Search( new Restriction[] { 
-                    new Restriction("hiddenItem", Boolean.FALSE, Restriction.EQUALS),
-                    new Restriction("title", titles)
-              }, new Order("title"), 0, 0, false) );
-        assertEquals(5, l.size());
-        assertTrue(l.contains(gto1));
-        assertTrue(l.contains(gto2));
-        assertTrue(l.contains(gto3));
-        assertTrue(l.contains(gto5));
-        assertTrue(l.contains(gto6));
+		l = genericDao.findBySearch(CrazyTestObject.class,
+				new Search(new Restriction[] { new Restriction("hiddenItem", Boolean.FALSE, Restriction.EQUALS),
+						new Restriction("title", titles) }, new Order("title"), 0, 0, false));
+		assertEquals(5, l.size());
+		assertTrue(l.contains(gto1));
+		assertTrue(l.contains(gto2));
+		assertTrue(l.contains(gto3));
+		assertTrue(l.contains(gto5));
+		assertTrue(l.contains(gto6));
 
-        l = genericDao.findBySearch(CrazyTestObject.class, 
-              new Search( new Restriction[] { 
-                    new Restriction("hiddenItem", Boolean.FALSE, Restriction.EQUALS),
-                    new Restriction("title", titles)
-              }, new Order("title"), 1, 2, false) );
-        assertEquals(2, l.size());
-        assertTrue(l.contains(gto2));
-        assertTrue(l.contains(gto3));
+		l = genericDao.findBySearch(CrazyTestObject.class,
+				new Search(new Restriction[] { new Restriction("hiddenItem", Boolean.FALSE, Restriction.EQUALS),
+						new Restriction("title", titles) }, new Order("title"), 1, 2, false));
+		assertEquals(2, l.size());
+		assertTrue(l.contains(gto2));
+		assertTrue(l.contains(gto3));
 
-        // test that empty search is ok
-        l = genericDao.findBySearch(CrazyTestObject.class, new Search() );
-        assertEquals(6, l.size());
-        assertTrue(l.contains(gto1));
-        assertTrue(l.contains(gto2));
-        assertTrue(l.contains(gto3));
-        assertTrue(l.contains(gto4));
-        assertTrue(l.contains(gto5));
-        assertTrue(l.contains(gto6));
+		// test that empty search is ok
+		l = genericDao.findBySearch(CrazyTestObject.class, new Search());
+		assertEquals(6, l.size());
+		assertTrue(l.contains(gto1));
+		assertTrue(l.contains(gto2));
+		assertTrue(l.contains(gto3));
+		assertTrue(l.contains(gto4));
+		assertTrue(l.contains(gto5));
+		assertTrue(l.contains(gto6));
 
-        // test search with only order is ok
-        Search orderOnly = new Search();
-        orderOnly.addOrder( new Order("title") );
-        l = genericDao.findBySearch(CrazyTestObject.class, orderOnly );
-        assertEquals(6, l.size());
-        assertTrue(l.contains(gto1));
-        assertTrue(l.contains(gto2));
-        assertTrue(l.contains(gto3));
-        assertTrue(l.contains(gto4));
-        assertTrue(l.contains(gto5));
-        assertTrue(l.contains(gto6));
+		// test search with only order is ok
+		Search orderOnly = new Search();
+		orderOnly.addOrder(new Order("title"));
+		l = genericDao.findBySearch(CrazyTestObject.class, orderOnly);
+		assertEquals(6, l.size());
+		assertTrue(l.contains(gto1));
+		assertTrue(l.contains(gto2));
+		assertTrue(l.contains(gto3));
+		assertTrue(l.contains(gto4));
+		assertTrue(l.contains(gto5));
+		assertTrue(l.contains(gto6));
 
-        // null search causes exception
-        try {
-           l = genericDao.findBySearch(CrazyTestObject.class, null);
-           fail("Should have thrown exception");
-        } catch (IllegalArgumentException e) {
-           assertNotNull(e.getMessage());
-        }
+		// null search causes exception
+		try {
+			l = genericDao.findBySearch(CrazyTestObject.class, null);
+			fail("Should have thrown exception");
+		} catch (IllegalArgumentException e) {
+			assertNotNull(e.getMessage());
+		}
 
-     }
+	}
 
-     public void testFindOneBySearch() {
-        CrazyTestObject gto = null;
+	@Test
+	public void testFindOneBySearch() {
+		CrazyTestObject gto = null;
 
-        String[] onetitle = new String[] {gto3.getTitle()};
-        gto = genericDao.findOneBySearch(CrazyTestObject.class, 
-              new Search("title", onetitle) );
-        assertNotNull(gto);
-        assertEquals(gto3.getId(), gto.getId());
+		String[] onetitle = new String[] { gto3.getTitle() };
+		gto = genericDao.findOneBySearch(CrazyTestObject.class, new Search("title", onetitle));
+		assertNotNull(gto);
+		assertEquals(gto3.getId(), gto.getId());
 
-        gto = genericDao.findOneBySearch(CrazyTestObject.class, 
-              new Search( new Restriction("title", TEST_TITLE+"%", Restriction.LIKE), new Order("title"), 2, 2) );
-        assertNotNull(gto);
-        assertEquals(gto3.getId(), gto.getId());
+		gto = genericDao.findOneBySearch(CrazyTestObject.class,
+				new Search(new Restriction("title", TEST_TITLE + "%", Restriction.LIKE), new Order("title"), 2, 2));
+		assertNotNull(gto);
+		assertEquals(gto3.getId(), gto.getId());
 
-        gto = genericDao.findOneBySearch(CrazyTestObject.class, 
-              new Search("title", "XXXXXXXXXXXXXX") );
-        assertNull(gto);
-     }
+		gto = genericDao.findOneBySearch(CrazyTestObject.class, new Search("title", "XXXXXXXXXXXXXX"));
+		assertNull(gto);
+	}
 
+    @Test
      public void testCountAll() {
          int count = 0;
 
@@ -356,40 +357,44 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
          assertEquals(6, count);
       }
 
-      public void testFindAllClass() {
-         List<CrazyTestObject> l = genericDao.findAll(CrazyTestObject.class);
-         assertNotNull(l);
-         assertEquals(6, l.size());
-         assertTrue(l.contains(gto1));
-         assertTrue(l.contains(gto2));
-         assertTrue(l.contains(gto3));
-         assertTrue(l.contains(gto4));
-         assertTrue(l.contains(gto5));
-         assertTrue(l.contains(gto6));
-      }
+	@Test
+	public void testFindAllClass() {
+		List<CrazyTestObject> l = genericDao.findAll(CrazyTestObject.class);
+		assertNotNull(l);
+		assertEquals(6, l.size());
+		assertTrue(l.contains(gto1));
+		assertTrue(l.contains(gto2));
+		assertTrue(l.contains(gto3));
+		assertTrue(l.contains(gto4));
+		assertTrue(l.contains(gto5));
+		assertTrue(l.contains(gto6));
+	}
 
-      public void testFindAllClassIntInt() {
-         List<CrazyTestObject> l = genericDao.findAll(CrazyTestObject.class, 0, 2);
-         assertNotNull(l);
-         assertEquals(2, l.size());
-      }
+	@Test
+	public void testFindAllClassIntInt() {
+		List<CrazyTestObject> l = genericDao.findAll(CrazyTestObject.class, 0, 2);
+		assertNotNull(l);
+		assertEquals(2, l.size());
+	}
 
-      public void testDeleteSetIds() {
-         genericDao.deleteSet(CrazyTestObject.class, new Serializable[] {gto2.getId(), gto3.getId()});
+	@Test
+	public void testDeleteSetIds() {
+		genericDao.deleteSet(CrazyTestObject.class, new Serializable[] { gto2.getId(), gto3.getId() });
 
-         List<CrazyTestObject> l = genericDao.findAll(CrazyTestObject.class);
-         assertNotNull(l);
-         assertEquals(4, l.size());
-         assertTrue(! l.contains(gto2));
-         assertTrue(! l.contains(gto3));
+		List<CrazyTestObject> l = genericDao.findAll(CrazyTestObject.class);
+		assertNotNull(l);
+		assertEquals(4, l.size());
+		assertTrue(!l.contains(gto2));
+		assertTrue(!l.contains(gto3));
 
-         // delete nothing is ok
-         genericDao.deleteSet(CrazyTestObject.class, new Serializable[] {});
-      }
+		// delete nothing is ok
+		genericDao.deleteSet(CrazyTestObject.class, new Serializable[] {});
+	}
 
       /**
        * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateCompleteGenericDao#deleteMixedSet(java.util.Set[])}.
        */
+      @Test
       @SuppressWarnings("unchecked")
       public void testDeleteMixedSet() {
          Set deleteSet = new HashSet();
@@ -432,6 +437,7 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
       /**
        * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateCompleteGenericDao#deleteSet(java.util.Set)}.
        */
+      @Test
       public void testDeleteSet() {
          Set<CrazyTestObject> deleteSet = new HashSet<CrazyTestObject>();
          deleteSet.add(gto1);
@@ -506,6 +512,7 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
       /**
        * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateCompleteGenericDao#saveMixedSet(java.util.Set[])}.
        */
+      @Test
       @SuppressWarnings("unchecked")
       public void testSaveMixedSet() {
          CrazyTestObject gtoA = new CrazyTestObject("titleA", Boolean.TRUE);
@@ -562,6 +569,7 @@ public class CrazyGenericDaoTest extends AbstractTransactionalSpringContextTests
       /**
        * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateCompleteGenericDao#saveSet(java.util.Set)}.
        */
+      @Test
       public void testSaveSet() {
          CrazyTestObject gtoA = new CrazyTestObject("titleA", Boolean.TRUE);
          CrazyTestObject gtoB = new CrazyTestObject("titleB", Boolean.FALSE);

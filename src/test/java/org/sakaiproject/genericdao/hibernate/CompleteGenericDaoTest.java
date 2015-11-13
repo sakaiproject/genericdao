@@ -18,11 +18,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.sakaiproject.genericdao.api.CompleteGenericDao;
 import org.sakaiproject.genericdao.test.GenericTestObject;
-import org.springframework.test.AbstractTransactionalSpringContextTests;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+import org.springframework.test.context.transaction.BeforeTransaction;
 
 /**
  * Testing the {@link org.sakaiproject.genericdao.api.CompleteGenericDao}
@@ -30,8 +33,9 @@ import org.springframework.test.AbstractTransactionalSpringContextTests;
  * @author Aaron Zeckoski (aaronz@vt.edu)
  */
 @SuppressWarnings("deprecation")
+@ContextConfiguration(locations={"/spring-common.xml","/spring-hibernate.xml"})
 public class CompleteGenericDaoTest extends
-AbstractTransactionalSpringContextTests {
+AbstractTransactionalJUnit4SpringContextTests {
 
     protected CompleteGenericDao genericDao;
 
@@ -44,33 +48,23 @@ AbstractTransactionalSpringContextTests {
     // the values to return for fake data
     private final static String TEST_TITLE = "aaronz test object";
 
-    protected String[] getConfigLocations() {
-        // point to the spring-hibernate.xml file, must be on the classpath
-        // (add component/src/webapp/WEB-INF to the build path in Eclipse)
-        return new String[] {"spring-common.xml","spring-hibernate.xml"};
-    }
-
     // run this before each test starts
-    protected void onSetUpBeforeTransaction() throws Exception {
-        gto1 = new GenericTestObject(TEST_TITLE, Boolean.FALSE);
+    @Before
+    public void onSetUp() throws Exception {
+    	// get the GenericDaoFinder from the spring context (you should inject this)
+    	genericDao = (CompleteGenericDao) applicationContext.
+    			getBean("org.sakaiproject.genericdao.dao.CompleteGenericDao");
+    	if (genericDao == null) {
+    		throw new RuntimeException("onSetUp: CompleteGenericDao could not be retrieved from spring context");
+    	}
+
+    	gto1 = new GenericTestObject(TEST_TITLE, Boolean.FALSE);
         gto2 = new GenericTestObject(TEST_TITLE + "2", Boolean.FALSE);
         gto3 = new GenericTestObject(TEST_TITLE + "3", Boolean.FALSE);
         gto4 = new GenericTestObject(TEST_TITLE + "4", Boolean.TRUE);
         gto5 = new GenericTestObject(TEST_TITLE + "5", Boolean.TRUE);
-    }
 
-    // run this before each test starts and as part of the transaction
-    protected void onSetUpInTransaction() {
-        // get the GenericDaoFinder from the spring context (you should inject this)
-        genericDao = (CompleteGenericDao) applicationContext.
-        getBean("org.sakaiproject.genericdao.dao.CompleteGenericDao");
-        if (genericDao == null) {
-            throw new RuntimeException("onSetUpInTransaction: CompleteGenericDao could not be retrieved from spring context");
-        }
-
-        // init the dao class if needed
-
-        // preload data if desired
+        // preload data
         genericDao.save(gto1);
         genericDao.save(gto2);
         genericDao.save(gto3);
@@ -82,6 +76,7 @@ AbstractTransactionalSpringContextTests {
     /**
      * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateCompleteGenericDao#countAll(java.lang.Class)}.
      */
+    @Test
     public void testCountAll() {
         int count = genericDao.countAll(GenericTestObject.class);
         Assert.assertEquals(5, count);
@@ -90,6 +85,7 @@ AbstractTransactionalSpringContextTests {
     /**
      * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateCompleteGenericDao#findAll(java.lang.Class)}.
      */
+    @Test
     public void testFindAllClass() {
         List<GenericTestObject> l = genericDao.findAll(GenericTestObject.class);
         Assert.assertNotNull(l);
@@ -104,6 +100,7 @@ AbstractTransactionalSpringContextTests {
     /**
      * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateCompleteGenericDao#findAll(java.lang.Class, int, int)}.
      */
+    @Test
     public void testFindAllClassIntInt() {
         List<GenericTestObject> l = genericDao.findAll(GenericTestObject.class, 0, 2);
         Assert.assertNotNull(l);
@@ -113,6 +110,7 @@ AbstractTransactionalSpringContextTests {
     /**
      * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateCompleteGenericDao#findByExample(java.lang.Object)}.
      */
+    @Test
     @SuppressWarnings({ "unchecked" })
     public void testFindByExampleObject() {
         GenericTestObject gto = new GenericTestObject();
@@ -130,6 +128,7 @@ AbstractTransactionalSpringContextTests {
     /**
      * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateCompleteGenericDao#findByExample(java.lang.Object, int, int)}.
      */
+    @Test
     @SuppressWarnings({ "unchecked" })
     public void testFindByExampleObjectIntInt() {
         GenericTestObject gto = new GenericTestObject();
@@ -144,6 +143,7 @@ AbstractTransactionalSpringContextTests {
     /**
      * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateCompleteGenericDao#deleteMixedSet(java.util.Set[])}.
      */
+    @Test
     @SuppressWarnings("unchecked")
     public void testDeleteMixedSet() {
         Set deleteSet = new HashSet();
@@ -185,6 +185,7 @@ AbstractTransactionalSpringContextTests {
     /**
      * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateCompleteGenericDao#deleteSet(java.util.Set)}.
      */
+    @Test
     public void testDeleteSet() {
         Set<GenericTestObject> deleteSet = new HashSet<GenericTestObject>();
         deleteSet.add(gto1);
@@ -256,6 +257,7 @@ AbstractTransactionalSpringContextTests {
     /**
      * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateCompleteGenericDao#saveMixedSet(java.util.Set[])}.
      */
+    @Test
     @SuppressWarnings("unchecked")
     public void testSaveMixedSet() {
         GenericTestObject gtoA = new GenericTestObject("titleA", Boolean.TRUE);
@@ -298,6 +300,7 @@ AbstractTransactionalSpringContextTests {
     /**
      * Test method for {@link org.sakaiproject.genericdao.hibernate.HibernateCompleteGenericDao#saveSet(java.util.Set)}.
      */
+    @Test
     public void testSaveSet() {
         GenericTestObject gtoA = new GenericTestObject("titleA", Boolean.TRUE);
         GenericTestObject gtoB = new GenericTestObject("titleB", Boolean.FALSE);

@@ -38,7 +38,7 @@ public class ReallyCrazyGenericDaoTest extends AbstractTestCrazyGenericDao {
     @BeforeClass
     public static void initDAO() {
         // create and startup embedded HSQLDB
-        DriverManagerDataSource dataSource = new DriverManagerDataSource("org.hsqldb.jdbcDriver","jdbc:hsqldb:.","sa","");
+        DriverManagerDataSource dataSource = new DriverManagerDataSource("jdbc:hsqldb:.","sa","");
         assertNotNull(dataSource);
         
         // create and set the data mappers (one for each table)

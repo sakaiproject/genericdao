@@ -43,7 +43,7 @@ public class HibernateGeneralGenericDao extends HibernateBasicGenericDao impleme
    @SuppressWarnings("unchecked")
    public <T> List<T> findAll(Class<T> entityClass, int firstResult, int maxResults) {
       DetachedCriteria criteria = DetachedCriteria.forClass(checkClass(entityClass));
-      List<T> items = getHibernateTemplate().findByCriteria(criteria, firstResult, maxResults);
+      List<T> items = (List<T>) getHibernateTemplate().findByCriteria(criteria, firstResult, maxResults);
       return items;
    }
 
@@ -61,7 +61,9 @@ public class HibernateGeneralGenericDao extends HibernateBasicGenericDao impleme
     * MUST override this method
     */
    protected <T> int baseSaveSet(Class<?> type, Set<T> entities) {
-      getHibernateTemplate().saveOrUpdateAll(entities);
+      for (T t : entities) {
+    	  getHibernateTemplate().saveOrUpdate(t);
+      }
       return entities.size();
    }
 
@@ -76,7 +78,9 @@ public class HibernateGeneralGenericDao extends HibernateBasicGenericDao impleme
             entities.add(object);
          }
       }
-      getHibernateTemplate().deleteAll(entities);
+      for (Object object : entities) {
+         getHibernateTemplate().delete(object);
+      }
       return entities.size();
 /** This will not flush the item from the session so it is hopeless -AZ
       StringBuilder sb = new StringBuilder();
