@@ -1,3 +1,4 @@
+= GenericDAO =
 This is the generic dao written by Aaron Zeckoski (aaronz@vt.edu)
 
 It is designed to make it easier and faster for developers to write their DAOs
@@ -24,3 +25,19 @@ See the javadoc overview.html file for more details.
 
 More detailed instructions in the Sakai programmers cafe here:
 http://confluence.sakaiproject.org/confluence/x/zX8
+
+== Releasing ==
+
+This artifact uses the Sonatype plugin for releasing to the OSS Sonatype repository.
+
+   mvn versions:set -DnewVersion=0.10.0
+   git add pom.xml
+   git commit -m "Increment version for release"
+   mvn clean deploy -Prelease
+   git tag 0.10.0
+   git push --tags
+   mvn versions:set -DnewVersion=0.10.1-SNAPSHOT
+   git add pom.xml
+   git commit -m "Increment version for development"
+   git push
+
