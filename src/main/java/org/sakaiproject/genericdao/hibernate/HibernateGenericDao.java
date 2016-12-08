@@ -24,7 +24,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.azeckoski.reflectutils.ClassLoaderUtils;
 import org.azeckoski.reflectutils.ReflectUtils;
-import org.hibernate.EntityMode;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -37,8 +36,8 @@ import org.sakaiproject.genericdao.api.interceptors.WriteInterceptor;
 import org.sakaiproject.genericdao.api.search.Restriction;
 import org.sakaiproject.genericdao.api.search.Search;
 import org.sakaiproject.genericdao.base.caching.NonCachingCacheProvider;
-import org.springframework.orm.hibernate3.HibernateObjectRetrievalFailureException;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.HibernateObjectRetrievalFailureException;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 /**
  * A Hibernate (http://hibernate.org/) based implementation of GenericDao
@@ -240,7 +239,7 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
     * @return a list of whatever you requested in the HQL
     */
    protected List<?> executeHqlQuery(String hql, Object[] params, int start, int limit) {
-      Query query = getSession().createQuery(hql);
+      Query query = getSessionFactory().getCurrentSession().createQuery(hql);
       query.setFirstResult(start);
       if (limit > 0) {
          query.setMaxResults(limit);
@@ -261,7 +260,7 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
     * @return a list of whatever you requested in the HQL
     */
    protected List<?> executeHqlQuery(String hql, Map<String, Object> params, int start, int limit) {
-      Query query = getSession().createQuery(hql);
+      Query query = getSessionFactory().getCurrentSession().createQuery(hql);
       query.setFirstResult(start);
       if (limit > 0) {
          query.setMaxResults(limit);
@@ -310,7 +309,7 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
       ClassMetadata classmeta = getSessionFactory().getClassMetadata(type);
       if (classmeta != null) {
          if (classmeta.hasIdentifierProperty()) {
-            idValue = classmeta.getIdentifier(object, EntityMode.POJO);
+            idValue = classmeta.getIdentifier(object);
          }
       } else {
          throw new IllegalArgumentException("Could not get classmetadata for this object, it may not be persistent: " + object);
@@ -341,7 +340,7 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
       // this ugly but hibernate will save an object which is already persistent so we have to do this check up front
       Serializable id;
       try {
-         id = getSession().getIdentifier(object);
+         id = getSessionFactory().getCurrentSession().getIdentifier(object);
       } catch (HibernateException e) {
          id = null;
       }

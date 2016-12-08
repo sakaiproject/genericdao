@@ -105,7 +105,7 @@ public class JdbcBasicGenericDao extends JdbcGenericDao implements BasicGenericD
         if (showSQL) {
             logInfo("SQL="+sql+":\n Params="+ArrayUtils.arrayToString(sd.getArgs()));
         }
-        long count = getSpringJdbcTemplate().queryForLong(sql, sd.getArgs());
+        long count = getSpringJdbcTemplate().queryForObject(sql, Long.class, sd.getArgs());
         return count;
     }
 
