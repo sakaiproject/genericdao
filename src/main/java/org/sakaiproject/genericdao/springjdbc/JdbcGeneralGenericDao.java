@@ -176,7 +176,7 @@ public class JdbcGeneralGenericDao extends JdbcBasicGenericDao implements Genera
         if (showSQL) {
             logInfo("SQL="+sql);
         }
-        long count = getSpringJdbcTemplate().queryForLong(sql);
+        long count = getSpringJdbcTemplate().queryForObject(sql, Long.class);
         return (int) count;
     }
 

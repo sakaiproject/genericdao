@@ -211,7 +211,7 @@ you created here instead of the Sakai ones used in the examples below.</i>
 	
 	<!-- create a SessionFactory bean from the data source and point it at our HBMs -->
 	<bean id="*yourappname*SessionFactory"
-		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="testDataSource" />
 		<property name="mappingResources">
 			<list>
@@ -231,7 +231,7 @@ you created here instead of the Sakai ones used in the examples below.</i>
 	
 	<!-- Create a transaction manager from the SessionFactory -->
 	<bean id="*yourappname*TransactionManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="*yourappname*SessionFactory" />
 	</bean>
 </xmp>

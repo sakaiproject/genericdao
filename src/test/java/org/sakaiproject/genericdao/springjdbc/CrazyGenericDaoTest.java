@@ -5,8 +5,8 @@
  **************************************************************************
  * Copyright (c) 2008 Aaron Zeckoski
  * Licensed under the Apache License, Version 2
- * 
- * A copy of the Apache License, Version 2 has been included in this 
+ *
+ * A copy of the Apache License, Version 2 has been included in this
  * distribution and is available at: http://www.apache.org/licenses/LICENSE-2.0.txt
  *
  * Aaron Zeckoski (azeckoski@gmail.com) (aaronz@vt.edu) (aaron@caret.cam.ac.uk)
@@ -35,17 +35,16 @@ import org.sakaiproject.genericdao.api.search.Search;
 import org.sakaiproject.genericdao.test.CrazyTestObject;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
-import org.springframework.test.context.transaction.BeforeTransaction;
 
 /**
  * Testing the {@link org.sakaiproject.genericdao.api.GenericDao}
- * 
+ *
  * @author Aaron Zeckoski (aaronz@vt.edu)
  */
 @ContextConfiguration(locations={"/spring-common.xml","/spring-jdbc.xml"})
 public class CrazyGenericDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
 
-    protected GeneralGenericDao genericDao; 
+    protected GeneralGenericDao genericDao;
 
     public CrazyTestObject gto1;
     public CrazyTestObject gto2;
@@ -65,7 +64,7 @@ public class CrazyGenericDaoTest extends AbstractTransactionalJUnit4SpringContex
     	if (genericDao == null) {
     		throw new RuntimeException("onSetUp: GenericDao could not be retrieved from spring context");
     	}
-    	
+
         gto1 = new CrazyTestObject(TEST_TITLE, Boolean.FALSE);
         gto2 = new CrazyTestObject(TEST_TITLE + "2", Boolean.FALSE);
         gto3 = new CrazyTestObject(TEST_TITLE + "3", Boolean.FALSE);
@@ -217,15 +216,15 @@ public class CrazyGenericDaoTest extends AbstractTransactionalJUnit4SpringContex
 
     @Test
     public void testCountBySearch() {
-        long count = genericDao.countBySearch(CrazyTestObject.class, 
+        long count = genericDao.countBySearch(CrazyTestObject.class,
               new Search("hiddenItem", Boolean.FALSE) );
         assertEquals(4, count);
 
-        count = genericDao.countBySearch(CrazyTestObject.class, 
+        count = genericDao.countBySearch(CrazyTestObject.class,
               new Search( new Restriction("hiddenItem", Boolean.FALSE, Restriction.NOT_EQUALS) ) );
         assertEquals(2, count);
 
-        count = genericDao.countBySearch(CrazyTestObject.class, 
+        count = genericDao.countBySearch(CrazyTestObject.class,
               new Search( "title", "invalid" ) );
         assertEquals(0, count);
      }
