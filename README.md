@@ -24,7 +24,7 @@ There are 3 ways to use the GenericDao depending on your needs.
 See the javadoc overview.html file for more details.
 
 More detailed instructions in the Sakai programmers cafe here:
-http://confluence.sakaiproject.org/confluence/x/zX8
+https://confluence.sakaiproject.org/display/BOOT/Generic+DAO+package
 
 # Releasing 
 
