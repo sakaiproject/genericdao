@@ -36,8 +36,8 @@ import org.sakaiproject.genericdao.api.interceptors.WriteInterceptor;
 import org.sakaiproject.genericdao.api.search.Restriction;
 import org.sakaiproject.genericdao.api.search.Search;
 import org.sakaiproject.genericdao.base.caching.NonCachingCacheProvider;
-import org.springframework.orm.hibernate4.HibernateObjectRetrievalFailureException;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate5.HibernateObjectRetrievalFailureException;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 /**
  * A Hibernate (http://hibernate.org/) based implementation of GenericDao
