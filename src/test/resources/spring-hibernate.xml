@@ -5,7 +5,7 @@
 
 	<!-- create a SessionFactory bean from the data source and point it at our HBMs -->
 	<bean id="testSessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="testDataSource" />
 		<property name="mappingResources">
 			<list>
@@ -26,7 +26,7 @@
 
 	<!-- Create a transaction manager from the SessionFactory -->
 	<bean id="testTransactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="dataSource" ref="testDataSource" />
 		<property name="sessionFactory" ref="testSessionFactory" />
 	</bean>
