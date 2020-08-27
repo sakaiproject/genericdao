@@ -26,8 +26,8 @@ import org.azeckoski.reflectutils.ClassLoaderUtils;
 import org.azeckoski.reflectutils.ReflectUtils;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.metadata.ClassMetadata;
+import org.hibernate.query.Query;
 import org.sakaiproject.genericdao.api.GenericDao;
 import org.sakaiproject.genericdao.api.caching.CacheProvider;
 import org.sakaiproject.genericdao.api.interceptors.DaoOperationInterceptor;
@@ -239,7 +239,7 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
     * @return a list of whatever you requested in the HQL
     */
    protected List<?> executeHqlQuery(String hql, Object[] params, int start, int limit) {
-      Query query = getSessionFactory().getCurrentSession().createQuery(hql);
+      Query<?> query = getSessionFactory().getCurrentSession().createQuery(hql);
       query.setFirstResult(start);
       if (limit > 0) {
          query.setMaxResults(limit);
@@ -260,7 +260,7 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
     * @return a list of whatever you requested in the HQL
     */
    protected List<?> executeHqlQuery(String hql, Map<String, Object> params, int start, int limit) {
-      Query query = getSessionFactory().getCurrentSession().createQuery(hql);
+      Query<?> query = getSessionFactory().getCurrentSession().createQuery(hql);
       query.setFirstResult(start);
       if (limit > 0) {
          query.setMaxResults(limit);
@@ -276,7 +276,7 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
     * @param query
     * @param params
     */
-   protected void setParameters(Query query, Map<String, Object> params) {
+   protected void setParameters(Query<?> query, Map<String, Object> params) {
       for (Entry<String, Object> entry : params.entrySet()) {
          String name = entry.getKey();
          Object param = entry.getValue();
