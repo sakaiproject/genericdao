@@ -6,7 +6,7 @@
 	<version>0.12.1-SNAPSHOT</version>
 	<properties>
 		<hibernate.version>5.4.24.Final</hibernate.version>
-		<spring.version>5.3.14</spring.version>
+		<spring.version>5.3.19</spring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<packaging>jar</packaging>
