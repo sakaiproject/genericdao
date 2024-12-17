@@ -25,19 +25,3 @@ See the javadoc overview.html file for more details.
 
 More detailed instructions in the Sakai programmers cafe here:
 https://confluence.sakaiproject.org/display/BOOT/Generic+DAO+package
-
-# Releasing 
-
-This artifact uses the Sonatype plugin for releasing to the OSS Sonatype repository.
-
-   mvn versions:set -DnewVersion=0.10.0
-   git add pom.xml
-   git commit -m "Increment version for release"
-   mvn clean deploy -Prelease
-   git tag 0.10.0
-   git push --tags
-   mvn versions:set -DnewVersion=0.10.1-SNAPSHOT
-   git add pom.xml
-   git commit -m "Increment version for development"
-   git push
-
