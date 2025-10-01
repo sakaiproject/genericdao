@@ -27,47 +27,57 @@ import org.sakaiproject.genericdao.api.search.Search;
  * @author Aaron Zeckoski (aaronz@vt.edu)
  * @deprecated Use {@link BySearchFinder} instead
  */
+@Deprecated
 public interface ByPropsFinder {
 
 	/**
 	 * @deprecated Use the constants in {@link Restriction}
 	 */
-	public static int EQUALS = Restriction.EQUALS;
+        @Deprecated
+        public static int EQUALS = Restriction.EQUALS;
 	/**
 	 * @deprecated Use the constants in {@link Restriction}
 	 */
-	public static int GREATER = Restriction.GREATER;
+        @Deprecated
+        public static int GREATER = Restriction.GREATER;
 	/**
 	 * @deprecated Use the constants in {@link Restriction}
 	 */
-	public static int LESS = Restriction.LESS;
+        @Deprecated
+        public static int LESS = Restriction.LESS;
 	/**
 	 * @deprecated Use the constants in {@link Restriction}
 	 */
-	public static int LIKE = Restriction.LIKE;
+        @Deprecated
+        public static int LIKE = Restriction.LIKE;
 	/**
 	 * @deprecated Use the constants in {@link Restriction}
 	 */
-	public static int NULL = Restriction.NULL;
+        @Deprecated
+        public static int NULL = Restriction.NULL;
 	/**
 	 * @deprecated Use the constants in {@link Restriction}
 	 */
-	public static int NOT_NULL = Restriction.NOT_NULL;
+        @Deprecated
+        public static int NOT_NULL = Restriction.NOT_NULL;
 	/**
 	 * @deprecated Use the constants in {@link Restriction}
 	 */
-	public static int NOT_EQUALS = Restriction.NOT_EQUALS;
+        @Deprecated
+        public static int NOT_EQUALS = Restriction.NOT_EQUALS;
 
 	/**
 	 * Append to the name of the object property, sort in ascending order (default)
 	 * @deprecated Use the {@link Order} object
 	 */
-	public static String ASC = " asc";
+        @Deprecated
+        public static String ASC = " asc";
 	/**
 	 * Append to the name of the object property, sort in descending order
 	 * @deprecated Use the {@link Order} object
 	 */
-	public static String DESC = " desc";
+        @Deprecated
+        public static String DESC = " desc";
 
 	/**
 	 * Find all objects of the type associated with this DAO based on
@@ -87,7 +97,8 @@ public interface ByPropsFinder {
 	 * @return a List of 0 or more persistent objects
 	 * @deprecated Use the {@link BySearchFinder#findBySearch(Class, Search)}
 	 */
-	@SuppressWarnings("unchecked")
+        @Deprecated
+        @SuppressWarnings("unchecked")
    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values);
 
 	/**
@@ -100,7 +111,8 @@ public interface ByPropsFinder {
 	 * @return the number of items found
 	 * @deprecated Use the {@link BySearchFinder#countBySearch(Class, Search)}
 	 */
-	@SuppressWarnings("unchecked")
+        @Deprecated
+        @SuppressWarnings("unchecked")
    public int countByProperties(Class entityClass, String[] objectProperties, Object[] values);
 
 	/**
@@ -126,7 +138,8 @@ public interface ByPropsFinder {
 	 * @return a List of 0 or more persistent objects
     * @deprecated Use the {@link BySearchFinder#findBySearch(Class, Search)}
 	 */
-	@SuppressWarnings("unchecked")
+        @Deprecated
+        @SuppressWarnings("unchecked")
    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values, int[] comparisons);
 
 	/**
@@ -146,7 +159,8 @@ public interface ByPropsFinder {
 	 * @return the number of items found
     * @deprecated Use the {@link BySearchFinder#countBySearch(Class, Search)}
 	 */
-	@SuppressWarnings("unchecked")
+        @Deprecated
+        @SuppressWarnings("unchecked")
    public int countByProperties(Class entityClass, String[] objectProperties, Object[] values, int[] comparisons);
 
 	/**
@@ -172,8 +186,9 @@ public interface ByPropsFinder {
 	 * @return a List of 0 or more persistent objects
     * @deprecated Use the {@link BySearchFinder#findBySearch(Class, Search)}
 	 */
-	@SuppressWarnings("unchecked")
-   public List findByProperties(Class entityClass, String[] objectProperties, 
+        @Deprecated
+        @SuppressWarnings("unchecked")
+   public List findByProperties(Class entityClass, String[] objectProperties,
 			Object[] values, int[] comparisons, String[] sortProperties);
 
 	/**
@@ -207,8 +222,9 @@ public interface ByPropsFinder {
 	 * @return a List of 0 or more persistent objects
     * @deprecated Use the {@link BySearchFinder#findBySearch(Class, Search)}
 	 */
-	@SuppressWarnings("unchecked")
-   public List findByProperties(Class entityClass, String[] objectProperties, 
+        @Deprecated
+        @SuppressWarnings("unchecked")
+   public List findByProperties(Class entityClass, String[] objectProperties,
 			Object[] values, int[] comparisons, int firstResult, int maxResults);
 
 	/**
@@ -238,8 +254,9 @@ public interface ByPropsFinder {
 	 * @return a List of 0 or more persistent objects
     * @deprecated Use the {@link BySearchFinder#findBySearch(Class, Search)}
 	 */
-	@SuppressWarnings("unchecked")
-   public List findByProperties(Class entityClass, String[] objectProperties, 
+        @Deprecated
+        @SuppressWarnings("unchecked")
+   public List findByProperties(Class entityClass, String[] objectProperties,
 			Object[] values, int[] comparisons, String[] sortProperties, 
 			int firstResult, int maxResults);
 

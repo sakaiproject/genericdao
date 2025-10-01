@@ -21,7 +21,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.hibernate.criterion.DetachedCriteria;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+
+import org.hibernate.HibernateException;
+import org.hibernate.query.Query;
 import org.sakaiproject.genericdao.api.GeneralGenericDao;
 
 /**
@@ -37,14 +42,27 @@ public class HibernateGeneralGenericDao extends HibernateBasicGenericDao impleme
 //   public <T> void deleteSet(Set<T> entities) {
 //      checkEntitySet(entities);
 //      // TODO - reattach non-persistent objects
-//      getHibernateTemplate().deleteAll(entities);
+//      execute(session -> entities.forEach(session::remove));
 //   }
 
    @SuppressWarnings("unchecked")
    public <T> List<T> findAll(Class<T> entityClass, int firstResult, int maxResults) {
-      DetachedCriteria criteria = DetachedCriteria.forClass(checkClass(entityClass));
-      List<T> items = (List<T>) getHibernateTemplate().findByCriteria(criteria, firstResult, maxResults);
-      return items;
+      final Class<T> persistentClass = (Class<T>) checkClass(entityClass);
+      return execute(session -> {
+         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(persistentClass);
+         Root<T> root = criteriaQuery.from(persistentClass);
+         criteriaQuery.select(root);
+
+         Query<T> query = session.createQuery(criteriaQuery);
+         if (firstResult > 0) {
+            query.setFirstResult(firstResult);
+         }
+         if (maxResults > 0) {
+            query.setMaxResults(maxResults);
+         }
+         return query.list();
+      });
    }
 
 
@@ -61,9 +79,28 @@ public class HibernateGeneralGenericDao extends HibernateBasicGenericDao impleme
     * MUST override this method
     */
    protected <T> int baseSaveSet(Class<?> type, Set<T> entities) {
-      for (T t : entities) {
-    	  getHibernateTemplate().saveOrUpdate(t);
-      }
+      execute(session -> {
+         for (T t : entities) {
+            if (t == null) {
+               continue;
+            }
+            boolean persisted = false;
+            try {
+               Object identifier = session.getIdentifier(t);
+               if (identifier == null) {
+                  session.persist(t);
+                  persisted = true;
+               }
+            } catch (HibernateException e) {
+               session.persist(t);
+               persisted = true;
+            }
+            if (!persisted) {
+               session.merge(t);
+            }
+         }
+         return null;
+      });
       return entities.size();
    }
 
@@ -78,23 +115,13 @@ public class HibernateGeneralGenericDao extends HibernateBasicGenericDao impleme
             entities.add(object);
          }
       }
-      for (Object object : entities) {
-         getHibernateTemplate().delete(object);
-      }
-      return entities.size();
-/** This will not flush the item from the session so it is hopeless -AZ
-      StringBuilder sb = new StringBuilder();
-      for (int i = 0; i < ids.length; i++) {
-         Object id = ids[i];
-         if (id != null) {
-            if (i > 0) { sb.append(','); }
-            sb.append('?');
+      execute(session -> {
+         for (Object object : entities) {
+            session.remove(object);
          }
-      }
-      String hql = "delete from "+type.getName()+" entity where entity.id in (" + sb + ")";
-      int deletes = getHibernateTemplate().bulkUpdate(hql, ids);
-      return deletes;
-***/
+         return null;
+      });
+      return entities.size();
    }
 
    // COMMON CODE
