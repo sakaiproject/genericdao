@@ -20,7 +20,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.persistence.Id;
+import jakarta.persistence.Id;
 
 /**
  * Marks a getter method or field as the unique id for a persistent object,

@@ -16,13 +16,18 @@ package org.sakaiproject.genericdao.hibernate;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Expression;
-import org.hibernate.criterion.Junction;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaBuilder.In;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Expression;
+import jakarta.persistence.criteria.Path;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
+
+import org.hibernate.query.Query;
 import org.sakaiproject.genericdao.api.BasicGenericDao;
 import org.sakaiproject.genericdao.api.finders.ByPropsFinder;
 import org.sakaiproject.genericdao.api.search.Order;
@@ -37,98 +42,144 @@ import org.sakaiproject.genericdao.api.search.Search;
  * 
  * @author Aaron Zeckoski (aaronz@vt.edu)
  */
-@SuppressWarnings("deprecation")
 public class HibernateBasicGenericDao extends HibernateGenericDao implements BasicGenericDao {
-
-   /**
-    * Build the Criteria object here to reduce code duplication
-    * @param entityClass
-    * @param search a Search object (possibly only partially complete)
-    * @return a DetachedCriteria object
-    */
-   private DetachedCriteria buildCriteria(Class<?> entityClass, Search search) {
-      // Checks to see if the required params are set and throws exception if not
+   private <T> Predicate buildPredicate(CriteriaBuilder criteriaBuilder, Root<T> root, Search search) {
       if (search == null) {
          throw new IllegalArgumentException("search cannot be null");
       }
 
-      // Build the criteria object
-      DetachedCriteria criteria = DetachedCriteria.forClass(entityClass);
-
-      // Only add in restrictions if there are some to add
-      if (search.getRestrictions() != null && search.getRestrictions().length > 0) {
-         Junction junction = Expression.conjunction(); // AND
-         if (! search.conjunction) {
-            // set to use disjunction
-            junction = Expression.disjunction(); // OR
-         }
-         criteria.add(junction);
-   
-         // put in the restrictions
-         for (int i = 0; i < search.getRestrictions().length; i++) {
-            String property = search.getRestrictions()[i].property;
-            Object value = search.getRestrictions()[i].value;
-            if (property == null || value == null) {
-               throw new IllegalArgumentException("restrictions property and value cannot be null or empty");            
-            }
-            if (value.getClass().isArray()) {
-               // special handling for "in" type comparisons
-               Object[] objectArray = (Object[]) value;
-               if (objectArray.length == 1) {
-                  value = objectArray[0];
-               } else if (objectArray.length > 1) {
-                  if (Restriction.NOT_EQUALS == search.getRestrictions()[i].comparison) {
-                     junction.add( Restrictions.not( Restrictions.in(property, objectArray) ) );
-                  } else {
-                     junction.add(Restrictions.in(property, objectArray));
-                  }
-               } else {
-                  // do nothing for now, this is slightly invalid but not worth dying over
-               }
-            }
-   
-            if (! value.getClass().isArray()) {
-               switch (search.getRestrictions()[i].comparison) {
-               case Restriction.EQUALS:
-                  junction.add(Restrictions.eq(property, value));
-                  break;
-               case Restriction.GREATER:
-                  junction.add(Restrictions.gt(property, value));
-                  break;
-               case Restriction.LESS:
-                  junction.add(Restrictions.lt(property, value));
-                  break;
-               case Restriction.LIKE:
-                  junction.add(Restrictions.like(property, value));
-                  break;
-               case Restriction.NULL:
-                  junction.add(Restrictions.isNull( property ));
-                  break;
-               case Restriction.NOT_NULL:
-                  junction.add(Restrictions.isNotNull( property ));
-                  break;
-               case Restriction.NOT_EQUALS:
-                  junction.add(Restrictions.ne(property, value));
-                  break;
-               }
-            }
-         }
+      Restriction[] restrictions = search.getRestrictions();
+      if (restrictions == null || restrictions.length == 0) {
+         return null;
       }
 
-      // handle the sorting (sort param can be null for no sort)
-      if (search.getOrders() != null) {
-         for (int i = 0; i < search.getOrders().length; i++) {
-            if (search.getOrders()[i].ascending) {
-               criteria.addOrder(
-                     org.hibernate.criterion.Order.asc( search.getOrders()[i].property ));
+      List<Predicate> predicates = new ArrayList<Predicate>();
+      for (Restriction restriction : restrictions) {
+         if (restriction == null) {
+            continue;
+         }
+         String property = restriction.property;
+         Object value = restriction.value;
+         if (property == null || value == null) {
+            throw new IllegalArgumentException("restrictions property and value cannot be null or empty");
+         }
+
+         Object[] arrayValues = null;
+         if (value.getClass().isArray()) {
+            arrayValues = (Object[]) value;
+         } else if (value instanceof Collection) {
+            arrayValues = ((Collection<?>) value).toArray();
+         }
+
+         if (arrayValues != null) {
+            if (arrayValues.length == 0) {
+               continue;
+            }
+            if (arrayValues.length == 1) {
+               value = arrayValues[0];
             } else {
-               criteria.addOrder(
-                     org.hibernate.criterion.Order.desc( search.getOrders()[i].property ));
+               In<Object> inClause = criteriaBuilder.in(root.get(property));
+               for (Object element : arrayValues) {
+                  inClause.value(element);
+               }
+               if (restriction.comparison == Restriction.NOT_EQUALS) {
+                  predicates.add(criteriaBuilder.not(inClause));
+               } else {
+                  predicates.add(inClause);
+               }
+               continue;
             }
+         }
+
+         switch (restriction.comparison) {
+         case Restriction.EQUALS:
+            predicates.add(criteriaBuilder.equal(root.get(property), value));
+            break;
+         case Restriction.GREATER:
+            predicates.add(buildComparablePredicate(criteriaBuilder, root.get(property), true, value));
+            break;
+         case Restriction.LESS:
+            predicates.add(buildComparablePredicate(criteriaBuilder, root.get(property), false, value));
+            break;
+         case Restriction.LIKE:
+            predicates.add(criteriaBuilder.like(asString(root.get(property)), value.toString()));
+            break;
+         case Restriction.NULL:
+            predicates.add(criteriaBuilder.isNull(root.get(property)));
+            break;
+         case Restriction.NOT_NULL:
+            predicates.add(criteriaBuilder.isNotNull(root.get(property)));
+            break;
+         case Restriction.NOT_EQUALS:
+            predicates.add(criteriaBuilder.notEqual(root.get(property), value));
+            break;
+         default:
+            throw new IllegalArgumentException("Unknown comparison: " + restriction.comparison);
          }
       }
 
-      return criteria;
+      if (predicates.isEmpty()) {
+         return null;
+      }
+
+      Predicate[] predicateArray = predicates.toArray(new Predicate[predicates.size()]);
+      if (search.isConjunction()) {
+         return criteriaBuilder.and(predicateArray);
+      } else {
+         return criteriaBuilder.or(predicateArray);
+      }
+   }
+
+   private Expression<String> asString(Path<?> path) {
+      return path.as(String.class);
+   }
+
+   @SuppressWarnings({"rawtypes", "unchecked"})
+   private Predicate buildComparablePredicate(CriteriaBuilder criteriaBuilder, Path<?> path, boolean greaterThan, Object value) {
+      if (!(value instanceof Comparable)) {
+         throw new IllegalArgumentException("comparison value must be Comparable: " + value);
+      }
+      Expression<? extends Comparable> expression = (Expression<? extends Comparable>) path;
+      Comparable comparableValue = (Comparable) value;
+      if (greaterThan) {
+         return criteriaBuilder.greaterThan(expression, comparableValue);
+      } else {
+         return criteriaBuilder.lessThan(expression, comparableValue);
+      }
+   }
+
+   private <T> void applySorting(CriteriaBuilder criteriaBuilder, Root<T> root, CriteriaQuery<T> criteriaQuery, Search search) {
+      Order[] orders = search.getOrders();
+      if (orders == null || orders.length == 0) {
+         return;
+      }
+
+      List<jakarta.persistence.criteria.Order> jpaOrders = new ArrayList<jakarta.persistence.criteria.Order>();
+      for (Order order : orders) {
+         if (order == null || order.property == null) {
+            continue;
+         }
+         Path<Object> path = root.get(order.property);
+         if (order.ascending) {
+            jpaOrders.add(criteriaBuilder.asc(path));
+         } else {
+            jpaOrders.add(criteriaBuilder.desc(path));
+         }
+      }
+
+      if (!jpaOrders.isEmpty()) {
+         criteriaQuery.orderBy(jpaOrders);
+      }
+   }
+
+   private int toInt(long value) {
+      if (value > Integer.MAX_VALUE) {
+         return Integer.MAX_VALUE;
+      }
+      if (value < 0) {
+         return 0;
+      }
+      return (int) value;
    }
 
    
@@ -137,25 +188,50 @@ public class HibernateBasicGenericDao extends HibernateGenericDao implements Bas
    /**
     * MUST override this
     */
-   @SuppressWarnings("unchecked")
    protected <T> long baseCountBySearch(Class<T> type, Search search) {
-      DetachedCriteria criteria = buildCriteria(type, search);
-      criteria.setProjection(Projections.rowCount());
-      List<Number> l = (List<Number>) getHibernateTemplate().findByCriteria(criteria);
-      return l.get(0).longValue();
+      return execute(session -> {
+         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+         CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
+         Root<T> root = criteriaQuery.from(type);
+         criteriaQuery.select(criteriaBuilder.count(root));
+
+         Predicate predicate = buildPredicate(criteriaBuilder, root, search);
+         if (predicate != null) {
+            criteriaQuery.where(predicate);
+         }
+
+         return session.createQuery(criteriaQuery).getSingleResult();
+      }).longValue();
    }
 
    /**
     * MUST override this
     */
-   @SuppressWarnings("unchecked")
    protected <T> List<T> baseFindBySearch(Class<T> type, Search search) {
-      DetachedCriteria criteria = buildCriteria(type, search);
-      List<T> items = (List<T>) getHibernateTemplate().findByCriteria(criteria, 
-            Long.valueOf(search.getStart()).intValue(), 
-            Long.valueOf(search.getLimit()).intValue());
-      // TODO need to figure out how to force persistent objects to be transitive
-      return items;
+      return execute(session -> {
+         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(type);
+         Root<T> root = criteriaQuery.from(type);
+         criteriaQuery.select(root);
+
+         Predicate predicate = buildPredicate(criteriaBuilder, root, search);
+         if (predicate != null) {
+            criteriaQuery.where(predicate);
+         }
+
+         applySorting(criteriaBuilder, root, criteriaQuery, search);
+
+         Query<T> query = session.createQuery(criteriaQuery);
+         int start = toInt(search.getStart());
+         if (start > 0) {
+            query.setFirstResult(start);
+         }
+         int limit = toInt(search.getLimit());
+         if (limit > 0) {
+            query.setMaxResults(limit);
+         }
+         return query.list();
+      });
    }
 
    /**

@@ -20,7 +20,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.persistence.Transient;
+import jakarta.persistence.Transient;
 
 /**
  * Marks a field on a persistent class as being transient 

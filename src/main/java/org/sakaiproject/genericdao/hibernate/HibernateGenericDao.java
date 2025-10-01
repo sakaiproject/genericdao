@@ -20,13 +20,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.azeckoski.reflectutils.ClassLoaderUtils;
 import org.azeckoski.reflectutils.ReflectUtils;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
-import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.query.Query;
 import org.sakaiproject.genericdao.api.GenericDao;
 import org.sakaiproject.genericdao.api.caching.CacheProvider;
@@ -36,8 +36,11 @@ import org.sakaiproject.genericdao.api.interceptors.WriteInterceptor;
 import org.sakaiproject.genericdao.api.search.Restriction;
 import org.sakaiproject.genericdao.api.search.Search;
 import org.sakaiproject.genericdao.base.caching.NonCachingCacheProvider;
-import org.springframework.orm.hibernate5.HibernateObjectRetrievalFailureException;
-import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+
+import jakarta.persistence.PersistenceUnitUtil;
+import jakarta.persistence.metamodel.EntityType;
+import jakarta.persistence.metamodel.SingularAttribute;
+import jakarta.persistence.metamodel.Type;
 
 /**
  * A Hibernate (http://hibernate.org/) based implementation of GenericDao
@@ -49,7 +52,7 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
  * 
  * @author Aaron Zeckoski (aaronz@vt.edu)
  */
-public class HibernateGenericDao extends HibernateDaoSupport implements GenericDao {
+public class HibernateGenericDao extends HibernateSessionFactorySupport implements GenericDao {
 
    protected final static String COUNTALL_QUERY = "select count(*) ";
    protected final static String START_QUERY = "from";
@@ -115,7 +118,7 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
     */
    protected int count(String hqlQuery) {
       String newHqlQuery = buildCountHQL(hqlQuery);
-      return ((Number) getHibernateTemplate().iterate(newHqlQuery).next()).intValue();
+      return execute(session -> session.createQuery(newHqlQuery, Number.class).getSingleResult().intValue());
    }
 
    /**
@@ -128,7 +131,16 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
     */
    protected int count(String hqlQuery, Object[] params) {
       String newHqlQuery = buildCountHQL(hqlQuery);
-      return ((Number) getHibernateTemplate().iterate(newHqlQuery, params).next()).intValue();
+      return execute(session -> {
+         Query<Number> query = session.createQuery(newHqlQuery, Number.class);
+         if (params != null) {
+            for (int i = 0; i < params.length; i++) {
+               query.setParameter(i, params[i]);
+            }
+         }
+         Number result = query.getSingleResult();
+         return result == null ? 0 : result.intValue();
+      });
    }
 
    /**
@@ -293,9 +305,32 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
     * @see org.sakaiproject.genericdao.api.GenericDao#getIdProperty(java.lang.Class)
     */
    public String getIdProperty(Class<?> entityClass) {
-      ClassMetadata classmeta = getSessionFactory().getClassMetadata(entityClass);
-      if (classmeta == null) return null;
-      return classmeta.getIdentifierPropertyName();
+      try {
+         EntityType<?> entityType = getSessionFactory().getMetamodel().entity(entityClass);
+         if (entityType == null) {
+            return null;
+         }
+
+         if (entityType.hasSingleIdAttribute()) {
+            Type<?> idType = entityType.getIdType();
+            if (idType != null) {
+               @SuppressWarnings({"rawtypes", "unchecked"})
+               SingularAttribute<?, ?> idAttribute = entityType.getId(idType.getJavaType());
+               if (idAttribute != null) {
+                  return idAttribute.getName();
+               }
+            }
+         }
+
+         @SuppressWarnings("rawtypes")
+         Set idAttributes = entityType.getIdClassAttributes();
+         if (idAttributes != null && idAttributes.size() == 1) {
+            return ((SingularAttribute) idAttributes.iterator().next()).getName();
+         }
+      } catch (IllegalArgumentException e) {
+         return null;
+      }
+      return null;
    }
 
    // OVERRIDES
@@ -305,16 +340,20 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
     */
    protected Serializable baseGetIdValue(Object object) {
       Class<?> type = findClass(object);
-      Serializable idValue = null;
-      ClassMetadata classmeta = getSessionFactory().getClassMetadata(type);
-      if (classmeta != null) {
-         if (classmeta.hasIdentifierProperty()) {
-            idValue = classmeta.getIdentifier(object);
-         }
-      } else {
-         throw new IllegalArgumentException("Could not get classmetadata for this object, it may not be persistent: " + object);
+      PersistenceUnitUtil persistenceUnitUtil = getSessionFactory().getPersistenceUnitUtil();
+      Object identifier;
+      try {
+         identifier = persistenceUnitUtil.getIdentifier(object);
+      } catch (IllegalArgumentException e) {
+         throw new IllegalArgumentException("Could not get identifier for this object, it may not be persistent: " + object, e);
       }
-      return idValue;
+      if (identifier == null) {
+         return null;
+      }
+      if (!(identifier instanceof Serializable)) {
+         throw new IllegalArgumentException("Identifier for type " + type + " is not serializable: " + identifier);
+      }
+      return (Serializable) identifier;
    }
 
    /**
@@ -322,15 +361,7 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
     */
    @SuppressWarnings("unchecked")
    protected <T> T baseFindById(Class<T> type, Serializable id) {
-      T entity = null;
-      try {
-         entity = (T) getHibernateTemplate().get(type, id);
-      } catch (HibernateObjectRetrievalFailureException e) {
-         // TODO - maybe log an error here or take this out later
-         // if they fix the get to not throw a nasty error
-         entity = null;
-      }
-      return entity;
+      return execute(session -> session.get(type, id));
    }
 
    /**
@@ -338,25 +369,35 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
     */
    protected Serializable baseCreate(Class<?> type, Object object) {
       // this ugly but hibernate will save an object which is already persistent so we have to do this check up front
-      Serializable id;
-      try {
-         id = getSessionFactory().getCurrentSession().getIdentifier(object);
-      } catch (HibernateException e) {
-         id = null;
-      }
-      if (id != null) {
-         throw new IllegalArgumentException("This object is already persistent with id: " + id 
-               + " - you must use update to save this object and not create");
-      }
-      id = getHibernateTemplate().save(object);
-      return id;
+      return execute(session -> {
+         Serializable id;
+         try {
+            Object existingId = session.getIdentifier(object);
+            id = (existingId instanceof Serializable) ? (Serializable) existingId : null;
+         } catch (HibernateException e) {
+            id = null;
+         }
+         if (id != null) {
+            throw new IllegalArgumentException("This object is already persistent with id: " + id
+                  + " - you must use update to save this object and not create");
+         }
+         session.persist(object);
+         Object newId = session.getIdentifier(object);
+         if (!(newId instanceof Serializable)) {
+            throw new IllegalStateException("Identifier for type " + type + " is not serializable: " + newId);
+         }
+         return (Serializable) newId;
+      });
    }
 
    /**
     * MUST be overridden
     */
    protected void baseUpdate(Class<?> type, Object id, Object object) {
-      getHibernateTemplate().update(object);
+      execute(session -> {
+         session.merge(object);
+         return null;
+      });
    }
 
    /**
@@ -366,21 +407,13 @@ public class HibernateGenericDao extends HibernateDaoSupport implements GenericD
       boolean deleted = false;
       Object object = baseFindById(type, id);
       if (object != null) {
-         getHibernateTemplate().delete(object);
+         execute(session -> {
+            session.remove(object);
+            return null;
+         });
          deleted = true;
       }
       return deleted;
-/** This will not flush the item from the session so it is hopeless -AZ
-      String query = "delete from " + type.getName() + " where " 
-            + getIdProperty(type) + "= ?";
-      int i = getHibernateTemplate().bulkUpdate(query, id);
-      boolean deleted = false;
-      if (i > 0) {
-         getSessionFactory().evict(type, id); //evict this item from the cache
-         deleted = true;
-      }
-      return deleted;
-**/
    }
 
    /**

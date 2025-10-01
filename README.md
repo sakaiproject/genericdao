@@ -12,7 +12,7 @@ Usage may seem complex at first but it is actually not too bad and is highly con
 This is not meant to be FULL ORM but it is much more predictable and simply removes as much
 busywork from persisting data as possible without getting in your way.
 
-Building this project and putting it in your repository (requires Java 21 or newer):
+Building this project and putting it in your repository (requires Java 21 or newer and Jakarta EE 9+ compatible stacks such as Spring 6.x and Hibernate 6.x):
 Maven1: Simply run "maven jar:install" from the root source directory of this project
 Maven2: run "mvn clean install" from the root source directory of this project
 

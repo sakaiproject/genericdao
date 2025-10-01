@@ -14,9 +14,20 @@
 
 package org.sakaiproject.genericdao.hibernate;
 
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.query.Query;
 import org.sakaiproject.genericdao.api.CompleteGenericDao;
+
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 /**
  * A Hibernate (http://hibernate.org/) based implementation of CompleteGenericDao
@@ -42,9 +53,44 @@ public class HibernateCompleteGenericDao extends HibernateGeneralGenericDao impl
     */
    @SuppressWarnings("unchecked")
    public List findByExample(Object exampleObject, int firstResult, int maxResults) {
-      checkClass(exampleObject.getClass());
-      List items = getHibernateTemplate().findByExample(exampleObject, firstResult, maxResults);
-      return items;
+      Class<?> persistentClass = checkClass(exampleObject.getClass());
+      return execute(session -> {
+         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+         @SuppressWarnings("unchecked")
+         Class<Object> targetClass = (Class<Object>) persistentClass;
+         CriteriaQuery<Object> criteriaQuery = criteriaBuilder.createQuery(targetClass);
+         Root<Object> root = criteriaQuery.from(targetClass);
+         criteriaQuery.select(root);
+
+         List<Predicate> predicates = new ArrayList<Predicate>();
+         try {
+            PropertyDescriptor[] descriptors = Introspector.getBeanInfo(persistentClass).getPropertyDescriptors();
+            for (PropertyDescriptor descriptor : descriptors) {
+               if (descriptor.getReadMethod() == null || "class".equals(descriptor.getName())) {
+                  continue;
+               }
+               Object value = descriptor.getReadMethod().invoke(exampleObject);
+               if (value != null) {
+                  predicates.add(criteriaBuilder.equal(root.get(descriptor.getName()), value));
+               }
+            }
+         } catch (IntrospectionException | IllegalAccessException | InvocationTargetException e) {
+            throw new IllegalStateException("Unable to evaluate example object", e);
+         }
+
+         if (!predicates.isEmpty()) {
+            criteriaQuery.where(predicates.toArray(new Predicate[0]));
+         }
+
+         Query<Object> query = session.createQuery(criteriaQuery);
+         if (firstResult > 0) {
+            query.setFirstResult(firstResult);
+         }
+         if (maxResults > 0) {
+            query.setMaxResults(maxResults);
+         }
+         return query.list();
+      });
    }
 
 }
