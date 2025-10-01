@@ -43,6 +43,7 @@ public class HibernateCompleteGenericDao extends HibernateGeneralGenericDao impl
    /**
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public List findByExample(Object exampleObject) {
       return findByExample(exampleObject, 0, 0);
@@ -51,6 +52,7 @@ public class HibernateCompleteGenericDao extends HibernateGeneralGenericDao impl
    /**
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public List findByExample(Object exampleObject, int firstResult, int maxResults) {
       Class<?> persistentClass = checkClass(exampleObject.getClass());

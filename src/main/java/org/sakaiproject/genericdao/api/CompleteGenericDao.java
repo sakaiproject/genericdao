@@ -26,7 +26,8 @@ import org.sakaiproject.genericdao.api.modifiers.BatchModifier;
  * @author Aaron Zeckoski (aaronz@vt.edu)
  * @deprecated Use {@link GeneralGenericDao} instead
  */
-public interface CompleteGenericDao 
-	extends BasicGenericDao, AllFinder, ByExampleFinder, BatchModifier {
+@Deprecated
+public interface CompleteGenericDao
+        extends BasicGenericDao, AllFinder, ByExampleFinder, BatchModifier {
 
 }

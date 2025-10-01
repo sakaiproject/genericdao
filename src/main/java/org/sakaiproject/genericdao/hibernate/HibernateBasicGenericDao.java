@@ -384,6 +384,7 @@ public class HibernateBasicGenericDao extends HibernateGenericDao implements Bas
    /**
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public int countByProperties(Class entityClass, String[] objectProperties, Object[] values) {
       int[] comparisons = new int[objectProperties.length];
@@ -396,6 +397,7 @@ public class HibernateBasicGenericDao extends HibernateGenericDao implements Bas
    /**
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public int countByProperties(Class entityClass, String[] objectProperties, Object[] values,
          int[] comparisons) {
@@ -412,6 +414,7 @@ public class HibernateBasicGenericDao extends HibernateGenericDao implements Bas
    /** 
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values) {
       int[] comparisons = new int[objectProperties.length];
@@ -424,6 +427,7 @@ public class HibernateBasicGenericDao extends HibernateGenericDao implements Bas
    /** 
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values,
          int[] comparisons) {
@@ -433,6 +437,7 @@ public class HibernateBasicGenericDao extends HibernateGenericDao implements Bas
    /** 
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values,
          int[] comparisons, String[] sortProperties) {
@@ -442,6 +447,7 @@ public class HibernateBasicGenericDao extends HibernateGenericDao implements Bas
    /** 
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values,
          int[] comparisons, int firstResult, int maxResults) {
@@ -452,6 +458,7 @@ public class HibernateBasicGenericDao extends HibernateGenericDao implements Bas
    /**
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values,
          int[] comparisons, String[] sortProperties, int firstResult, int maxResults) {

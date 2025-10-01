@@ -264,7 +264,7 @@ public class JdbcGeneralGenericDao extends JdbcBasicGenericDao implements Genera
         if (showSQL) {
             logInfo("SQL="+sql+":\n BatchDelete="+ArrayUtils.arrayToString(ids));
         }
-        int changes = getSpringJdbcTemplate().update(sql, ids);
+        int changes = getSpringJdbcTemplate().update(sql, (Object[]) ids);
         return changes;
     }
 

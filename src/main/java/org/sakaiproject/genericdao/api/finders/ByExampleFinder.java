@@ -23,6 +23,7 @@ import java.util.List;
  * @author Aaron Zeckoski (aaronz@vt.edu)
  * @deprecated The example finder will be removed in the next version
  */
+@Deprecated
 public interface ByExampleFinder {
 
 	/**
@@ -44,7 +45,8 @@ public interface ByExampleFinder {
 	 * @return a List of 0 or more persistent objects
 	 * @deprecated will be removed in the next version
 	 */
-	@SuppressWarnings("unchecked")
+        @Deprecated
+        @SuppressWarnings("unchecked")
    public List findByExample(Object exampleObject);
 
 	/**
@@ -63,7 +65,8 @@ public interface ByExampleFinder {
 	 * @see #findByExample(Object)
 	 * @deprecated will be removed in the next version
 	 */
-	@SuppressWarnings("unchecked")
+        @Deprecated
+        @SuppressWarnings("unchecked")
    public List findByExample(Object exampleObject, int firstResult, int maxResults);
 
 }

@@ -197,6 +197,7 @@ public abstract class BaseBasicGenericDao extends BaseGenericDao implements Basi
    /**
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public int countByProperties(Class entityClass, String[] objectProperties, Object[] values) {
       int[] comparisons = new int[objectProperties.length];
@@ -209,6 +210,7 @@ public abstract class BaseBasicGenericDao extends BaseGenericDao implements Basi
    /**
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public int countByProperties(Class entityClass, String[] objectProperties, Object[] values,
          int[] comparisons) {
@@ -225,6 +227,7 @@ public abstract class BaseBasicGenericDao extends BaseGenericDao implements Basi
    /** 
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values) {
       int[] comparisons = new int[objectProperties.length];
@@ -237,6 +240,7 @@ public abstract class BaseBasicGenericDao extends BaseGenericDao implements Basi
    /** 
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values,
          int[] comparisons) {
@@ -246,6 +250,7 @@ public abstract class BaseBasicGenericDao extends BaseGenericDao implements Basi
    /** 
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values,
          int[] comparisons, String[] sortProperties) {
@@ -255,6 +260,7 @@ public abstract class BaseBasicGenericDao extends BaseGenericDao implements Basi
    /** 
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values,
          int[] comparisons, int firstResult, int maxResults) {
@@ -265,6 +271,7 @@ public abstract class BaseBasicGenericDao extends BaseGenericDao implements Basi
    /**
     * @deprecated
     */
+   @Deprecated
    @SuppressWarnings("unchecked")
    public List findByProperties(Class entityClass, String[] objectProperties, Object[] values,
          int[] comparisons, String[] sortProperties, int firstResult, int maxResults) {
